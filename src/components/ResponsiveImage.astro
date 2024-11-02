@@ -1,0 +1,29 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  className?: string;
+}
+
+const { src, alt, className = "w-full h-48 object-cover rounded-lg mb-4" } = Astro.props;
+const mobileSrc = src.replace('.webp', '-mobile.webp');
+---
+
+<picture>
+  <source
+    media="(min-width: 768px)"
+    srcset={`/projects/${src}`}
+    type="image/webp"
+  />
+  <source
+    media="(max-width: 767px)"
+    srcset={`/projects/${mobileSrc}`}
+    type="image/webp"
+  />
+  <img
+    src={`/projects/${src.replace('.webp', '.jpg')}`}
+    alt={alt}
+    class={className}
+    loading="lazy"
+  />
+</picture>

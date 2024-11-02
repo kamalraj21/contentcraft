@@ -1,0 +1,30 @@
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  maxWidth?: string;
+}
+
+const { 
+  src, 
+  alt, 
+  caption, 
+  maxWidth = "900px" 
+} = Astro.props;
+
+
+<figure class="my-8 mx-auto" style={`max-width: ${maxWidth}`}>
+  <div class="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <img
+      src={src}
+      alt={alt}
+      class="w-full h-auto"
+      loading="lazy"
+    />
+    {caption && (
+      <figcaption class="p-4 bg-gray-50 text-sm text-gray-600 border-t border-gray-200">
+        {caption}
+      </figcaption>
+    )}
+  </div>
+</figure>

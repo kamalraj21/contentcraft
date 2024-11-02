@@ -1,0 +1,232 @@
+---
+interface Props {
+  currentPage: string;
+}
+
+const { currentPage } = Astro.props;
+
+const navigation = [
+  { 
+    name: 'Projects', 
+    href: '/contentcraft/#projects',
+    match: 'projects'
+  },
+  { 
+    name: 'About', 
+    href: '/contentcraft/#about',
+    match: 'about'
+  },
+  { 
+    name: 'Contact', 
+    href: '/contentcraft/#contact',
+    match: 'contact'
+  }
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <!-- Logo Container -->
+      <div class="flex items-center">
+        <a 
+          href="/contentcraft" 
+          class="flex items-center"
+        >
+          <div class="flex-shrink-0">
+            <svg 
+              class="h-8 w-8 text-blue-600" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
+          </div>
+          <span class="ml-2 text-xl font-bold text-gray-900">Kamal Raj</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex md:space-x-8">
+        {navigation.map((item) => (
+          <a
+            href={item.href}
+            class={`inline-flex items-center px-1 pt-1 text-sm font-medium ${
+              currentPage.includes(item.match)
+                ? 'text-blue-600'
+                : 'text-gray-900 hover:text-blue-600'
+            } transition-colors duration-200`}
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Download CV Button -->
+      <div class="hidden md:flex md:items-center">
+        <a
+          href="/contentcraft/resume.pdf"
+          class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors duration-200"
+          download
+        >
+          <svg 
+            class="-ml-0.5 mr-2 h-4 w-4" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+            />
+          </svg>
+          Download CV
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="flex md:hidden">
+        <button 
+          type="button" 
+          class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-600 hover:bg-gray-100"
+          aria-label="Open menu"
+          id="menuButton"
+        >
+          <svg 
+            class="h-6 w-6" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div 
+    class="hidden md:hidden"
+    id="mobileMenu"
+  >
+    <div class="space-y-1 px-2 pb-3 pt-2">
+      {navigation.map((item) => (
+        <a
+          href={item.href}
+          class={`block px-3 py-2 rounded-md text-base font-medium ${
+            currentPage.includes(item.match)
+              ? 'text-blue-600 bg-blue-50'
+              : 'text-gray-900 hover:bg-gray-50'
+          } transition-colors duration-200`}
+        >
+          {item.name}
+        </a>
+      ))}
+      <a
+        href="/contentcraft/resume.pdf"
+        class="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
+        download
+      >
+        Download CV
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.getElementById('menuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const basePath = '/contentcraft';
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Smooth scroll handling
+  document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      
+      // Handle both direct hash links and full URLs with hashes
+      const hash = href?.includes('#') ? href.split('#')[1] : href.slice(1);
+      const target = document.getElementById(hash);
+      
+      if (target) {
+        // Close mobile menu if open
+        mobileMenu?.classList.add('hidden');
+        
+        // Calculate scroll position accounting for fixed header
+        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - headerHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+
+        // Update URL with proper base path
+        const newUrl = `${basePath}/#${hash}`;
+        history.pushState(null, '', newUrl);
+      }
+    });
+  });
+
+  // Hide header on scroll down, show on scroll up
+  let lastScroll = 0;
+  
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= 0) {
+      header?.classList.remove('header-hidden');
+      return;
+    }
+    
+    if (currentScroll > lastScroll && !header?.classList.contains('header-hidden')) {
+      header?.classList.add('header-hidden');
+    } else if (currentScroll < lastScroll && header?.classList.contains('header-hidden')) {
+      header?.classList.remove('header-hidden');
+    }
+    
+    lastScroll = currentScroll;
+  });
+</script>
+
+<style>
+  header {
+    transition: transform 0.3s ease;
+  }
+
+  header.header-hidden {
+    transform: translateY(-100%);
+  }
+
+  /* Ensure proper spacing and alignment */
+  .max-w-7xl {
+    max-width: 80rem;
+  }
+
+  /* Smooth transitions */
+  .transition-colors {
+    transition-property: color, background-color, border-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+</style>
