@@ -1,0 +1,157 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metrics = [
+  { value: "30%", label: "Faster Deployment" },
+  { value: "85%", label: "User Satisfaction" },
+  { value: "25%", label: "Support Queries" }
+];
+
+const challenges = [
+  { title: "Complex Workflows", description: "AI deployment processes were slowing down deployment times and creating user friction" },
+  { title: "Technical Barriers", description: "Technical jargon and complex procedures created barriers for non-technical users" },
+  { title: "Insufficient Guidance", description: "Lack of clear in-tool guidance for critical tasks led to increased support tickets" }
+];
+
+const solutions = [
+  {
+    title: "Discovery & Analysis",
+    items: [
+      "Led user research initiatives with System Integrators and Cloud Service Providers",
+      "Developed detailed personas and journey maps",
+      "Identified key pain points in deployment workflow"
+    ]
+  },
+  {
+    title: "Strategy Development",
+    items: [
+      "Created structured content hierarchy with persona-based pathways",
+      "Developed clear progression through complex deployment processes",
+      "Established technical accuracy benchmarks"
+    ]
+  },
+  {
+    title: "Implementation",
+    items: [
+      "Facilitated Design Thinking workshops with technical teams",
+      "Developed and tested content prototypes",
+      "Refined documentation based on user feedback"
+    ]
+  }
+];
+
+const results = [
+  { title: "Accelerated Deployment", description: "Streamlined guidance led to 30% reduction in deployment time" },
+  { title: "Enhanced Experience", description: "Achieved 85% user satisfaction through intuitive content design" },
+  { title: "Reduced Support", description: "25% decrease in support queries with improved documentation" }
+];
+
+const tags = ["UX Writing", "Technical Documentation", "User Research", "Content Strategy"];
+---
+
+<Layout title="Deployment Tool Content Design Case Study">
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <header class="text-center mb-16">
+      <div class="flex flex-wrap gap-2 justify-center mb-6">
+        {tags.map(tag => (
+          <span class="px-3 py-1 text-sm font-medium text-blue-600 bg-blue-50 rounded-full">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Deployment Tool Content Design</h1>
+      <p class="text-xl text-gray-600">
+        Simplifying AI deployment workflows through effective content design
+      </p>
+    </header>
+
+    <!-- Project Overview -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Overview</h2>
+      <p class="text-gray-600 mb-8">
+        A comprehensive content strategy project to simplify AI deployment workflows, making them accessible to both technical and non-technical users while maintaining technical accuracy and improving user satisfaction.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {metrics.map(metric => (
+          <div class="text-center p-6 bg-gray-50 rounded-lg">
+            <div class="text-3xl font-bold text-blue-600 mb-2">{metric.value}</div>
+            <div class="text-gray-600">{metric.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Challenges -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">The Challenge</h2>
+      <div class="grid gap-6">
+        {challenges.map(challenge => (
+          <div class="p-6 bg-gray-50 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{challenge.title}</h3>
+            <p class="text-gray-600">{challenge.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">The Solution</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        {solutions.map(solution => (
+          <div class="p-6 bg-gray-50 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">{solution.title}</h3>
+            <ul class="space-y-3">
+              {solution.items.map(item => (
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Results & Impact</h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        {results.map(result => (
+          <div class="p-6 bg-gray-50 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{result.title}</h3>
+            <p class="text-gray-600">{result.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Key Learnings -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Key Learnings</h2>
+      <ul class="space-y-4">
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span class="text-gray-600">Technical accuracy and user-friendly language can coexist through careful content design</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span class="text-gray-600">Persona-based content structures significantly improve user navigation and understanding</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span class="text-gray-600">Regular user feedback and iteration are crucial for maintaining content effectiveness</span>
+        </li>
+      </ul>
+    </section>
+  </article>
+</Layout>

@@ -1,0 +1,157 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metrics = [
+  { value: "50%", label: "Learning Time" },
+  { value: "85%", label: "Information Retention" },
+  { value: "3x", label: "User Engagement" }
+];
+
+const challenges = [
+  { title: "Information Overload", description: "Users struggled with lengthy documentation and complex technical concepts" },
+  { title: "Poor Retention", description: "Traditional formats led to low information retention and engagement" },
+  { title: "Time Constraints", description: "Users needed quick access to relevant information during their workflow" }
+];
+
+const solutions = [
+  {
+    title: "Research & Analysis",
+    items: [
+      "Conducted user interviews and surveys",
+      "Analyzed learning patterns and pain points",
+      "Identified key improvement areas"
+    ]
+  },
+  {
+    title: "Design System",
+    items: [
+      "Created microlearning framework",
+      "Developed content guidelines",
+      "Built reusable components"
+    ]
+  },
+  {
+    title: "Implementation",
+    items: [
+      "Restructured content architecture",
+      "Developed interactive modules",
+      "Integrated feedback system"
+    ]
+  }
+];
+
+const results = [
+  { title: "Reduced Learning Time", description: "From 30-minute modules to focused 5-minute lessons" },
+  { title: "Improved Retention", description: "85% knowledge retention through bite-sized content" },
+  { title: "Increased Engagement", description: "3x increase in completion rates for technical documentation" }
+];
+
+const tags = ["Content Strategy", "Learning Design", "Technical Writing", "Information Architecture"];
+---
+
+<Layout title="Microlearning Content Design Case Study">
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <header class="text-center mb-16">
+      <div class="flex flex-wrap gap-2 justify-center mb-6">
+        {tags.map(tag => (
+          <span class="px-3 py-1 text-sm font-medium text-blue-600 bg-blue-50 rounded-full">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Microlearning Content Design</h1>
+      <p class="text-xl text-gray-600">
+        Transforming complex technical documentation into engaging, bite-sized learning experiences
+      </p>
+    </header>
+
+    <!-- Project Overview -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Overview</h2>
+      <p class="text-gray-600 mb-8">
+        A comprehensive redesign of technical documentation, transforming lengthy guides into focused, task-based microlearning modules. This project aimed to improve user engagement and knowledge retention while reducing cognitive load.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {metrics.map(metric => (
+          <div class="text-center p-6 bg-gray-50 rounded-lg">
+            <div class="text-3xl font-bold text-blue-600 mb-2">{metric.value}</div>
+            <div class="text-gray-600">{metric.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Challenges -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">The Challenge</h2>
+      <div class="grid gap-6">
+        {challenges.map(challenge => (
+          <div class="p-6 bg-gray-50 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{challenge.title}</h3>
+            <p class="text-gray-600">{challenge.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">The Solution</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        {solutions.map(solution => (
+          <div class="p-6 bg-gray-50 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">{solution.title}</h3>
+            <ul class="space-y-3">
+              {solution.items.map(item => (
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Results & Impact</h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        {results.map(result => (
+          <div class="p-6 bg-gray-50 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{result.title}</h3>
+            <p class="text-gray-600">{result.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Key Learnings -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Key Learnings</h2>
+      <ul class="space-y-4">
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span class="text-gray-600">Breaking complex information into digestible chunks significantly improves user comprehension and retention</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span class="text-gray-600">Interactive elements and clear visual hierarchy are crucial for maintaining engagement</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span class="text-gray-600">Regular feedback collection and iteration are essential for continuous improvement</span>
+        </li>
+      </ul>
+    </section>
+  </article>
+</Layout>

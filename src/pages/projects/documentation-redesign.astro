@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const metrics = [
+  { value: "35%", label: "User Satisfaction" },
+  { value: "25%", label: "Support Ticket Reduction" },
+  { value: "40%", label: "Content Update Speed" }
+];
+
+const challenges = [
+  { title: "Navigation Complexity", description: "Users struggled with dense information architecture and complex navigation paths" },
+  { title: "Inconsistent Standards", description: "Multiple documentation styles and formats across different product lines" },
+  { title: "Update Inefficiency", description: "Time-consuming content maintenance and update processes" }
+];
+
+const solutions = [
+  {
+    title: "Content Audit",
+    items: [
+      "Conducted comprehensive documentation review",
+      "Analyzed user behavior patterns",
+      "Identified content gaps and redundancies"
+    ]
+  },
+  {
+    title: "Information Architecture",
+    items: [
+      "Implemented task-based navigation",
+      "Created consistent content structure",
+      "Developed standardized templates"
+    ]
+  },
+  {
+    title: "Process Optimization",
+    items: [
+      "Streamlined content workflows",
+      "Implemented automated validation",
+      "Created reusable components"
+    ]
+  }
+];
+
+const results = [
+  { title: "Improved Structure", description: "Task-based organization reduced time-to-information by 35%" },
+  { title: "Consistent Experience", description: "Standardized documentation across all product lines" },
+  { title: "Efficient Updates", description: "40% faster content updates and maintenance" }
+];
+
+const tags = ["Information Architecture", "Technical Writing", "Content Strategy", "Process Optimization"];
+---
+
+<Layout title="Documentation Redesign Case Study">
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <header class="text-center mb-16">
+      <div class="flex flex-wrap gap-2 justify-center mb-6">
+        {tags.map(tag => (
+          <span class="px-3 py-1 text-sm font-medium text-blue-600 bg-blue-50 rounded-full">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Documentation Redesign</h1>
+      <p class="text-xl text-gray-600">
+        Modernizing technical documentation to enhance user experience and maintainability
+      </p>
+    </header>
+
+    <!-- Project Overview -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Overview</h2>
+      <p class="text-gray-600 mb-8">
+        A comprehensive documentation modernization project that transformed dense technical content into an accessible, user-friendly knowledge base. The project focused on improving both the user experience and content maintenance efficiency.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {metrics.map(metric => (
+          <div class="text-center p-6 bg-gray-50 rounded-lg">
+            <div class="text-3xl font-bold text-blue-600 mb-2">{metric.value}</div>
+            <div class="text-gray-600">{metric.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Challenges -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">The Challenge</h2>
+      <div class="grid gap-6">
+        {challenges.map(challenge => (
+          <div class="p-6 bg-gray-50 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{challenge.title}</h3>
+            <p class="text-gray-600">{challenge.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">The Solution</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        {solutions.map(solution => (
+          <div class="p-6 bg-gray-50 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">{solution.title}</h3>
+            <ul class="space-y-3">
+              {solution.items.map(item => (
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-gray-600">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Results & Impact</h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        {results.map(result => (
+          <div class="p-6 bg-gray-50 rounded-lg">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{result.title}</h3>
+            <p class="text-gray-600">{result.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Key Learnings -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Key Learnings</h2>
+      <ul class="space-y-4">
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span class="text-gray-600">User-centered information architecture significantly improves content findability and engagement</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span class="text-gray-600">Standardized processes and automated workflows
