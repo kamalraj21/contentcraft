@@ -1,401 +1,391 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CaseStudyNavigation from '../../components/CaseStudyNavigation.astro';
-import ResponsiveImage from '../components/ResponsiveImage.astro';
 
-const pageTitle = "Microlearning Content Design Case Study";
+const pageTitle = "Microlearning Content Design";
 
-const metrics = [
+// Updated navigation links with correct paths
+const mainNavLinks = [
   { 
-    value: "50%", 
-    label: "Learning Time", 
-    description: "Reduction in time-to-competency" 
+    name: 'Projects', 
+    href: '/contentcraft/#projects'
   },
   { 
-    value: "85%", 
-    label: "Knowledge Retention", 
-    description: "Improvement in information retention" 
+    name: 'About', 
+    href: '/contentcraft/#about'
   },
   { 
-    value: "3x", 
-    label: "Engagement", 
-    description: "Increase in documentation usage" 
+    name: 'Contact', 
+    href: '/contentcraft/#contact'
   }
 ];
 
-const challenges = [
-  { 
-    title: "Information Overload",
-    description: "Users struggled with lengthy documentation and complex technical concepts",
-    impact: "Low completion rates for technical training"
+const sectionNavLinks = [
+  { label: "Challenge", href: "#challenge" },
+  { label: "Strategy", href: "#strategy" },
+  { label: "Results", href: "#results" },
+  { label: "Insights", href: "#insights" }
+];
+
+const projectInfo = {
+  client: "Intel Corporation",
+  role: "Content Design Lead",
+  timeline: "2021-2022",
+  focus: "Learning Design"
+};
+
+const challenge = {
+  title: "The Challenge",
+  description: "Transform complex technical documentation into bite-sized, engaging learning experiences that increase retention and accelerate developer onboarding while maintaining technical accuracy.",
+  painPoints: [
+    "Dense technical content overwhelming users",
+    "Long onboarding time for new developers",
+    "Low completion rates for documentation",
+    "Poor information retention rates"
+  ]
+};
+
+const strategy = {
+  title: "Strategic Approach",
+  steps: [
+    {
+      action: "Learning Pattern Analysis",
+      details: "Analyzed developer learning patterns and identified key friction points in the documentation journey through comprehensive user research"
+    },
+    {
+      action: "Content Architecture",
+      details: "Developed modular content framework that breaks complex topics into digestible, interconnected learning units"
+    },
+    {
+      action: "Interactive Components",
+      details: "Created interactive code examples and hands-on exercises to reinforce learning and improve engagement"
+    },
+    {
+      action: "Progressive Learning Path",
+      details: "Implemented adaptive learning paths that adjust to user proficiency levels and learning preferences"
+    }
+  ]
+};
+
+const implementation = {
+  title: "Implementation Details",
+  areas: [
+    {
+      title: "Bite-sized Modules",
+      description: "Transformed lengthy documentation into 5-minute learning modules with clear learning objectives"
+    },
+    {
+      title: "Interactive Examples",
+      description: "Integrated live code editors and real-time validation for hands-on learning"
+    },
+    {
+      title: "Progress Tracking",
+      description: "Implemented learning analytics to help users track their progress and identify knowledge gaps"
+    }
+  ]
+};
+
+const outcomes = [
+  {
+    metric: "50%",
+    label: "Learning Time",
+    description: "Reduction in time-to-competency through focused learning modules"
   },
-  { 
-    title: "Poor Retention",
-    description: "Traditional formats led to low information retention and engagement",
-    impact: "Repeated training sessions required"
+  {
+    metric: "85%",
+    label: "Info Retention",
+    description: "Improvement in knowledge retention through interactive learning"
   },
-  { 
-    title: "Time Constraints",
-    description: "Users needed quick access to relevant information during their workflow",
-    impact: "Delayed implementation timelines"
+  {
+    metric: "3x",
+    label: "Engagement",
+    description: "Increase in documentation engagement and completion rates"
   }
 ];
 
-const approach = [
-  {
-    title: "Strategic Analysis",
-    items: [
-      "Led cross-functional workshops with Engineering, Product, and L&D teams",
-      "Conducted ROI analysis to secure executive buy-in and resources",
-      "Developed KPI framework aligned with business objectives"
-    ]
-  },
-  {
-    title: "Innovation & Design",
-    items: [
-      "Pioneered adaptive learning paths based on user proficiency",
-      "Integrated real-time coding exercises with instant feedback",
-      "Created modular content framework for rapid updates"
-    ]
-  },
-  {
-    title: "Change Management",
-    items: [
-      "Implemented phased rollout strategy across global teams",
-      "Established content governance board with key stakeholders",
-      "Created train-the-trainer program for scale"
-    ]
-  }
+const insights = [
+  "Breaking complex information into digestible chunks significantly improves learning outcomes",
+  "Interactive elements and practical examples increase engagement and retention",
+  "Personalized learning paths cater to different learning styles and expertise levels",
+  "Regular feedback loops are essential for continuous content improvement"
 ];
-
-const results = [
-  { 
-    title: "Learning Efficiency",
-    metrics: [
-      "Reduced module completion time from 30 to 5 minutes",
-      "85% increase in first-attempt success rate",
-      "50% reduction in support queries"
-    ]
-  },
-  { 
-    title: "User Experience",
-    metrics: [
-      "92% positive feedback from users",
-      "3x increase in voluntary documentation access",
-      "40% increase in self-service resolution"
-    ]
-  },
-  { 
-    title: "Business Impact",
-    metrics: [
-      "65% faster time-to-market for new features",
-      "30% reduction in training costs",
-      "25% increase in feature adoption"
-    ]
-  }
-];
-
-const leadership = [
-  {
-    title: "Strategic Vision",
-    description: "Led cross-functional initiative to transform technical documentation into an innovative learning platform"
-  },
-  {
-    title: "Change Management",
-    description: "Successfully drove adoption across global teams through structured change management approach"
-  },
-  {
-    title: "Measurable Impact",
-    description: "Delivered significant improvements in learning efficiency and user engagement metrics"
-  }
-];
-
-const tags = ["Learning Design", "Content Strategy", "Technical Documentation", "User Experience", "Strategic Analysis", "Innovation & Design", "Change Management"];
 ---
 
-
 <Layout title={pageTitle}>
+  <!-- Updated Navigation Bar -->
+  <nav class="sticky top-0 z-50 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Left Side Navigation -->
+        <div class="flex items-center space-x-8">
+          <!-- Back to Home -->
+          <a 
+            href="/contentcraft" 
+            class="flex items-center text-gray-500 hover:text-blue-600 transition-colors"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back Home
+          </a>
+         </div>
+
+        <!-- Right Side Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          {sectionNavLinks.map(link => (
+            <a 
+              href={link.href}
+              class="text-sm text-gray-500 hover:text-blue-600 transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+
+         </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Progress Bar -->
+  <div class="fixed top-16 left-0 right-0 h-1 bg-gray-100 z-40">
+    <div class="progress-bar h-full bg-blue-600"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-b from-blue-50 to-white pt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div class="max-w-3xl">
+        <!-- Project Context -->
+        <div class="mb-8">
+          <div class="flex flex-wrap gap-2 mb-6">
+            {Object.entries(projectInfo).map(([key, value]) => (
+              <span class="px-3 py-1 text-sm bg-white text-gray-600 rounded-full">
+                {value}
+              </span>
+            ))}
+          </div>
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">{pageTitle}</h1>
+          <p class="text-xl text-gray-600">
+            Transforming complex technical documentation into engaging, bite-sized learning experiences that accelerate developer success.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <!-- Header -->
-    <header class="text-center mb-16">
-      <div class="flex flex-wrap gap-2 justify-center mb-6">
-        {tags.map((tag) => (
-          <span class="px-3 py-1 text-sm font-medium text-blue-600 bg-blue-50 rounded-full">
-            {tag}
-          </span>
-        ))}
-      </div>
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">Microlearning Documentation System</h1>
-      <p class="text-xl text-gray-600">
-        Transforming complex technical documentation into engaging, bite-sized learning experiences
-      </p>
-    </header>
-
-<!-- Top Navigation -->
-<nav class="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
-      <div class="flex">
-        <a href="/contentcraft" class="flex items-center text-gray-900 hover:text-gray-600">
-          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          Back to Portfolio
-        </a>
-      </div>
-      <div class="flex items-center">
-        <span class="text-sm text-gray-500">Case Study</span>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<!-- Executive Summary -->
-<section class="mb-16" client:load>
-  <div class="p-8 bg-gradient-to-r from-blue-50 to-white rounded-xl">
-    <h2 class="text-2xl font-bold text-gray-900 mb-4">Executive Summary</h2>
-    <p class="text-gray-700 text-lg leading-relaxed mb-8">Led the transformation of traditional technical documentation into an innovative microlearning system, significantly improving user engagement, knowledge retention, and implementation success rates.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {metrics.map((metric) => {
-        return (
-          <div class="text-center p-6 bg-white rounded-lg shadow-sm">
-            <div class="text-3xl font-bold text-blue-600 mb-2">{metric.value}</div>
-            <div class="font-medium text-gray-900 mb-1">{metric.label}</div>
-            <div class="text-sm text-gray-600">{metric.description}</div>
-          </div>
-        );
-      })}
-    </div>
-  </div>
-</section>
-
-<!-- Visual Transformation -->
-<section class="mb-16">
-  <h2 class="text-2xl font-bold text-gray-900 mb-6">Visual Transformation</h2>
-  
-  <!-- Documentation Evolution -->
-  <div class="mb-12">
-    <h3 class="text-xl font-medium text-gray-900 mb-4">Documentation Evolution</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-      <div class="bg-white rounded-lg shadow-sm p-4 md:p-6">
-        <h4 class="font-medium text-gray-900 mb-3">Before: Traditional Documentation</h4>
-        <div class="relative aspect-video mb-4">
-          <img 
-            src="/contentcraft/projects/case-studies/microlearning/before-learning.webp"
-            alt="Traditional documentation showing lengthy pages of text"
-            class="absolute inset-0 w-full h-full object-cover rounded-lg cursor-pointer hover:opacity-95 transition-opacity"
-            loading="lazy"
-            onClick="openModal(this.src, this.alt)"
-          />
-        </div>
-        <ul class="space-y-2 text-red-700 text-sm md:text-base">
-          <li class="flex items-start">
-            <svg class="w-5 h-5 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-            <span>Lengthy documentation</span>
-          </li>
-          <li class="flex items-start">
-            <svg class="w-5 h-5 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-            <span>Information overload</span>
-          </li>
-        </ul>
-      </div>
+    <!-- The Challenge Section -->
+    <section id="challenge" class="mb-16 scroll-mt-20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">{challenge.title}</h2>
+      <p class="text-lg text-gray-600 mb-8">{challenge.description}</p>
       
-      <!-- Similar structure for other images -->
-      <div class="bg-white rounded-lg shadow-sm p-4 md:p-6">
-        <h4 class="font-medium text-gray-900 mb-3">After: Microlearning Modules</h4>
-        <div class="relative aspect-video mb-4">
-          <img 
-            src="/contentcraft/projects/case-studies/microlearning/after-learning.webp"
-            alt="New microlearning interface with bite-sized content"
-            class="absolute inset-0 w-full h-full object-cover rounded-lg cursor-pointer hover:opacity-95 transition-opacity"
-            loading="lazy"
-            onClick="openModal(this.src, this.alt)"
-          />
-        </div>
-        <ul class="space-y-2 text-green-700 text-sm md:text-base">
-          <li class="flex items-start">
-            <svg class="w-5 h-5 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            <span>Bite-sized modules</span>
-          </li>
-          <li class="flex items-start">
-            <svg class="w-5 h-5 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            <span>Interactive learning</span>
-          </li>
-        </ul>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {challenge.painPoints.map(point => (
+          <div class="bg-red-50 p-6 rounded-lg">
+            <div class="flex items-start">
+              <svg class="w-5 h-5 text-red-500 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+              <span class="text-gray-700">{point}</span>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Add modal for image preview -->
-  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden flex items-center justify-center p-4">
-    <div class="max-w-7xl w-full relative">
-      <button 
-        onclick="closeModal()" 
-        class="absolute top-4 right-4 text-white hover:text-gray-300"
-        aria-label="Close modal"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-      <img id="modalImage" src="" alt="" class="max-h-[90vh] max-w-full mx-auto object-contain" />
-      <p id="modalCaption" class="text-white text-center mt-4"></p>
-    </div>
-  </div>
-
-  <script>
-    function openModal(src, alt) {
-      const modal = document.getElementById('imageModal');
-      const modalImg = document.getElementById('modalImage');
-      const modalCaption = document.getElementById('modalCaption');
+    <!-- Strategy Section -->
+    <section id="strategy" class="mb-16 scroll-mt-20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">{strategy.title}</h2>
       
-      modal.classList.remove('hidden');
-      modalImg.src = src;
-      modalImg.alt = alt;
-      modalCaption.textContent = alt;
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('imageModal');
-      modal.classList.add('hidden');
-      document.body.style.overflow = 'auto';
-    }
-
-    // Close modal when clicking outside the image
-    document.getElementById('imageModal').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeModal();
-      }
-    });
-
-    // Close modal with escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-    });
-  </script>
-</section>
-
-    <!-- Strategic Challenge -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Strategic Challenge & Context</h2>
-      <div class="grid gap-6">
-        {challenges.map((challenge) => (
-          <div class="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">{challenge.title}</h3>
-            <p class="text-gray-600 mb-4">{challenge.description}</p>
-            <div class="text-sm font-medium text-red-600">Impact: {challenge.impact}</div>
+      <div class="space-y-8">
+        {strategy.steps.map((step, index) => (
+          <div class="relative pl-12">
+            <div class="absolute left-0 top-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">
+              {index + 1}
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{step.action}</h3>
+            <p class="text-gray-600">{step.details}</p>
           </div>
         ))}
       </div>
     </section>
 
-    <!-- Leadership & Approach -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Leadership & Strategic Approach</h2>
-      <div class="grid gap-8 md:grid-cols-3">
-        {approach.map((phase) => (
-          <div class="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">{phase.title}</h3>
-            <ul class="space-y-3">
-              {phase.items.map((item) => (
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span class="text-gray-600">{item}</span>
-                </li>
-              ))}
-            </ul>
+    <!-- Implementation Details -->
+    <section class="mb-16 scroll-mt-20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">{implementation.title}</h2>
+      
+      <div class="grid sm:grid-cols-3 gap-6">
+        {implementation.areas.map(area => (
+          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+            <h3 class="font-semibold text-gray-900 mb-2">{area.title}</h3>
+            <p class="text-sm text-gray-600">{area.description}</p>
           </div>
         ))}
       </div>
     </section>
 
-    <!-- Business Impact -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Value Creation & Impact</h2>
-      <div class="grid gap-6 md:grid-cols-3">
-        {results.map((result) => (
-          <div class="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">{result.title}</h3>
-            <ul class="space-y-3">
-              {result.metrics.map((metric) => (
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-green-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span class="text-gray-600">{metric}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Leadership Highlights -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Leadership Highlights</h2>
-      <div class="grid gap-6 md:grid-cols-3">
-        {leadership.map((highlight) => (
-          <div class="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg">
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">{highlight.title}</h3>
-            <p class="text-gray-700">{highlight.description}</p>
+    <!-- Outcomes Section -->
+    <section id="results" class="mb-16 scroll-mt-20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Impact & Results</h2>
+      
+      <div class="grid sm:grid-cols-3 gap-8">
+        {outcomes.map(outcome => (
+          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-3xl font-bold text-blue-600 mb-2">{outcome.metric}</div>
+            <div class="font-medium text-gray-900 mb-2">{outcome.label}</div>
+            <p class="text-sm text-gray-600">{outcome.description}</p>
           </div>
         ))}
       </div>
     </section>
 
     <!-- Key Insights -->
-    <section>
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Strategic Insights</h2>
-      <div class="p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-        <ul class="space-y-4">
-          <li class="flex items-start">
-            <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <section id="insights" class="bg-gray-50 rounded-2xl p-8 mb-16 scroll-mt-20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Key Insights</h2>
+      <div class="space-y-4">
+        {insights.map(insight => (
+          <div class="flex items-start">
+            <svg class="w-5 h-5 text-blue-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
-            <span class="text-gray-600">Data-driven approach to content strategy enables precise measurement of business impact and ROI</span>
-          </li>
-          <li class="flex items-start">
-            <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="text-gray-600">Cross-functional collaboration and stakeholder management are critical for enterprise-wide adoption</span>
-          </li>
-          <li class="flex items-start">
-            <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="text-gray-600">Scalable content systems require robust governance and continuous improvement frameworks</span>
-          </li>
-        </ul>
+            <p class="text-gray-600">{insight}</p>
+          </div>
+        ))}
       </div>
     </section>
+
+    <!-- Case Study Navigation -->
+    <CaseStudyNavigation currentSlug="microlearning" />
   </article>
-  <CaseStudyNavigation currentSlug="microlearning" />
 </Layout>
 
 <style>
-  .from-blue-50 { background-color: #eff6ff; }
-  .to-indigo-50 { background-color: #eef2ff; }
-  .text-blue-600 { color: #2563eb; }
-  .bg-blue-50 { background-color: #eff6ff; }
-  .text-green-600 { color: #059669; }
-  .text-gray-600 { color: #4b5563; }
-  .text-gray-700 { color: #374151; }
-  .text-gray-900 { color: #111827; }
-  .text-red-600 { color: #dc2626; }
+  .scroll-mt-20 {
+    scroll-margin-top: 5rem;
+  }
+
+  .progress-bar {
+    width: 0;
+    transition: width 0.2s ease-out;
+  }
+
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const progressBar = document.querySelector('.progress-bar');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+    // Handle main navigation links
+    document.querySelectorAll('a[href^="/contentcraft/#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href) {
+          e.preventDefault();
+          window.location.href = href;
+        }
+      });
+    });
+
+    // Progress bar functionality
+    function updateProgressBar() {
+      if (!progressBar) return;
+
+      const winScroll = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + '%';
+    }
+
+    // Section navigation (smooth scroll)
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        if (!targetId) return;
+
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          const headerOffset = 80;
+          const elementPosition = targetSection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Active section highlighting
+    function updateActiveSection() {
+      const fromTop = window.scrollY + 100;
+
+      sections.forEach(section => {
+        const id = section.getAttribute('id');
+        const link = document.querySelector(`nav a[href="#${id}"]`);
+        
+        if (!link) return;
+
+        const scrollAtSectionTop = section.offsetTop;
+        const scrollAtSectionBottom = scrollAtSectionTop + section.offsetHeight;
+
+        if (fromTop >= scrollAtSectionTop && fromTop <= scrollAtSectionBottom) {
+          link.classList.add('text-blue-600');
+          link.classList.remove('text-gray-500');
+        } else {
+          link.classList.remove('text-blue-600');
+          link.classList.add('text-gray-500');
+        }
+      });
+    }
+
+    // Event listeners
+    window.addEventListener('scroll', () => {
+      updateProgressBar();
+      updateActiveSection();
+    });
+
+    window.addEventListener('resize', updateProgressBar);
+    
+    // Initial update
+    updateProgressBar();
+    updateActiveSection();
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateProgressBar();
+        updateActiveSection();
+      }, 250);
+    });
+
+    // Handle mobile menu
+    const mobileMenuButton = document.querySelector('[aria-label="Open menu"]');
+    const mobileMenu = document.querySelector('#mobile-menu');
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        mobileMenuButton.setAttribute('aria-expanded', !expanded);
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('scroll', updateProgressBar);
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateProgressBar);
+    };
+  });
+</script>

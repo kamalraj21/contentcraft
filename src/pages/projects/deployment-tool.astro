@@ -1,345 +1,412 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CaseStudyNavigation from '../../components/CaseStudyNavigation.astro';
-import DocImage from '../../components/DocImage.astro';
 
-const metrics = [
+const pageTitle = "Deployment Tool Content Design";
+
+// Updated navigation links with correct paths
+const mainNavLinks = [
   { 
-    value: "30%", 
-    label: "Faster Deployment", 
-    description: "Reduction in time-to-deploy",
-    icon: "⚡"
+    name: 'Projects', 
+    href: '/contentcraft/#projects'
   },
   { 
-    value: "85%", 
-    label: "User Satisfaction", 
-    description: "Post-implementation survey results",
-    icon: "🎯"
+    name: 'About', 
+    href: '/contentcraft/#about'
   },
   { 
-    value: "25%", 
-    label: "Support Reduction", 
-    description: "Decrease in support tickets",
-    icon: "📉"
+    name: 'Contact', 
+    href: '/contentcraft/#contact'
   }
 ];
 
-const challenges = [
-  { 
-    title: "Complex Workflows",
-    description: "AI deployment processes were creating significant user friction and slowing down implementation timelines",
-    impact: "Delayed project timelines and increased costs",
-    icon: "🔄"
-  },
-  { 
-    title: "Technical Barriers",
-    description: "Heavy technical jargon and complex procedures were creating barriers for non-technical stakeholders",
-    impact: "Limited adoption across teams",
-    icon: "🚧"
-  },
-  { 
-    title: "Insufficient Guidance",
-    description: "Lack of clear, contextual documentation led to increased support needs and user frustration",
-    impact: "High support ticket volume",
-    icon: "❓"
-  }
+const sectionNavLinks = [
+  { label: "Challenge", href: "#challenge" },
+  { label: "Strategy", href: "#strategy" },
+  { label: "Results", href: "#results" },
+  { label: "Insights", href: "#insights" }
 ];
 
-const process = [
-  {
-    phase: "Discovery",
-    title: "User Research & Analysis",
-    description: "Deep dive into user needs and pain points",
-    activities: [
-      "Conducted 25+ user interviews across different roles",
-      "Created detailed user journey maps",
-      "Analyzed support ticket patterns",
-      "Identified key friction points in deployment workflow"
-    ],
-    tools: ["User Interviews", "Journey Mapping", "Analytics Review"]
-  },
-  {
-    phase: "Strategy",
-    title: "Content Architecture",
-    description: "Developing the content framework",
-    activities: [
-      "Designed role-based content pathways",
-      "Created modular documentation structure",
-      "Developed progressive disclosure framework",
-      "Established technical accuracy benchmarks"
-    ],
-    tools: ["Information Architecture", "Content Modeling", "User Flows"]
-  },
-  {
-    phase: "Implementation",
-    title: "Content Development & Testing",
-    description: "Creating and validating solutions",
-    activities: [
-      "Built interactive deployment guides",
-      "Developed troubleshooting workflows",
-      "Created contextual help system",
-      "Implemented user feedback loops"
-    ],
-    tools: ["Technical Writing", "UX Writing", "Usability Testing"]
-  }
-];
+const projectInfo = {
+  client: "AI Infrastructure Team",
+  role: "Content Design Lead",
+  timeline: "2022-2023",
+  focus: "Technical UX Writing"
+};
+
+const challenge = {
+  title: "The Challenge",
+  description: "Simplify complex AI deployment workflows for both technical and non-technical users while maintaining advanced functionality and technical accuracy.",
+  painPoints: [
+    "Complex deployment processes causing user friction",
+    "Technical jargon creating barriers for non-ML engineers",
+    "High support ticket volume for basic deployments",
+    "Inconsistent documentation across deployment stages"
+  ]
+};
+
+const strategy = {
+  title: "Strategic Approach",
+  steps: [
+    {
+      action: "User Research & Journey Mapping",
+      details: "Conducted in-depth interviews with different user personas from ML engineers to DevOps teams, mapping their deployment journeys and pain points"
+    },
+    {
+      action: "Content Architecture Design",
+      details: "Developed a progressive disclosure framework that adapts to user expertise levels, creating clear pathways for different deployment scenarios"
+    },
+    {
+      action: "In-Tool Guidance System",
+      details: "Implemented contextual help, smart defaults, and interactive tutorials directly within the deployment interface"
+    },
+    {
+      action: "Validation & Iteration",
+      details: "Established continuous feedback loops with users, measuring success through deployment completion rates and support ticket reduction"
+    }
+  ]
+};
+
+const implementation = {
+  title: "Implementation Details",
+  areas: [
+    {
+      title: "Smart Defaults & Tooltips",
+      description: "Implemented intelligent default settings with clear explanations, helping users make informed decisions without deep technical knowledge"
+    },
+    {
+      title: "Interactive Tutorials",
+      description: "Created step-by-step tutorials with real-time validation for common deployment scenarios"
+    },
+    {
+      title: "Error Prevention",
+      description: "Developed proactive guidance system that flags potential issues before they occur"
+    }
+  ]
+};
 
 const outcomes = [
   {
-    category: "Efficiency Gains",
-    metrics: [
-      { stat: "30%", label: "Faster deployment completion" },
-      { stat: "60%", label: "Reduction in deployment errors" },
-      { stat: "40%", label: "Decrease in support escalations" }
-    ]
+    metric: "30%",
+    label: "Faster Deployments",
+    description: "Reduced average deployment time through streamlined guidance and better error prevention"
   },
   {
-    category: "User Experience",
-    metrics: [
-      { stat: "85%", label: "User satisfaction rating" },
-      { stat: "92%", label: "Task completion rate" },
-      { stat: "4.8/5", label: "Documentation clarity score" }
-    ]
+    metric: "85%",
+    label: "User Satisfaction",
+    description: "Significant improvement in user confidence and successful deployments"
   },
   {
-    category: "Business Impact",
-    metrics: [
-      { stat: "45%", label: "Increase in self-service resolution" },
-      { stat: "25%", label: "Reduction in onboarding time" },
-      { stat: "3x", label: "Increase in deployment frequency" }
-    ]
+    metric: "25%",
+    label: "Support Reduction",
+    description: "Decrease in support tickets through improved self-service capabilities"
   }
 ];
 
-const tags = ["UX Writing", "Technical Documentation", "User Research", "Content Strategy"];
+const insights = [
+  "Progressive disclosure is crucial for managing complex technical processes without overwhelming users",
+  "Contextual guidance at decision points significantly reduces errors and improves confidence",
+  "Cross-functional collaboration between ML engineers and content designers is essential for accurate, user-friendly documentation",
+  "Regular user testing with different personas ensures content meets diverse user needs"
+];
 ---
 
-<Layout title="Deployment Tool Content Design">
-  <!-- Sticky Progress Bar -->
-  <div class="fixed top-16 left-0 right-0 h-1 bg-gray-100 z-40">
-    <div class="progress-bar h-full bg-blue-600 transition-all duration-300"></div>
-  </div>
+<Layout title={pageTitle}>
+  <!-- Updated Navigation Bar -->
+  <nav class="sticky top-0 z-50 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Left Side Navigation -->
+        <div class="flex items-center space-x-8">
+          <!-- Back to Home -->
+          <a 
+            href="/contentcraft" 
+            class="flex items-center text-gray-500 hover:text-blue-600 transition-colors"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back Home
+          </a>
 
-  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <!-- Header -->
-    <header class="text-center mb-16">
-      <div class="flex flex-wrap gap-2 justify-center mb-6">
-        {tags.map((tag) => (
-          <span class="px-3 py-1 text-sm font-medium text-blue-600 bg-blue-50 rounded-full">
-            {tag}
-          </span>
-        ))}
-      </div>
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        Deployment Tool Content Design
-      </h1>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        Simplifying AI deployment workflows through strategic content design and user-centered documentation
-      </p>
-    </header>
+       </div>
 
-    <!-- Executive Summary -->
-    <section class="mb-20" id="summary">
-      <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-10">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Project Overview</h2>
-        <p class="text-gray-700 text-lg leading-relaxed mb-10">
-          Led the transformation of complex AI deployment documentation into an intuitive, user-friendly guidance system. 
-          This initiative significantly improved deployment success rates and reduced technical barriers for users.
-        </p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {metrics.map((metric) => (
-            <div class="bg-white rounded-xl p-6 hover:shadow-md transition-all duration-300">
-              <div class="text-3xl mb-2">{metric.icon}</div>
-              <div class="text-2xl font-bold text-blue-600">{metric.value}</div>
-              <div class="font-medium text-gray-900 mb-1">{metric.label}</div>
-              <div class="text-sm text-gray-600">{metric.description}</div>
-            </div>
+        <!-- Right Side - Section Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          {sectionNavLinks.map(link => (
+            <a 
+              href={link.href}
+              class="text-sm text-gray-500 hover:text-blue-600 transition-colors"
+            >
+              {link.label}
+            </a>
           ))}
         </div>
       </div>
-    </section>
+    </div>
+  </nav>
 
-    <!-- Challenge -->
-    <section class="mb-20" id="challenge">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">The Challenge</h2>
-      <div class="space-y-6">
-        {challenges.map((challenge) => (
-          <div class="bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-all duration-300">
+  <!-- Progress Bar -->
+  <div class="fixed top-16 left-0 right-0 h-1 bg-gray-100 z-40">
+    <div class="progress-bar h-full bg-blue-600"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-b from-purple-50 to-white pt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div class="max-w-3xl">
+        <!-- Project Context -->
+        <div class="mb-8">
+          <div class="flex flex-wrap gap-2 mb-6">
+            {Object.entries(projectInfo).map(([key, value]) => (
+              <span class="px-3 py-1 text-sm bg-white text-gray-600 rounded-full">
+                {value}
+              </span>
+            ))}
+          </div>
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">{pageTitle}</h1>
+          <p class="text-xl text-gray-600">
+            Making AI deployment accessible and efficient through strategic content design and user-centered documentation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- The Challenge Section -->
+    <section id="challenge" class="mb-16 scroll-mt-20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">{challenge.title}</h2>
+      <p class="text-lg text-gray-600 mb-8">{challenge.description}</p>
+      
+      <div class="grid sm:grid-cols-2 gap-6">
+        {challenge.painPoints.map(point => (
+          <div class="bg-red-50 p-6 rounded-lg">
             <div class="flex items-start">
-              <div class="text-2xl mr-4">{challenge.icon}</div>
-              <div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">{challenge.title}</h3>
-                <p class="text-gray-600 mb-3">{challenge.description}</p>
-                <div class="text-sm font-medium text-red-600">Impact: {challenge.impact}</div>
-              </div>
+              <svg class="w-5 h-5 text-red-500 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+              <span class="text-gray-700">{point}</span>
             </div>
           </div>
         ))}
       </div>
     </section>
 
-    <!-- Process -->
-    <section class="mb-20" id="process">
-      <h2 class="text-2xl font-bold text-gray-900 mb-10">The Process</h2>
-      <div class="space-y-12">
-        {process.map((step, index) => (
-          <div class="relative">
-            {index !== process.length - 1 && (
-              <div class="absolute left-8 top-20 bottom-0 w-px bg-blue-100"></div>
-            )}
-            <div class="flex gap-8">
-              <div class="flex-shrink-0 w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center">
-                <span class="text-xl font-bold text-blue-600">{index + 1}</span>
-              </div>
-              <div class="flex-grow">
-                <div class="bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-all duration-300">
-                  <div class="text-sm font-medium text-blue-600 mb-2">{step.phase}</div>
-                  <h3 class="text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
-                  <p class="text-gray-600 mb-4">{step.description}</p>
-                  
-                  <ul class="space-y-3 mb-6">
-                    {step.activities.map((activity) => (
-                      <li class="flex items-start">
-                        <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span class="text-gray-600">{activity}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div class="flex flex-wrap gap-2">
-                    {step.tools.map((tool) => (
-                      <span class="px-3 py-1 text-sm font-medium text-gray-600 bg-gray-100 rounded-full">
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+    <!-- Strategy Section -->
+    <section id="strategy" class="mb-16 scroll-mt-20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">{strategy.title}</h2>
+      
+      <div class="space-y-8">
+        {strategy.steps.map((step, index) => (
+          <div class="relative pl-12">
+            <div class="absolute left-0 top-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold">
+              {index + 1}
             </div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">{step.action}</h3>
+            <p class="text-gray-600">{step.details}</p>
           </div>
         ))}
       </div>
     </section>
 
-    <!-- Outcomes -->
-    <section class="mb-20" id="outcomes">
-      <h2 class="text-2xl font-bold text-gray-900 mb-10">Results & Impact</h2>
-      <div class="grid gap-8 md:grid-cols-3">
-        {outcomes.map((category) => (
-          <div class="bg-white rounded-xl p-6 border border-gray-100 hover:shadow-md transition-all duration-300">
-            <h3 class="text-xl font-semibold text-gray-900 mb-6">{category.category}</h3>
-            <div class="space-y-6">
-              {category.metrics.map((metric) => (
-                <div>
-                  <div class="text-2xl font-bold text-blue-600 mb-1">{metric.stat}</div>
-                  <div class="text-sm text-gray-600">{metric.label}</div>
-                </div>
-              ))}
-            </div>
+    <!-- Implementation Details -->
+    <section class="mb-16 scroll-mt-20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">{implementation.title}</h2>
+      
+      <div class="grid sm:grid-cols-3 gap-6">
+        {implementation.areas.map(area => (
+          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+            <h3 class="font-semibold text-gray-900 mb-2">{area.title}</h3>
+            <p class="text-sm text-gray-600">{area.description}</p>
           </div>
         ))}
       </div>
     </section>
 
-    <!-- Key Learnings -->
-    <section class="mb-20" id="learnings">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Key Learnings</h2>
-      <div class="bg-white rounded-xl p-6 border border-gray-100">
-        <ul class="space-y-4">
-          <li class="flex items-start">
-            <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="text-gray-600">Progressive disclosure in technical documentation significantly reduces cognitive load without sacrificing depth</span>
-          </li>
-          <li class="flex items-start">
-            <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="text-gray-600">Role-based content pathways significantly improve user engagement and task completion rates</span>
-          </li>
-          <li class="flex items-start">
-            <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            <span class="text-gray-600">Continuous user feedback loops are essential for maintaining documentation effectiveness</span>
-          </li>
-        </ul>
+    <!-- Outcomes Section -->
+    <section id="results" class="mb-16 scroll-mt-20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Impact & Results</h2>
+      
+      <div class="grid sm:grid-cols-3 gap-8">
+        {outcomes.map(outcome => (
+          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-3xl font-bold text-purple-600 mb-2">{outcome.metric}</div>
+            <div class="font-medium text-gray-900 mb-2">{outcome.label}</div>
+            <p class="text-sm text-gray-600">{outcome.description}</p>
+          </div>
+        ))}
       </div>
     </section>
 
-    <!-- Navigation between case studies -->
+    <!-- Key Insights -->
+    <section id="insights" class="bg-gray-50 rounded-2xl p-8 mb-16 scroll-mt-20">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Key Insights</h2>
+      <div class="space-y-4">
+        {insights.map(insight => (
+          <div class="flex items-start">
+            <svg class="w-5 h-5 text-purple-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <p class="text-gray-600">{insight}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Case Study Navigation -->
     <CaseStudyNavigation currentSlug="deployment-tool" />
   </article>
-  <CaseStudyNavigation currentSlug="deployment-tool" />
 </Layout>
 
-<script>
-  // Progress bar functionality
-  const progressBar = document.querySelector('.progress-bar');
-  
-  window.addEventListener('scroll', () => {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-    const scrollTop = window.scrollY;
-    
-    const scrolled = (scrollTop / (documentHeight - windowHeight)) * 100;
-    if (progressBar) {
-      progressBar.style.width = `${scrolled}%`;
-    }
-  });
-
-  // Intersection Observer for fade-in animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  // Observe all sections
-  document.querySelectorAll('section').forEach(section => {
-    section.classList.add('opacity-0');
-    observer.observe(section);
-  });
-</script>
-
 <style>
-  /* Animations */
-  .fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+  .scroll-mt-20 {
+    scroll-margin-top: 5rem;
   }
 
-  @keyframes fadeIn {
-    from { 
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to { 
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .progress-bar {
+    width: 0;
+    transition: width 0.2s ease-out;
   }
 
-  /* Smooth transitions */
   .transition-all {
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
   }
-
-  /* Progress bar */
-  .progress-bar {
-    width: 0%;
-  }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const progressBar = document.querySelector('.progress-bar');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+    // Handle main navigation links
+    document.querySelectorAll('a[href^="/contentcraft/#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href) {
+          e.preventDefault();
+          window.location.href = href;
+        }
+      });
+    });
+
+    // Progress bar functionality
+    function updateProgressBar() {
+      if (!progressBar) return;
+
+      const winScroll = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + '%';
+    }
+
+    // Section navigation (smooth scroll)
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        if (!targetId) return;
+
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          const headerOffset = 80;
+          const elementPosition = targetSection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Active section highlighting
+    function updateActiveSection() {
+      const fromTop = window.scrollY + 100;
+
+      sections.forEach(section => {
+        const id = section.getAttribute('id');
+        const link = document.querySelector(`nav a[href="#${id}"]`);
+        
+        if (!link) return;
+
+        const scrollAtSectionTop = section.offsetTop;
+        const scrollAtSectionBottom = scrollAtSectionTop + section.offsetHeight;
+
+        if (fromTop >= scrollAtSectionTop && fromTop <= scrollAtSectionBottom) {
+          link.classList.add('text-purple-600');
+          link.classList.remove('text-gray-500');
+        } else {
+          link.classList.remove('text-purple-600');
+          link.classList.add('text-gray-500');
+        }
+      });
+    }
+
+    // Event listeners
+    window.addEventListener('scroll', () => {
+      updateProgressBar();
+      updateActiveSection();
+    });
+
+    window.addEventListener('resize', updateProgressBar);
+    
+    // Initial update
+    updateProgressBar();
+    updateActiveSection();
+
+    // Handle window resize with debounce
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateProgressBar();
+        updateActiveSection();
+      }, 250);
+    });
+
+    // Mobile menu functionality
+    const mobileMenuButton = document.querySelector('[aria-label="Open menu"]');
+    const mobileMenu = document.querySelector('#mobile-menu');
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        mobileMenuButton.setAttribute('aria-expanded', !expanded);
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Handle clicks outside mobile menu to close it
+    document.addEventListener('click', (event) => {
+      if (mobileMenu && !mobileMenu.contains(event.target) && 
+          !mobileMenuButton?.contains(event.target)) {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Handle escape key to close mobile menu
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobileMenu && 
+          !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('scroll', () => {
+        updateProgressBar();
+        updateActiveSection();
+      });
+      window.removeEventListener('resize', updateProgressBar);
+      clearTimeout(resizeTimeout);
+    };
+  });
+</script>
