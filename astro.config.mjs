@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  integrations: [tailwind()],
   site: 'https://kamalraj21.github.io',
-  base: '/contentcraft'
+  base: '/contentcraft',  // Make sure this matches exactly
+  integrations: [tailwind()]
 });
