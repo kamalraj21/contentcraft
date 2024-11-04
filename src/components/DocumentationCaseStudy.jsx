@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Search, FolderOpen, FolderCheck, CheckCircle, Clock } from 'lucide-react';
+import { ChevronLeft, AlertCircle, Clock, Check, Search } from 'lucide-react';
 
 const DocumentationCaseStudy = ({ 
   sectionNavLinks,
@@ -67,17 +67,18 @@ const DocumentationCaseStudy = ({
           </div>
 
           {/* Challenge Section */}
-          <div id="challenge" className="mb-32">
-            <div className="space-y-6">
-              <h2 className="text-2xl font-semibold text-gray-900">Challenge</h2>
-              <p className="text-gray-600 leading-relaxed">{challenge.description}</p>
+          <div id="challenge" className="mb-24 sm:mb-32">
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">Challenge</h2>
+                <p className="text-gray-600 leading-relaxed">{challenge.description}</p>
+              </div>
 
-              <div className="grid gap-4">
+              <div className="space-y-4">
                 {challenge.painPoints.map((point, index) => (
-                  <div key={index} className="p-4 bg-red-50 rounded-lg">
-                    <div className="flex items-start">
-                      <span className="text-gray-700">{point}</span>
-                    </div>
+                  <div key={index} className="flex items-center p-4 bg-red-50 rounded-lg">
+                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mr-3" />
+                    <p className="text-gray-600">{point}</p>
                   </div>
                 ))}
               </div>
@@ -261,10 +262,10 @@ const DocumentationCaseStudy = ({
           </div>
 
           {/* Insights Section */}
-          <div id="insights" className="mb-32">
+          <div id="insights" className="mb-24 sm:mb-32">
             <div className="space-y-8">
               <div className="space-y-6">
-                <h2 className="text-2xl font-semibold text-gray-900">Insights</h2>
+                <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">Insights</h2>
                 <p className="text-gray-600 leading-relaxed">
                   Key learnings from modernizing technical documentation:
                 </p>
@@ -273,7 +274,7 @@ const DocumentationCaseStudy = ({
               <div className="space-y-6">
                 {insights.map((insight, index) => (
                   <div key={index} className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
+                    <Check className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
                     <p className="text-gray-600">{insight}</p>
                   </div>
                 ))}
