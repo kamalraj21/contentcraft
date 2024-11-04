@@ -11,33 +11,26 @@ export interface Props {
 
 const { title } = Astro.props;
 const currentPage = Astro.url.pathname;
-
-const navigation = [
-  { name: 'Projects', href: '/contentcraft/projects', match: '/projects' },
-  { name: 'About', href: '/contentcraft/about', match: '/about' },
-  { name: 'Contact', href: '/contentcraft/contact', match: '/contact' }
-];
 ---
 
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <title>{title} | Kamal Raj</title>
-    <!-- Add other meta tags and links -->
   </head>
-  <body class="bg-gray-50">
-    <Header currentPage={currentPage} />
-    <main class="pt-16">
-      <!-- Add top spacing to account for fixed header -->
-      <slot />
-    </main>
+  <body class="bg-white">
+    <div class="min-h-screen">
+      <Header currentPage={currentPage} />
+      <main class="pt-16 px-4 sm:px-6 lg:px-8">
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
 
 <style is:global>
-  /* Add any global styles */
   html {
     font-family: 'Inter', system-ui, sans-serif;
   }
