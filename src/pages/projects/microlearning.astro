@@ -96,11 +96,13 @@ const insights = [
 ];
 ---
 
-<Layout title={pageTitle} sectionNavLinks={sectionNavLinks}>
+<Layout title={pageTitle}>
   <MicrolearningCaseStudy 
+    sectionNavLinks={sectionNavLinks}
     projectInfo={projectInfo}
     challenge={challenge}
     strategy={strategy}
+    implementation={implementation}
     outcomes={outcomes}
     insights={insights}
     client:load 

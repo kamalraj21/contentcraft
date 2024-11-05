@@ -1,7 +1,8 @@
 export const theme = {
     colors: {
       primary: {
-        gradient: "bg-gradient-to-r from-violet-500 to-purple-500",
+        gradient: "bg-gradient-to-r from-violet-200 to-pink-200",
+        hover_gradient: "hover:bg-gradient-to-r hover:from-violet-300 hover:to-pink-300",
         text: "text-violet-700",
         hover: "hover:text-violet-900",
         border: "border-violet-200",

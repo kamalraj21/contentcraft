@@ -5,93 +5,59 @@ interface Props {
 
 const { currentSlug } = Astro.props;
 
-// Define case study data
-const caseStudies = [
-  {
-    slug: 'microlearning',
-    title: 'Microlearning Content Design',
-    description: 'Transforming technical documentation into engaging learning experiences'
+// Define case study data with correct paths
+const caseStudies = {
+  'microlearning': {
+    title: 'Making Tech Learning Effortless',
+    href: '/contentcraft/projects/microlearning'
   },
-  {
-    slug: 'deployment-tool',
-    title: 'Deployment Tool Content Design',
-    description: 'Simplifying AI deployment workflows through effective content design'
+  'documentation-redesign': {
+    title: 'Modernizing Technical Documentation',
+    href: '/contentcraft/projects/documentation-redesign'
   },
-  {
-    slug: 'documentation-redesign',
-    title: 'Documentation Redesign',
-    description: 'Modernizing technical documentation for enhanced user experience'
+  'deployment-tool': {
+    title: 'Simplifying AI Deployment',
+    href: '/contentcraft/projects/deployment-tool'
   }
-];
+};
 
-// Find current case study index
-const currentIndex = caseStudies.findIndex(study => study.slug === currentSlug);
-const nextStudy = caseStudies[currentIndex + 1] || caseStudies[0];
-const prevStudy = caseStudies[currentIndex - 1] || caseStudies[caseStudies.length - 1];
+// Find current case study index and get prev/next
+const slugs = Object.keys(caseStudies);
+const currentIndex = slugs.indexOf(currentSlug);
+const prevSlug = slugs[currentIndex - 1] || slugs[slugs.length - 1];
+const nextSlug = slugs[currentIndex + 1] || slugs[0];
 ---
 
-<nav class="border-t border-gray-200 mt-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="py-8 flex items-center justify-between gap-4 flex-wrap">
-      <!-- Previous Case Study -->
+<div class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-sm border-t border-violet-100 z-10">
+ <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20"> {/* Fixed height */}
+      {/* Previous Case Study */}
       <a 
-        href={`/contentcraft/projects/${prevStudy.slug}`}
-        class="group flex-1 flex items-center text-left space-x-4 p-4 bg-white rounded-lg hover:shadow-md transition-all duration-300 min-w-[240px]"
+        href={caseStudies[prevSlug].href}
+        class="group flex items-center gap-2 text-slate-600 hover:text-violet-900 transition-colors"
       >
-        <svg 
-          class="h-6 w-6 text-gray-400 group-hover:text-blue-600 transition-colors flex-shrink-0" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-        <div class="min-w-0">
-          <div class="text-sm text-gray-500">Previous Case Study</div>
-          <div class="font-medium text-gray-900 group-hover:text-blue-600 transition-colors truncate">
-            {prevStudy.title}
-          </div>
+        <div>
+          <p class="text-sm text-violet-700">Previous</p>
+          <p class="font-medium">{caseStudies[prevSlug].title}</p>
         </div>
       </a>
 
-      <!-- Next Case Study -->
+      {/* Next Case Study */}
       <a 
-        href={`/contentcraft/projects/${nextStudy.slug}`}
-        class="group flex-1 flex items-center text-right space-x-4 p-4 bg-white rounded-lg hover:shadow-md transition-all duration-300 min-w-[240px]"
+        href={caseStudies[nextSlug].href}
+        class="group flex items-center gap-2 text-slate-600 hover:text-violet-900 transition-colors text-right"
       >
-        <div class="min-w-0 flex-1">
-          <div class="text-sm text-gray-500">Next Case Study</div>
-          <div class="font-medium text-gray-900 group-hover:text-blue-600 transition-colors truncate">
-            {nextStudy.title}
-          </div>
+        <div>
+          <p class="text-sm text-violet-700">Next</p>
+          <p class="font-medium">{caseStudies[nextSlug].title}</p>
         </div>
-        <svg 
-          class="h-6 w-6 text-gray-400 group-hover:text-blue-600 transition-colors flex-shrink-0" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
-      </a>
-    </div>
-
-    <!-- Back to Projects -->
-    <div class="flex justify-center pb-8">
-      <a 
-        href="/contentcraft/#projects"
-        class="inline-flex items-center text-gray-600 hover:text-blue-600 transition-colors"
-      >
-        <svg 
-          class="w-5 h-5 mr-2" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5M12 19l-7-7 7-7" />
-        </svg>
-        Back to Projects
       </a>
     </div>
   </div>
-</nav>
+</div>

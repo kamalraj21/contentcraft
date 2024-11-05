@@ -49,14 +49,14 @@ export const Navigation = ({ links, isMainNav }) => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur-sm border-b border-gray-100">
+    <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur-sm border-b border-violet-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Left: Home Link */}
           <div className="flex items-center">
             <a 
               href="/contentcraft/" 
-              className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-sm text-violet-700 hover:text-violet-900 transition-colors"
             >
               Home
             </a>
@@ -70,10 +70,10 @@ export const Navigation = ({ links, isMainNav }) => {
                 href={link.href}
                 className={`
                   ${link.isButton 
-                    ? 'px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-colors'
-                    : `text-sm text-gray-600 hover:text-gray-900 transition-colors
+                    ? 'px-4 py-2 bg-gradient-to-r from-violet-200 to-pink-200 text-violet-900 rounded-lg hover:from-violet-300 hover:to-pink-300 transition-colors'
+                    : `text-sm text-violet-700 hover:text-violet-900 transition-colors
                       ${activeSection === link.href.substring(1) 
-                        ? 'text-blue-600 font-medium' 
+                        ? 'text-violet-900 font-medium' 
                         : ''}`
                   }
                 `}

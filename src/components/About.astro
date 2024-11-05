@@ -1,0 +1,62 @@
+---
+const skills = [
+  {
+    title: "Content Strategy",
+    description: "Creating scalable content frameworks that align with user needs and business goals",
+    icon: "📝"
+  },
+  {
+    title: "Technical Writing",
+    description: "Transforming complex technical concepts into clear, user-friendly documentation",
+    icon: "📚"
+  },
+  {
+    title: "UX Writing",
+    description: "Crafting intuitive interface copy and user flows that enhance product usability",
+    icon: "💡"
+  },
+  {
+    title: "Information Architecture",
+    description: "Designing logical content structures that improve findability and user experience",
+    icon: "🏗️"
+  },
+  {
+    title: "Content Design",
+    description: "Creating user-centered content that guides, informs, and delights",
+    icon: "✨"
+  },
+  {
+    title: "Documentation Systems",
+    description: "Building and maintaining scalable documentation platforms and processes",
+    icon: "⚙️"
+  }
+];
+---
+
+<section id="about" class="py-16 sm:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center mb-16">
+      <h2 class="text-3xl font-bold text-violet-900 sm:text-4xl mb-4">
+        About Me
+      </h2>
+      <p class="text-lg text-slate-600">
+        I'm a content designer specializing in technical documentation and UX writing. 
+        With over 5 years of experience, I help teams create content that bridges the gap 
+        between complex functionality and user understanding.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {skills.map((skill) => (
+        <div class="p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-violet-100">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-violet-200 to-pink-200 
+                      flex items-center justify-center mb-4">
+            <span class="text-2xl" aria-hidden="true">{skill.icon}</span>
+          </div>
+          <h3 class="text-lg font-semibold text-violet-900 mb-2">{skill.title}</h3>
+          <p class="text-slate-600">{skill.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

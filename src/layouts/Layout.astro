@@ -34,13 +34,15 @@ const navigationLinks = isMainNav ? mainNavLinks : caseStudyLinks;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
   </head>
-  <body>
-    <ScrollProgress client:load />
-    <Navigation 
-      client:load 
-      links={navigationLinks}
-      isMainNav={isMainNav} 
-    />
-    <slot />
+  <body class="min-h-screen bg-gradient-to-r from-violet-200 to-pink-200">
+    <div class="min-h-screen bg-white/95"> <!-- This creates a semi-transparent overlay -->
+      <ScrollProgress client:load />
+      <Navigation 
+        client:load 
+        links={navigationLinks}
+        isMainNav={isMainNav} 
+      />
+      <slot />
+    </div>
   </body>
 </html>
