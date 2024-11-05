@@ -1,89 +1,168 @@
 ---
 interface Props {
   currentPage: string;
+  sectionNavLinks?: { label: string; href: string; }[];
 }
 
-const { currentPage } = Astro.props;
+const { currentPage, sectionNavLinks } = Astro.props;
 
 const basePath = '/contentcraft';
 
-const navigation = [
-  { name: "Projects", href: `${basePath}/#projects` },
+const mainNavLinks = [
+  { name: "Home", href: basePath },
   { name: "About", href: `${basePath}/#about` },
+  { name: "Projects", href: `${basePath}/#projects` },
   { name: "Contact", href: `${basePath}/#contact` }
 ];
-
 ---
 
-<header class="fixed top-0 left-0 right-0 bg-white z-50 border-b border-gray-100">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16 items-center">
-      <a href={basePath} class="text-lg sm:text-xl font-bold">Kamal Raj</a>
-      
-      {/* Desktop Navigation */}
-      <nav class="hidden md:flex items-center space-x-4 lg:space-x-8">
-        {navigation.map((item) => (
-          <a
-            href={item.href}
-            class="text-sm lg:text-base text-gray-500 hover:text-blue-600 transition-colors"
-          >
-            {item.name}
-          </a>
-        ))}
-        <a 
-          href="https://drive.google.com/file/d/1rdgW6N0riZYCzkZou5DI5BuPh5xr-lPF/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-        >
-          Download CV
-        </a>
-      </nav>
+<header 
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" 
+  id="header"
+>
+  {/* Primary Navigation */}
+  <div class="bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        {/* Main Navigation Links */}
+        <nav class="hidden md:flex items-center space-x-8">
+          {mainNavLinks.map((item) => (
+            
+              href={item.href}
+              class="text-sm text-gray-600 hover:text-blue-600 transition-colors"
+              aria-current={currentPage === item.href ? 'page' : undefined}
+            >
+              {item.name}
+            </a>
+          ))}
+        </nav>
 
-      {/* Mobile Menu Button */}
-      <button
-        type="button"
-        class="md:hidden p-2 text-gray-500 hover:text-blue-600"
-        aria-label="Open menu"
-        id="menuButton"
-      >
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </button>
-    </div>
-
-    {/* Mobile Menu */}
-    <div class="hidden md:hidden" id="mobileMenu">
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        {navigation.map((item) => (
-          <a
-            href={item.href}
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+        {/* Download CV Button */}
+        <div class="hidden md:block">
+          <a 
+            href="https://drive.google.com/file/d/1rdgW6N0riZYCzkZou5DI5BuPh5xr-lPF/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
           >
-            {item.name}
+            Download CV
           </a>
-        ))}
-        <a 
-          href="https://drive.google.com/file/d/1rdgW6N0riZYCzkZou5DI5BuPh5xr-lPF/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:text-blue-700"
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          type="button"
+          class="md:hidden p-2 text-gray-500 hover:text-blue-600 transition-colors"
+          aria-label="Open menu"
+          id="menuButton"
         >
-          Download CV
-        </a>
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
       </div>
+    </div>
+  </div>
+
+  {/* Secondary Navigation (Case Study Sections) */}
+  {sectionNavLinks && (
+    <div class="bg-white/95 backdrop-blur-sm border-b border-gray-100 hidden md:block">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex justify-center h-12">
+          <div class="flex space-x-8">
+            {sectionNavLinks.map((link) => (
+              
+                href={link.href}
+                class="inline-flex items-center px-1 pt-1 text-sm text-gray-500 hover:text-blue-600 transition-colors border-b-2 border-transparent hover:border-blue-600"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </nav>
+      </div>
+    </div>
+  )}
+
+  {/* Mobile Menu */}
+  <div class="hidden md:hidden" id="mobileMenu">
+    <div class="bg-white border-b border-gray-100 px-2 pt-2 pb-3 space-y-1">
+      {mainNavLinks.map((item) => (
+        
+          href={item.href}
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-colors"
+        >
+          {item.name}
+        </a>
+      ))}
+      {sectionNavLinks && sectionNavLinks.map((link) => (
+        
+          href={link.href}
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50 transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a 
+        href="https://drive.google.com/file/d/1rdgW6N0riZYCzkZou5DI5BuPh5xr-lPF/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 hover:text-blue-700"
+      >
+        Download CV
+      </a>
     </div>
   </div>
 </header>
 
+<style>
+  .header-hidden {
+    transform: translateY(-100%);
+  }
+
+  .header-visible {
+    transform: translateY(0);
+  }
+</style>
+
 <script>
+  let lastScroll = 0;
+  const header = document.getElementById('header');
   const menuButton = document.getElementById('menuButton');
   const mobileMenu = document.getElementById('mobileMenu');
 
+  // Show/hide header on scroll
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= 0) {
+      header?.classList.remove('header-hidden');
+      return;
+    }
+
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      // Scrolling down & past header
+      header?.classList.add('header-hidden');
+    } else {
+      // Scrolling up
+      header?.classList.remove('header-hidden');
+    }
+
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
   if (menuButton && mobileMenu) {
     menuButton.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
   }
+
+  // Close mobile menu on click outside
+  document.addEventListener('click', (event) => {
+    if (mobileMenu && !mobileMenu.contains(event.target as Node) && 
+        menuButton && !menuButton.contains(event.target as Node)) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
 </script>

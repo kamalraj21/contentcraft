@@ -1,0 +1,111 @@
+---
+const { projects } = Astro.props;
+
+const projectData = [
+  {
+    title: "Microlearning Content Design",
+    subtitle: "Making Complex Topics Digestible",
+    before: {
+      title: "Dense Documentation",
+      description: "45-minute reading time, 55+ pages of technical content"
+    },
+    after: {
+      title: "Bite-sized Learning",
+      description: "5-minute interactive modules with clear progress tracking"
+    },
+    tags: ["Learning Design", "Content Strategy"],
+    link: "/contentcraft/projects/microlearning"
+  },
+  {
+    title: "Deployment Tool Content Design",
+    subtitle: "Simplifying AI Deployment Workflows",
+    before: {
+      title: "Technical Complexity",
+      description: "Exposed complex configurations with error-prone manual input"
+    },
+    after: {
+      title: "Smart Defaults",
+      description: "Guided experience with recommended settings and progressive disclosure"
+    },
+    tags: ["Technical Writing", "UX Design"],
+    link: "/contentcraft/projects/deployment-tool"
+  },
+  {
+    title: "Documentation Redesign",
+    subtitle: "Modernizing Technical Documentation",
+    before: {
+      title: "Fragmented System",
+      description: "Outdated content with unknown last-update dates"
+    },
+    after: {
+      title: "Unified Hub",
+      description: "Real-time updates with task-based navigation"
+    },
+    tags: ["Information Architecture", "Content Strategy"],
+    link: "/contentcraft/projects/documentation-redesign"
+  }
+];
+---
+
+<section id="projects" class="py-16 sm:py-24 bg-gradient-to-r from-violet-50/50 to-pink-50/50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center mb-16">
+      <h2 class="text-3xl font-bold text-violet-900 sm:text-4xl mb-4">
+        Featured Projects
+      </h2>
+      <p class="text-lg text-slate-600">
+        Recent work in technical content design and documentation systems
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {projectData.map((project) => (
+        <a 
+          href={project.link} 
+          class="group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-violet-100 
+                 hover:bg-gradient-to-r hover:from-violet-200/50 hover:to-pink-200/50 
+                 transition-all duration-300 flex flex-col h-full"
+        >
+          <div class="flex flex-col flex-grow">
+            {/* Header */}
+            <div class="mb-6">
+              <h3 class="text-xl font-semibold text-violet-900 group-hover:text-violet-700 transition-colors mb-2">
+                {project.title}
+              </h3>
+              <p class="text-sm text-violet-700">{project.subtitle}</p>
+            </div>
+
+            {/* Before/After Panel */}
+            <div class="mb-6 grid grid-cols-2 gap-4 p-4 bg-slate-50 rounded-lg">
+              <div class="space-y-2">
+                <h4 class="font-medium text-violet-900 text-sm">Before</h4>
+                <p class="text-sm text-slate-600">{project.before.description}</p>
+              </div>
+              <div class="space-y-2">
+                <h4 class="font-medium text-violet-900 text-sm">After</h4>
+                <p class="text-sm text-slate-600">{project.after.description}</p>
+              </div>
+            </div>
+
+            {/* Tags */}
+            <div class="flex flex-wrap gap-2 mt-auto mb-6">
+              {project.tags.map((tag) => (
+                <span class="px-3 py-1 text-sm text-violet-700 bg-violet-100/50 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* View Case Study Link */}
+            <div class="flex items-center text-violet-700 group-hover:text-violet-900 transition-colors mt-auto">
+              <span class="font-medium">View Case Study</span>
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

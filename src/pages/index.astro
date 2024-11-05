@@ -3,494 +3,109 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Projects from '../components/Projects.astro';
 import About from '../components/About.astro';
-import Skills from '../components/Skills.astro';
 import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 
-// Project data remains the same
+// Project data
 const projects = [
   {
     title: "Microlearning Content Design",
     subtitle: "Making Complex Topics Digestible",
     description: "Transformed technical documentation into bite-sized learning experiences. Reduced learning time by 50% while improving retention rates.",
     tags: ["Learning Design", "Content Strategy", "Documentation"],
-    metrics: [
-      { value: "50%", label: "Learning Time", icon: "⚡" },
-      { value: "85%", label: "Info Retention", icon: "🎯" },
-      { value: "3x", label: "Engagement", icon: "📈" }
-    ],
     image: "/contentcraft/images/microlearning-preview.svg",
-    color: "blue",
     link: "/contentcraft/projects/microlearning"
   },
   {
     title: "Deployment Tool Content Design",
-    subtitle: "Simplifying AI Implementation",
-    description: "Simplified complex AI deployment workflows, reducing deployment time by 30% and improving user satisfaction to 85%.",
-    tags: ["Technical Writing", "UX Writing", "API Documentation"],
-    metrics: [
-      { value: "30%", label: "Faster Deployment", icon: "🚀" },
-      { value: "85%", label: "User Satisfaction", icon: "🎯" },
-      { value: "25%", label: "Support Queries", icon: "📉" }
-    ],
+    subtitle: "Simplifying AI Deployment Workflows",
+    description: "Redesigned deployment tool documentation to improve user experience. Reduced support tickets by 25% and increased successful deployments.",
+    tags: ["Technical Writing", "UX Design", "AI Tools"],
     image: "/contentcraft/images/deployment-preview.svg",
-    color: "purple",
     link: "/contentcraft/projects/deployment-tool"
   },
   {
     title: "Documentation Redesign",
-    subtitle: "Modernizing Technical Content",
-    description: "Modernized technical documentation to enhance user experience and maintainability, improving satisfaction by 35%.",
+    subtitle: "Modernizing Technical Documentation",
+    description: "Led complete overhaul of technical documentation system. Improved user satisfaction by 35% and reduced content maintenance time.",
     tags: ["Information Architecture", "Content Strategy", "Technical Writing"],
-    metrics: [
-      { value: "35%", label: "User Satisfaction", icon: "📈" },
-      { value: "25%", label: "Support Tickets", icon: "🎯" },
-      { value: "40%", label: "Update Speed", icon: "⚡" }
-    ],
     image: "/contentcraft/images/documentation-preview.svg",
-    color: "green",
     link: "/contentcraft/projects/documentation-redesign"
   }
 ];
 
-// Skills data enhanced with real-world context
-const skills = [
-  {
-    category: "Content Design",
-    description: "Making complex tech simple & delightful",
-    items: [
-      { name: "Technical Writing", context: "From 'what?' to 'aha!'" },
-      { name: "Information Architecture", context: "Like GPS for your docs" },
-      { name: "UX Writing", context: "Words that work" }
-    ]
-  },
-  {
-    category: "Content Strategy",
-    description: "Aligning content with user & business needs",
-    items: [
-      { name: "Content Modeling", context: "Blueprint for scalable content" },
-      { name: "User Research", context: "Understanding the why" },
-      { name: "Content Governance", context: "Keeping quality consistent" }
-    ]
-  },
-  {
-    category: "Documentation Systems",
-    description: "Building knowledge that scales",
-    items: [
-      { name: "API Documentation", context: "Making APIs developer-friendly" },
-      { name: "Style Guides", context: "Your content's north star" },
-      { name: "Knowledge Base Design", context: "Self-service that works" }
-    ]
-  }
-];
+// Meta data
+const title = "Content Designer Portfolio";
+const description = "Technical content designer specializing in documentation systems and UX writing";
 ---
 
-<Layout title="Kamal Raj - Content Designer">
-  <!-- Hero Section -->
-<section class="relative overflow-hidden bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-    <div class="text-center max-w-3xl mx-auto">
-      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
-        Making Technical Content 
-        <span class="text-blue-600">Human-Friendly</span> ✨
-      </h1>
-      <p class="text-lg leading-8 text-gray-600 mb-8">
-        Hi, I'm Kamal. I transform complex technical documentation into clear, engaging experiences that users actually enjoy. Because great content should empower, not confuse.
-      </p>
+<Layout title={title} description={description} isMainNav={true}>
+  <div class="min-h-screen flex flex-col">
+    <main class="flex-grow">
+      <!-- Hero Section -->
+      <Hero />
 
-      <!-- Core Focus Areas -->
-      <div class="grid sm:grid-cols-2 gap-4 mb-12">
-        <div class="p-6 bg-gray-50 rounded-lg text-left">
-          <h2 class="text-sm font-semibold text-blue-600 mb-2">Content Design</h2>
-          <p class="text-sm text-gray-600">Crafting intuitive documentation systems that scale with your product</p>
-        </div>
-        <div class="p-6 bg-gray-50 rounded-lg text-left">
-          <h2 class="text-sm font-semibold text-blue-600 mb-2">Technical Storytelling</h2>
-          <p class="text-sm text-gray-600">Breaking down complex concepts into clear, actionable narratives</p>
-        </div>
-      </div>
+      <!-- Projects Section -->
+      <Projects projects={projects} />
 
-      <!-- CTAs -->
-      <div class="flex items-center justify-center gap-x-6">
-        <a
-          href="#projects"
-          class="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition-colors"
-        >
-          See My Work
-        </a>
-        <a 
-          href="#about" 
-          class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition-colors flex items-center"
-        >
-          Learn My Approach
-        </a>
-      </div>
-    </div>
+      <!-- About Section (includes Skills) -->
+      <About />
+
+      <!-- Contact Section -->
+      <Contact />
+    </main>
+
+    <!-- Footer -->
+    <Footer />
   </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="py-24 bg-gradient-to-b from-white to-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16">
-      <span class="text-sm font-semibold text-blue-600 tracking-wide uppercase">Projects</span>
-      <h2 class="text-4xl font-bold text-gray-900 mt-2 mb-4">Impact Through Content</h2>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        Each project tells a story of transformation – from complex technical concepts to clear, user-friendly experiences.
-      </p>
-    </div>
-
-    <!-- Project Cards - Now with unique preview content -->
-    <div class="space-y-8">
-      {[
-        {
-          title: "Microlearning Platform",
-          preview: "How do you help developers learn faster? By breaking complex documentation into bite-sized, interactive pieces.",
-          impact: "Reduced learning curves from weeks to days",
-          highlights: [
-            "50% faster onboarding time",
-            "Interactive learning modules",
-            "Personalized learning paths"
-          ],
-          tags: ["Learning Design", "Documentation"],
-          link: "/contentcraft/projects/microlearning"
-        },
-        {
-          title: "AI Deployment Assistant",
-          preview: "Making AI deployment accessible to everyone, from ML engineers to operations teams.",
-          impact: "From technical maze to guided journey",
-          highlights: [
-            "Intuitive deployment flows",
-            "Context-aware documentation",
-            "Integrated troubleshooting"
-          ],
-          tags: ["Technical Writing", "UX Writing"],
-          link: "/contentcraft/projects/deployment-tool"
-        },
-        {
-          title: "Documentation Evolution",
-          preview: "Transforming a legacy documentation system into a modern, user-centered knowledge hub.",
-          impact: "Modern docs that users love to use",
-          highlights: [
-            "Task-based navigation",
-            "Simplified technical content",
-            "Automated maintenance"
-          ],
-          tags: ["Information Architecture", "Content Strategy"],
-          link: "/contentcraft/projects/documentation-redesign"
-        }
-      ].map((project) => (
-        <a 
-          href={project.link}
-          class="block group"
-        >
-          <div class="bg-white rounded-2xl p-8 hover:shadow-xl transition-all duration-300 border border-gray-100">
-            <div class="max-w-4xl mx-auto">
-              <!-- Tags -->
-              <div class="flex flex-wrap gap-2 mb-6">
-                {project.tags.map(tag => (
-                  <span class="px-3 py-1 text-sm font-medium bg-blue-50 text-blue-600 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <!-- Content -->
-              <div class="mb-8">
-                <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                  {project.title}
-                </h3>
-                <p class="text-lg text-gray-600 mb-4">
-                  {project.preview}
-                </p>
-                <p class="text-blue-600 font-medium">
-                  {project.impact}
-                </p>
-              </div>
-
-              <!-- Highlights -->
-              <div class="border-t border-gray-100 pt-6">
-                <div class="grid sm:grid-cols-3 gap-4">
-                  {project.highlights.map(highlight => (
-                    <div class="flex items-start">
-                      <svg class="w-5 h-5 text-blue-600 mr-2 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span class="text-sm text-gray-600">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <!-- CTA -->
-              <div class="mt-6 flex justify-end">
-                <span class="inline-flex items-center text-sm text-gray-500 group-hover:text-blue-600 transition-colors">
-                  Read the full story
-                  <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
-                </span>
-              </div>
-            </div>
-          </div>
-        </a>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- About Section with Story Elements -->
-  <section id="about" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <!-- Story Column -->
-        <div class="space-y-8">
-          <div>
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">
-              Why I Do What I Do
-            </h2>
-            <p class="text-lg text-gray-600 mb-6">
-              Remember that feeling when you finally understand something complex? 
-              That's what I create for others. Every day, I turn "wait, what?" into "ah, now I get it!"
-            </p>
-          </div>
-
-          <!-- Journey Points -->
-          <div class="space-y-6">
-            {[
-              {
-                title: "The Problem I Solve",
-                description: "Technical documentation often feels like reading a foreign language. I bridge that gap."
-              },
-              {
-                title: "My Approach",
-                description: "Combine deep technical understanding with user empathy to create content that just clicks."
-              },
-              {
-                title: "The Impact",
-                description: "Users spend less time reading docs and more time building amazing things."
-              }
-            ].map(point => (
-              <div class="p-6 bg-gray-50 rounded-lg hover:shadow-md transition-all duration-300">
-                <h3 class="font-semibold text-gray-900 mb-2">{point.title}</h3>
-                <p class="text-gray-600">{point.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <!-- Stats & Recognition -->
-        <div class="bg-gray-50 rounded-xl p-8 space-y-8">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">Impact by Numbers</h3>
-          
-          <div class="grid grid-cols-2 gap-6">
-            {[
-              { value: "50%", label: "Faster User Onboarding" },
-              { value: "30%", label: "Fewer Support Tickets" },
-              { value: "85%", label: "User Satisfaction" },
-              { value: "40%", label: "Increased Engagement" }
-            ].map(stat => (
-              <div class="text-center p-4 bg-white rounded-lg hover:shadow-md transition-all duration-300">
-                <div class="text-3xl font-bold text-blue-600 mb-2">{stat.value}</div>
-                <div class="text-sm text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section with Interactive Elements -->
-  <section id="skills" class="py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          A toolbox built for creating exceptional documentation experiences.
-        </p>
-      </div>
-
-      <div class="grid gap-8 md:grid-cols-3">
-        {skills.map(category => (
-          <div class="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-            <h3 class="text-xl font-bold text-gray-900 mb-6">{category.category}</h3>
-            <p class="text-gray-600 mb-6">{category.description}</p>
-            <ul class="space-y-4">
-              {category.items.map(item => (
-                <li class="flex items-center group">
-                  <svg class="w-5 h-5 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <div>
-                    <div class="font-medium text-gray-900">{item.name}</div>
-                    <div class="text-sm text-gray-500 group-hover:text-blue-600 transition-colors">
-                      {item.context}
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section with Personality -->
-  <section id="contact" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Let's Create Something Amazing</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Have a documentation challenge? Let's turn it into an opportunity for exceptional user experience.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-        <!-- Email Contact -->
-        <!-- Continuing from the Contact section -->
-        <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-          <div class="mb-4 inline-block p-3 bg-blue-100 rounded-full">
-            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Start a Conversation</h3>
-          <p class="text-gray-600 mb-4">Let's discuss your documentation needs</p>
-          <a 
-            href="mailto:kamal.raj2181@gmail.com"
-            class="inline-flex items-center text-blue-600 hover:text-blue-500 group"
-          >
-            kamal.raj2181@gmail.com
-            <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </a>
-        </div>
-
-        <!-- LinkedIn Connection -->
-        <div class="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-          <div class="mb-4 inline-block p-3 bg-blue-100 rounded-full">
-            <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Connect Professionally</h3>
-          <p class="text-gray-600 mb-4">Follow my journey and insights</p>
-          <a 
-            href="https://www.linkedin.com/in/kamal-raj-75b389b/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center text-blue-600 hover:text-blue-500 group"
-          >
-            Connect on LinkedIn
-            <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Quick Response Promise -->
-      <div class="mt-16 text-center">
-        <div class="inline-flex items-center px-4 py-2 bg-green-50 rounded-full">
-          <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          <span class="text-green-700">Quick response guaranteed within 24 hours</span>
-        </div>
-        <p class="mt-4 text-gray-600">
-          Based in Bengaluru, India • Available for remote collaboration
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call-to-Action Banner -->
-  <section class="bg-blue-600 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <h2 class="text-2xl font-bold text-white mb-4">
-          Ready to Transform Your Documentation?
-        </h2>
-        <p class="text-blue-100 mb-8 max-w-2xl mx-auto">
-          Let's work together to create documentation that your users will love.
-        </p>
-        <div class="flex justify-center space-x-4">
-          <a
-            href="#contact"
-            class="px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-blue-50 transition-colors"
-          >
-            Get in Touch
-          </a>
-          <a
-            href="https://drive.google.com/file/d/1rdgW6N0riZYCzkZou5DI5BuPh5xr-lPF/view?usp=sharing"
-            class="px-6 py-3 border border-white text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
-            download
-          >
-            View Resume
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
 </Layout>
 
-<style>
-  /* Animations */
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-out;
-  }
-
-  .animate-fade-in-delay {
-    animation: fadeIn 0.8s ease-out 0.2s forwards;
-    opacity: 0;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* Smooth transitions */
-  .transition-all {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
-  }
-
-  /* Hover effects */
-  .hover\:shadow-lg:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-
-  /* Ensure smooth scrolling */
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Account for fixed header */
-  }
-</style>
-
 <script>
-  // Smooth scroll handling for navigation
+  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const href = this.getAttribute('href');
-      const target = document.querySelector(href);
+      if (!href) return;
       
-      if (target) {
-        const headerOffset = 80;
-        const elementPosition = target.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const target = document.querySelector(href);
+      if (!target) return;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
+      target.scrollIntoView({
+        behavior: 'smooth'
+      });
+
+      // Update URL without scrolling
+      history.pushState(null, '', href);
     });
   });
+
+  // Form submission handling
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      try {
+        // Here you would typically send the data to your backend
+        // For now, we'll just log it
+        console.log('Form submitted:', data);
+        
+        // Clear form
+        form.reset();
+        
+        // Show success message
+        alert('Thank you for your message! I\'ll get back to you soon.');
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('There was an error sending your message. Please try again.');
+      }
+    });
+  }
 
   // Intersection Observer for animations
   const observerOptions = {
@@ -512,3 +127,21 @@ const skills = [
     observer.observe(section);
   });
 </script>
+
+<style>
+  /* Animation classes */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

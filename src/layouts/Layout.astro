@@ -1,37 +1,48 @@
 ---
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
-import Header from '../components/Header.astro';
+import { ScrollProgress, Navigation } from './LayoutComponents';
 
-export interface Props {
+interface Props {
   title: string;
+  isMainNav?: boolean;
 }
 
-const { title } = Astro.props;
-const currentPage = Astro.url.pathname;
+const { title, isMainNav = false } = Astro.props;
+
+// Main navigation links (for home page)
+const mainNavLinks = [
+  { label: "Projects", href: "/contentcraft/#projects" },
+  { label: "About", href: "/contentcraft/#about" },
+  { label: "Contact", href: "/contentcraft/#contact" },
+  { label: "Download CV", href: "https://drive.google.com/file/d/1rdgW6N0riZYCzkZou5DI5BuPh5xr-lPF/view?usp=sharing", isButton: true }
+];
+
+// Case study section links
+const caseStudyLinks = [
+  { label: "Challenge", href: "#challenge" },
+  { label: "Strategy", href: "#strategy" },
+  { label: "Results", href: "#results" },
+  { label: "Insights", href: "#insights" }
+];
+
+const navigationLinks = isMainNav ? mainNavLinks : caseStudyLinks;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <title>{title} | Kamal Raj</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
   </head>
-  <body class="bg-white">
-    <div class="min-h-screen">
-      <Header currentPage={currentPage} />
-      <main class="pt-16 px-4 sm:px-6 lg:px-8">
-        <slot />
-      </main>
+  <body class="min-h-screen bg-gradient-to-r from-violet-200 to-pink-200">
+    <div class="min-h-screen bg-white/95"> <!-- This creates a semi-transparent overlay -->
+      <ScrollProgress client:load />
+      <Navigation 
+        client:load 
+        links={navigationLinks}
+        isMainNav={isMainNav} 
+      />
+      <slot />
     </div>
   </body>
 </html>
-
-<style is:global>
-  html {
-    font-family: 'Inter', system-ui, sans-serif;
-  }
-</style>

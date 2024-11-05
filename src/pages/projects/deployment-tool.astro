@@ -97,11 +97,6 @@ const insights = [
 ---
 
 <Layout title={pageTitle}>
-  <!-- Progress Bar -->
-  <div class="fixed top-16 left-0 right-0 h-1 bg-gray-100 z-40">
-    <div class="progress-bar h-full bg-blue-600"></div>
-  </div>
-
   <DeploymentCaseStudy 
     sectionNavLinks={sectionNavLinks}
     projectInfo={projectInfo}
@@ -115,7 +110,6 @@ const insights = [
   
   <CaseStudyNavigation currentSlug="deployment-tool" />
 </Layout>
-
 <style>
   .progress-bar {
     width: 0;
@@ -123,30 +117,4 @@ const insights = [
   }
 </style>
 
-<script>
-  // Same script as in microlearning case study
-  document.addEventListener('DOMContentLoaded', function() {
-    const progressBar = document.querySelector('.progress-bar');
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
 
-    // Progress bar functionality
-    function updateProgressBar() {
-      if (!progressBar) return;
-      const winScroll = window.scrollY;
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (winScroll / height) * 100;
-      progressBar.style.width = scrolled + '%';
-    }
-
-    window.addEventListener('scroll', updateProgressBar);
-    window.addEventListener('resize', updateProgressBar);
-    
-    updateProgressBar();
-    
-    return () => {
-      window.removeEventListener('scroll', updateProgressBar);
-      window.removeEventListener('resize', updateProgressBar);
-    };
-  });
-</script>
