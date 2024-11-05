@@ -13,7 +13,7 @@
     </div>
 
     <div class="p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-violet-100">
-      <form class="space-y-6" id="contact-form" action="https://formspree.io/f/mkgnonyw" method="POST">
+      <form class="space-y-6" id="contact-form" action="https://formspree.io/f/mkgnonyw" method="POST" onSubmit="setTimeout(function(){window.location.reload();},1000)">
         <!-- Name Field -->
         <div>
           <label for="name" class="block text-sm font-medium text-violet-900 mb-2">
@@ -29,6 +29,9 @@
                    bg-white/80"
           />
         </div>
+
+        <!-- Add a honeypot field to prevent spam -->
+        <input type="text" name="_gotcha" style="display:none" />
 
         <!-- Email Field -->
         <div>
