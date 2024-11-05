@@ -1,43 +1,12 @@
 import React, { useState } from 'react';
-import { ChevronLeft, Settings, AlertCircle, Check, HelpCircle, Clock, Medal, BookOpen, Play, ArrowRight, CheckCircle, Menu } from 'lucide-react';
+import { Clock, Medal, Menu, BookOpen, Play, ArrowRight, CheckCircle, AlertCircle, Check } from 'lucide-react';
 
-const MicrolearningCaseStudy = ({ sectionNavLinks, projectInfo, challenge, strategy, outcomes, insights }) => {
+const MicrolearningCaseStudy = ({ projectInfo, challenge, strategy, outcomes, insights }) => {
   const [selectedView, setSelectedView] = useState('after');
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            {/* Left Side Navigation */}
-            <div className="flex items-center space-x-4 sm:space-x-8">
-              <a 
-                href="/contentcraft" 
-                className="flex items-center text-gray-500 hover:text-blue-600 transition-colors"
-              >
-                <ChevronLeft className="w-5 h-5 mr-2" />
-                <span className="text-sm sm:text-base">Home</span>
-              </a>
-            </div>
-
-            {/* Right Side Navigation */}
-            <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
-              {sectionNavLinks.map((link, index) => (
-                <a 
-                  key={index}
-                  href={link.href}
-                  className="text-sm lg:text-base text-gray-500 hover:text-blue-600 transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <main className="pt-16 sm:pt-24 pb-16">
+      <main className="pt-24 pb-16">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Opening */}
           <div className="mb-16 sm:mb-32">
@@ -47,7 +16,7 @@ const MicrolearningCaseStudy = ({ sectionNavLinks, projectInfo, challenge, strat
                   {projectInfo.client} • {projectInfo.timeline}
                 </p>
                 <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
-                 Byte-Sized Brilliance: Making Tech Learning Effortless
+                  Byte-Sized Brilliance: Making Tech Learning Effortless
                 </h1>
               </div>
               

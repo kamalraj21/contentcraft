@@ -12,23 +12,6 @@ const sectionNavLinks = [
   { label: "Insights", href: "#insights" }
 ];
 
-// Navigation links with correct paths
-const mainNavLinks = [
-  { 
-    name: 'Projects', 
-    href: '/contentcraft/#projects'
-  },
-  { 
-    name: 'About', 
-    href: '/contentcraft/#about'
-  },
-  { 
-    name: 'Contact', 
-    href: '/contentcraft/#contact'
-  }
-];
-
-
 const projectInfo = {
   client: "Intel Corporation",
   role: "Content Design Lead",
@@ -113,14 +96,8 @@ const insights = [
 ];
 ---
 
-<Layout title={pageTitle}>
-  <!-- Progress Bar -->
-  <div class="fixed top-16 left-0 right-0 h-1 bg-gray-100 z-40">
-    <div class="progress-bar h-full bg-blue-600"></div>
-  </div>
-
+<Layout title={pageTitle} sectionNavLinks={sectionNavLinks}>
   <MicrolearningCaseStudy 
-    sectionNavLinks={sectionNavLinks}
     projectInfo={projectInfo}
     challenge={challenge}
     strategy={strategy}
