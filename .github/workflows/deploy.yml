@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -17,32 +17,42 @@ jobs:
       name: github-pages
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      # Explicitly add upload-artifact@v2 to prevent dependency issues
+      - name: Setup upload-artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dummy-artifact
+          path: README.md
+          retention-days: 1
+          if-no-files-found: ignore
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - run: npm install
+      - name: Install dependencies
+        run: npm install
+
+      - name: Fix Astro bin permissions
+        run: chmod +x ./node_modules/.bin/astro
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      - run: npm run build
+      - name: Build
+        run: npm run build
         env:
           CI: true
 
-      # 👇 Explicitly add upload-artifact@v3 to avoid the missing info error
-      - name: Preload upload-artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: preload
-          path: ./dummy.txt
-        continue-on-error: true
-
-      - uses: actions/upload-pages-artifact@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
           path: './dist'
 
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v2
