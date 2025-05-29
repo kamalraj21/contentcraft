@@ -31,23 +31,19 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-          npm install -g astro
           npm install -g astro@latest
 
       - name: Verify Astro Installation
         run: npx astro --version
 
-      - name: Debug environment
-        run: |
-         echo "Checking Astro installation..."
-         npx astro --version || echo "Astro is not installed"
-
       - name: Build site with Astro
         run: |
-         echo "Building site with Astro..."
-         npx astro build || echo "Astro build failed"
+          npx astro build --verbose
         env:
           CI: true
+
+      - name: Verify built site
+        run: ls -l dist
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -55,7 +51,7 @@ jobs:
       - name: Upload built site to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: ./dist
 
       - name: Deploy to GitHub Pages
         id: deployment
