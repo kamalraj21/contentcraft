@@ -18,13 +18,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4.0.0
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -34,16 +33,11 @@ jobs:
         env:
           CI: true
 
-      - name: Verify built site
-        run: ls -l dist
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4.0.0
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2.0.0
-        with:
-          path: ./dist
-
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2.0.0
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git remote set-url origin https://github.com/${GITHUB_REPOSITORY}.git
+          git add -f dist
+          git commit -m "Deploy to GitHub Pages"
+          git push origin HEAD:gh-pages --force
