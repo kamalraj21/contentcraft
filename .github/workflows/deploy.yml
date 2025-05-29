@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -18,7 +18,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -27,20 +27,25 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build project
+      - name: Fix permissions
+        run: |
+          chmod +x ./node_modules/.bin/astro
+          chmod -R 777 ./node_modules
+
+      - name: Build
         run: npm run build
         env:
           CI: true
 
-      - name: Setup GitHub Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      - name: Upload static site artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: './dist'  # Adjust if your output dir is different (e.g., 'build', 'out')
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
