@@ -29,9 +29,14 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm install -g astro
 
-
+      - name: Debug environment
+        run: |
+         echo "Checking Astro installation..."
+         npx astro --version || echo "Astro is not installed"
 
       - name: Build site with Astro
         run: npx astro build
