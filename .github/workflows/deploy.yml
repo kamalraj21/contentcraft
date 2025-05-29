@@ -39,19 +39,6 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      # 🔧 Create dummy file to allow artifact action preload (avoid metadata bug)
-      - name: Create dummy artifact preload file
-        run: echo "placeholder" > dummy.txt
-
-      # ✅ PRELOAD required action explicitly (prevents metadata resolution errors)
-      - name: Preload upload-artifact@v3
-        uses: actions/upload-artifact@v3
-        with:
-          name: dummy
-          path: dummy.txt
-        continue-on-error: true
-
-      # ✅ Upload dist folder as artifact for deployment
       - name: Upload built site to GitHub Pages
         uses: actions/upload-pages-artifact@v2
         with:
