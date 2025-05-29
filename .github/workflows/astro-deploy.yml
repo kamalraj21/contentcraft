@@ -20,6 +20,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Explicitly add the missing dependency
+      - name: Cache upload-artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: temp-cache
+          path: /tmp
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -45,5 +52,4 @@ jobs:
           path: ./dist
 
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v2
