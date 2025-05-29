@@ -32,22 +32,18 @@ jobs:
         run: |
           npm ci
           npm install -g astro@latest
-        working-directory: ./root
 
       - name: Verify Astro Installation
         run: npx astro --version
-        working-directory: ./root
 
       - name: Build site with Astro
         run: |
           npx astro build --verbose
         env:
           CI: true
-        working-directory: ./root
 
       - name: Verify built site
         run: ls -l dist
-        working-directory: ./root
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -55,7 +51,7 @@ jobs:
       - name: Upload built site to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./root/dist
+          path: ./dist
 
       - name: Deploy to GitHub Pages
         id: deployment
