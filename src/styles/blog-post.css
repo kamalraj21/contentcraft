@@ -1,0 +1,164 @@
+/* 1. Title and subtitle spacing */
+.blog-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #6d28d9; /* violet-800 */
+  background: linear-gradient(90deg, #ede9fe 0%, #fce7f3 100%);
+  border-radius: 1.5em;
+  padding: 0.6em 1.2em;
+  margin-bottom: 0.7em;
+  box-shadow: 0 2px 8px 0 rgba(109,40,217,0.06);
+  display: inline-block;
+  letter-spacing: -0.01em;
+}
+.blog-subtitle {
+  font-size: 1.25rem;
+  color: #a21caf; /* fuchsia-800 */
+  margin-bottom: 2em;
+  display: block;
+  font-weight: 500;
+}
+
+/* 2. Margin for top callout */
+.blog-callout-top {
+  margin: 2em 0 2em 0;
+}
+
+/* 3. Soft-highlight intro block */
+.blog-intro {
+  background: linear-gradient(90deg, #f3e8ff 0%, #fce7f3 100%);
+  padding: 1.5em 1.25em;
+  border-radius: 1.25em;
+  margin-bottom: 2em;
+}
+
+/* 4. List item spacing in intro */
+.blog-intro ul,
+.blog-intro ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+.blog-intro li {
+  margin-bottom: 0.5em;
+  line-height: 1.7;
+}
+
+/* 5. Margin before h2 section titles */
+.prose h2, .blog-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #7c3aed; /* violet-600 */
+  margin-top: 2.5em !important;
+  margin-bottom: 1em;
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  display: block;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* Section headings (h2) */
+.blog-section-title {
+  font-size: 1.25rem;           /* Smaller, more balanced */
+  font-weight: 700;
+  color: #7c3aed;               /* violet-600 */
+  margin-top: 2.5em !important;
+  margin-bottom: 1em;
+  background: linear-gradient(90deg, #f3e8ff 0%, #fce7f3 100%);
+  border-radius: 1em;
+  padding: 0.3em 1em;
+  display: inline-block;
+  box-shadow: 0 1px 4px 0 rgba(124,58,237,0.04);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* 6 & 7. Callout styling and icon alignment */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1em;
+  background: #f5f3ff;
+  border-left: 5px solid #a78bfa;
+  border-radius: 0.75em;
+  padding: 1em 1.25em;
+  margin: 2em 0;
+}
+.callout-simple {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75em;
+  background: #f3f4f6; /* soft gray */
+  border-radius: 1em;
+  padding: 1em 1.25em;
+  margin: 2em 0;
+  box-shadow: 0 1px 4px 0 rgba(80, 80, 120, 0.04);
+}
+.callout-icon {
+  font-size: 1.7em;
+  line-height: 1;
+  margin-top: 0.1em;
+  opacity: 0.85;
+}
+.callout-content {
+  flex: 1;
+  font-size: 1em;
+}
+
+/* 8. Responsive adjustments */
+@media (max-width: 600px) {
+  .blog-title {
+    font-size: 1.5rem;
+    padding: 0.5em 0.8em;
+  }
+  .prose h2, .blog-section-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Additional styles */
+.section-block {
+  background: #f9fafb;
+  border-radius: 1em;
+  padding: 1.2em 1.5em;
+  margin: 1.5em 0 2.5em 0;
+  box-shadow: 0 1px 4px 0 rgba(80, 80, 120, 0.04);
+}
+
+.section-subtitle {
+  font-weight: 600;
+  color: #7c3aed;
+  margin-top: 0.5em;
+  margin-bottom: 0.3em;
+  font-size: 1.08em;
+  letter-spacing: 0.01em;
+}
+
+.section-list {
+  margin: 1.2em 0 1em 0;      /* Add top margin for spacing */
+  padding-left: 1.5em;
+  line-height: 1.7;
+}
+
+.section-list li {
+  position: relative;
+  padding-left: 1.4em;         /* Less indent for a modern look */
+  margin-bottom: 0.5em;
+  line-height: 1.7;
+  list-style: none;
+}
+
+.section-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.1em;
+  top: 0.7em;
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a78bfa 0%, #f472b6 100%);
+  box-shadow: 0 1px 2px 0 rgba(124,58,237,0.08);
+  display: inline-block;
+}
