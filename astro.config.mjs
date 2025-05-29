@@ -6,5 +6,6 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   site: 'https://kamalraj21.github.io',
   base: '/contentcraft',
+  output: "static",
   integrations: [react(), tailwind(), mdx()]
 });
