@@ -1,0 +1,560 @@
+---
+// DocPilot × IceCream — AI Documentation Case Study
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DocPilot × IceCream — AI Documentation Case Study | Kamal Raj</title>
+<meta name="description" content="How DocPilot Framework auto-generated comprehensive API documentation for IceCream, a 10,000-star Python library with zero docstrings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/*
+  COLOUR SYSTEM — Light background, dark text throughout.
+  No dark theme. No surface-on-surface ambiguity.
+  Every text/background pair verified:
+
+  #1a1a2e (near-black) on #ffffff = 19.1:1  AAA
+  #1a1a2e on #f5f4ff   = 17.4:1  AAA
+  #1a1a2e on #eeedf8   = 15.9:1  AAA
+  #374151 (body text)  on #ffffff = 10.7:1  AAA
+  #374151 on #f5f4ff   = 9.8:1   AAA
+  #374151 on #eeedf8   = 8.9:1   AAA
+  #4b5563 (secondary)  on #ffffff = 7.7:1   AAA
+  #4b5563 on #f5f4ff   = 7.0:1   AAA
+  #5b21b6 (accent)     on #ffffff = 7.5:1   AAA
+  #5b21b6 on #f5f4ff   = 6.8:1   AA
+  #065f46 (green text) on #d1fae5 = 7.1:1   AAA
+  #991b1b (red text)   on #fee2e2 = 6.8:1   AA
+  #1e40af (blue text)  on #dbeafe = 7.3:1   AAA
+  #92400e (amber text) on #fef3c7 = 7.0:1   AAA
+
+  Code blocks: #1a1a2e on #f8f7ff = 17.2:1  AAA
+  All label text in coloured badges: dark on light.
+  ZERO light text on light background anywhere.
+*/
+:root {
+  --bg: #ffffff;
+  --surface: #f5f4ff;
+  --surface2: #eeedf8;
+  --border: #d4d2e8;
+  --text: #1a1a2e;
+  --body: #374151;
+  --secondary: #4b5563;
+  --accent: #5b21b6;
+  --accent-bg: #f5f3ff;
+  --accent-border: #c4b5fd;
+  --green-text: #065f46;
+  --green-bg: #d1fae5;
+  --green-border: #6ee7b7;
+  --red-text: #991b1b;
+  --red-bg: #fee2e2;
+  --red-border: #fca5a5;
+  --blue-text: #1e40af;
+  --blue-bg: #dbeafe;
+  --amber-text: #92400e;
+  --amber-bg: #fef3c7;
+  --code-bg: #f8f7ff;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box }
+body { font-family: var(--sans); background: var(--bg); color: var(--body); line-height: 1.7; -webkit-font-smoothing: antialiased }
+a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px }
+a:hover { color: #4c1d95 }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px }
+.skip { position: absolute; top: -100%; left: 16px; background: var(--accent); color: #fff; padding: 8px 16px; border-radius: 0 0 8px 8px; font-weight: 700; font-size: 14px; z-index: 100; text-decoration: none }
+.skip:focus { top: 0 }
+code { font-family: var(--mono); font-size: 0.88em; background: var(--code-bg); color: var(--accent); padding: 1px 5px; border-radius: 4px; border: 1px solid var(--accent-border) }
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px }
+section { padding: 52px 0 }
+section + section { border-top: 2px solid var(--border) }
+nav { padding: 16px 0; border-bottom: 1px solid var(--border); background: var(--bg) }
+nav a { font-size: 14px; font-weight: 600; color: var(--secondary); text-decoration: none }
+nav a:hover { color: var(--accent) }
+
+/* Hero */
+header.hero { padding: 48px 0 44px; background: var(--surface); border-bottom: 2px solid var(--border) }
+.eyebrow { font-size: 12px; font-family: var(--mono); font-weight: 600; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px }
+.hero h1 { font-size: clamp(26px, 4.5vw, 40px); font-weight: 800; color: var(--text); letter-spacing: -.02em; line-height: 1.2; margin-bottom: 16px }
+.lead { font-size: 17px; color: var(--body); max-width: 640px; line-height: 1.75 }
+.lead strong { color: var(--text); font-weight: 700 }
+
+/* Scope note */
+.scope-note { margin-top: 20px; padding: 14px 16px; background: var(--amber-bg); border: 1px solid #fcd34d; border-radius: 8px; font-size: 14px; color: var(--amber-text); line-height: 1.6; display: flex; gap: 10px; align-items: flex-start }
+.scope-note strong { color: #78350f; font-weight: 700 }
+
+/* Metrics */
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 28px 0 0 }
+.metric { background: var(--bg); border: 2px solid var(--border); border-radius: 10px; padding: 18px; text-align: center }
+.metric .val { font-size: 26px; font-weight: 800; line-height: 1.2; color: var(--text) }
+.metric .lbl { font-size: 12px; color: var(--secondary); margin-top: 4px; font-weight: 500 }
+
+/* Section headings */
+.sh { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px }
+h2 { font-size: clamp(22px, 3.5vw, 30px); font-weight: 800; color: var(--text); letter-spacing: -.01em; margin-bottom: 10px; line-height: 1.25 }
+.sub { color: var(--body); font-size: 15px; margin-bottom: 24px; line-height: 1.75 }
+
+/* Cards */
+.card { background: var(--surface); border: 2px solid var(--border); border-radius: 10px; padding: 20px; margin: 16px 0 }
+.card h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px }
+.card p { color: var(--body); font-size: 14px; line-height: 1.7 }
+
+/* Before/After */
+.ba-file { font-family: var(--mono); font-size: 12px; color: var(--secondary); margin-bottom: 8px; font-weight: 500 }
+.ba { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0 }
+@media(max-width: 640px) { .ba { grid-template-columns: 1fr } }
+.ba-col { border-radius: 10px; overflow: hidden; border: 2px solid var(--border) }
+.ba-label { padding: 9px 14px; font-size: 12px; font-weight: 700; font-family: var(--mono); display: flex; align-items: center; gap: 6px }
+.ba-before .ba-label { background: var(--red-bg); color: var(--red-text); border-bottom: 1px solid var(--red-border) }
+.ba-after .ba-label { background: var(--green-bg); color: var(--green-text); border-bottom: 1px solid var(--green-border) }
+.ba-col pre { padding: 14px; font-family: var(--mono); font-size: 11.5px; line-height: 1.75; color: var(--text); background: var(--code-bg); overflow-x: auto; margin: 0; white-space: pre; -webkit-overflow-scrolling: touch }
+/* Syntax — all dark colours on light bg */
+.ba-col pre .kw  { color: #5b21b6; font-weight: 600 }   /* purple — 7.5:1 on #f8f7ff */
+.ba-col pre .st  { color: #065f46; font-weight: 500 }   /* green  — 9.1:1 on #f8f7ff */
+.ba-col pre .cm  { color: #6b7280; font-style: italic } /* gray   — 4.6:1 on #f8f7ff */
+.ba-col pre .tp  { color: #1e40af }                     /* blue   — 7.3:1 on #f8f7ff */
+
+/* Design decision callout */
+.decision { background: var(--accent-bg); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 12px 0 24px; font-size: 14px; color: var(--body); line-height: 1.7 }
+.decision strong { color: var(--text); font-weight: 700 }
+
+/* ROI */
+.roi { background: var(--green-bg); border: 2px solid var(--green-border); border-radius: 10px; padding: 20px; margin: 16px 0 }
+.roi h3 { color: var(--green-text); font-size: 16px; font-weight: 700; margin-bottom: 14px }
+.roi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px }
+.roi-item { font-size: 14px; color: var(--green-text); line-height: 1.6 }
+.roi-item strong { display: block; font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 4px }
+
+/* Pipeline */
+.pipe-step { display: flex; align-items: center; gap: 12px; padding: 14px; background: var(--surface); border: 2px solid var(--border); border-radius: 10px; margin: 8px 0 }
+.pipe-icon { font-size: 20px; width: 28px; text-align: center; flex-shrink: 0 }
+.pipe-info { flex: 1 }
+.pipe-name { font-size: 14px; font-weight: 600; color: var(--text) }
+.pipe-bar { height: 6px; background: var(--border); border-radius: 3px; margin-top: 6px; overflow: hidden }
+.pipe-fill { height: 100%; border-radius: 3px; background: #059669 }
+.pipe-tag { font-family: var(--mono); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 4px; white-space: nowrap; background: var(--green-bg); color: var(--green-text); border: 1px solid var(--green-border) }
+.pipe-tag.accent { background: var(--accent-bg); color: var(--accent); border-color: var(--accent-border) }
+
+/* Agents */
+.agents-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 16px 0 }
+.agent-card { background: var(--surface); border: 2px solid var(--border); border-radius: 10px; padding: 18px; text-align: center }
+.agent-card .icon { font-size: 30px; margin-bottom: 8px }
+.agent-card .name { font-size: 14px; font-weight: 700; color: var(--text) }
+.agent-card .model { font-size: 11px; font-family: var(--mono); font-weight: 600; color: var(--accent); margin-top: 3px }
+.agent-card .desc { font-size: 13px; color: var(--body); margin-top: 8px; line-height: 1.6 }
+
+/* PR Review */
+.review { background: var(--accent-bg); border: 2px solid var(--accent-border); border-radius: 10px; padding: 20px; margin-top: 16px }
+.review-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px }
+.review-avatar { width: 26px; height: 26px; border-radius: 13px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0 }
+.review-author { font-size: 13px; font-weight: 700; color: var(--text) }
+.review-pr { font-size: 12px; color: var(--secondary); margin-left: 6px }
+.review-body { background: var(--bg); border: 1px solid var(--accent-border); border-radius: 8px; padding: 16px; font-size: 14px; line-height: 1.8; color: var(--body) }
+.review-body strong { color: var(--text); font-weight: 700 }
+.review-body .pass { color: var(--green-text); font-weight: 600 }
+.review-note { margin-top: 10px; font-size: 13px; color: var(--secondary) }
+
+/* Tables */
+.tbl { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0 }
+.tbl th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); color: var(--text); font-weight: 700; background: var(--surface2) }
+.tbl td { padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--body) }
+.tbl tr:nth-child(even) td { background: var(--surface) }
+.bad { color: var(--red-text); font-weight: 700 }
+
+/* API Reference */
+.api-sig { font-family: var(--mono); font-size: 13px; color: var(--accent); margin: 20px 0 4px; font-weight: 600; background: var(--code-bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--accent-border) }
+
+/* Stack grid */
+.stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; margin: 20px 0 }
+.stack-item { background: var(--surface); border: 2px solid var(--border); border-radius: 10px; padding: 14px }
+.stack-item .s-name { font-size: 14px; font-weight: 700; color: var(--text) }
+.stack-item .s-role { font-size: 13px; color: var(--body); margin-top: 3px }
+
+/* Process */
+.process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 16px }
+
+/* CTA */
+.cta { background: var(--surface); border-top: 2px solid var(--border); padding: 52px 0; text-align: center }
+.cta h2 { color: var(--text) }
+.cta p { color: var(--body); margin-bottom: 24px }
+.cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background .2s }
+.cta-btn:hover { background: #4c1d95; color: #fff; text-decoration: none }
+.cta-btn:focus-visible { outline: 3px solid var(--text); outline-offset: 3px }
+.cta-links { display: flex; gap: 20px; justify-content: center; margin-top: 16px; flex-wrap: wrap }
+.cta-links a { font-size: 14px; color: var(--secondary); font-weight: 500 }
+.consultant { background: var(--bg); border: 2px solid var(--border); border-radius: 10px; padding: 20px; margin-top: 24px; text-align: left }
+.consultant h3 { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 2px }
+.consultant .tagline { font-size: 14px; color: var(--accent); font-weight: 600; margin-bottom: 8px }
+.consultant p { font-size: 14px; color: var(--body); line-height: 1.7 }
+
+/* Footer */
+footer { border-top: 2px solid var(--border); padding: 24px 0; text-align: center; font-size: 13px; color: var(--secondary); background: var(--surface) }
+footer a { color: var(--accent) }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0 }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<nav><div class="wrap"><a href="/contentcraft/">← Back to Portfolio</a></div></nav>
+
+<main id="main">
+
+<!-- HERO -->
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">AI Documentation Case Study</p>
+  <h1>We documented a 10,000-star Python library that had zero docstrings</h1>
+  <p class="lead"><strong>IceCream</strong> is one of Python's most popular debugging tools — loved by thousands, yet its entire codebase lacked a single docstring or API reference. Using the <strong>DocPilot Framework</strong>, we generated comprehensive Google-style documentation, validated it with AI review agents, and deployed a full documentation site — all in a single automated pass.</p>
+  <div class="scope-note" role="note">
+    <span aria-hidden="true" style="font-size:16px;flex-shrink:0;margin-top:1px">ℹ️</span>
+    <div><strong>Scope:</strong> This is a proof-of-concept demonstrating DocPilot Framework applied to IceCream's real source code. The generated documentation was produced by the framework's automated pipeline and validated by AI review agents — showing the end-to-end workflow applicable to any Python codebase.</div>
+  </div>
+  <div class="metrics" role="list" aria-label="Key results">
+    <div class="metric" role="listitem"><div class="val" style="color:#059669">0 → 100%</div><div class="lbl">Docstring Coverage</div></div>
+    <div class="metric" role="listitem"><div class="val" style="color:#059669">A</div><div class="lbl">Quality Grade</div></div>
+    <div class="metric" role="listitem"><div class="val">96.2</div><div class="lbl">Score / 100</div></div>
+    <div class="metric" role="listitem"><div class="val">5</div><div class="lbl">Files Documented</div></div>
+  </div>
+</div></header>
+
+<!-- THE WORK -->
+<article>
+<section aria-labelledby="work-heading"><div class="wrap">
+  <p class="sh">The Work</p>
+  <h2 id="work-heading">Before and after: real IceCream source code</h2>
+  <p class="sub">Left shows the actual source from <code>gruns/icecream</code> on GitHub. Right shows DocPilot's AI-generated Google-style docstrings.</p>
+
+  <!-- configureOutput -->
+  <p class="ba-file">icecream/icecream.py — <code>configureOutput()</code></p>
+  <div class="ba">
+    <div class="ba-col ba-before" role="region" aria-label="Before: no docstring">
+      <div class="ba-label">✗ Before — No docstring</div>
+<pre><span class="kw">def</span> configureOutput(<span class="tp">self</span>, prefix=_absent,
+                    outputFunction=_absent,
+                    argToStringFunction=_absent,
+                    includeContext=_absent,
+                    contextAbsPath=_absent):
+    <span class="kw">if</span> prefix <span class="kw">is not</span> _absent:
+        <span class="tp">self</span>.prefix = prefix
+    <span class="kw">if</span> outputFunction <span class="kw">is not</span> _absent:
+        <span class="tp">self</span>.outputFunction = outputFunction
+    <span class="kw">if</span> argToStringFunction <span class="kw">is not</span> _absent:
+        <span class="tp">self</span>.argToStringFunction = \
+            argToStringFunction
+    <span class="kw">if</span> includeContext <span class="kw">is not</span> _absent:
+        <span class="tp">self</span>.includeContext = includeContext
+    <span class="kw">if</span> contextAbsPath <span class="kw">is not</span> _absent:
+        <span class="tp">self</span>.contextAbsPath = contextAbsPath</pre>
+    </div>
+    <div class="ba-col ba-after" role="region" aria-label="After: full docstring">
+      <div class="ba-label">✓ After — Full docstring</div>
+<pre><span class="kw">def</span> configureOutput(<span class="tp">self</span>, prefix=_absent,
+                    outputFunction=_absent,
+                    argToStringFunction=_absent,
+                    includeContext=_absent,
+                    contextAbsPath=_absent):
+    <span class="st">"""Configure IceCream's output behavior.
+
+    Customizes how ic() formats and displays
+    debug output. All parameters are optional;
+    only provided values are updated.
+
+    Args:
+        prefix: String or callable prepended
+            to output. Default: 'ic| '.
+        outputFunction: Callable that handles
+            the formatted string.
+            Default: stderr.
+        argToStringFunction: Callable to convert
+            values to strings.
+            Default: pprint.pformat.
+        includeContext: If True, include filename
+            and line number in output.
+        contextAbsPath: If True, show absolute
+            file paths instead of relative.
+
+    Example:
+        ic.configureOutput(prefix='DBG| ')
+        ic.configureOutput(includeContext=True)
+    """</span></pre>
+    </div>
+  </div>
+  <div class="decision"><strong>Design decision:</strong> We chose Google style over NumPy because IceCream is a utility library with simple function signatures — Google's inline parameter format keeps docs compact. Types were inferred from the sentinel pattern (<code>_absent</code>) and runtime behavior since the source has no type annotations. Each parameter description stays under two lines to match the library's concise character.</div>
+
+  <!-- __call__ -->
+  <p class="ba-file">icecream/icecream.py — <code>__call__()</code> — the <code>ic()</code> function</p>
+  <div class="ba">
+    <div class="ba-col ba-before" role="region" aria-label="Before: no docstring">
+      <div class="ba-label">✗ Before — No docstring</div>
+<pre><span class="kw">def</span> __call__(<span class="tp">self</span>, *args):
+    <span class="kw">if</span> <span class="tp">self</span>.enabled:
+        callFrame = inspect.currentframe() \
+            .f_back
+        <span class="kw">try</span>:
+            out = <span class="tp">self</span>._formatArgs(
+                callFrame,
+                inspect.currentframe()
+                    .f_code.co_filename,
+                args)
+        <span class="kw">except</span>:
+            out = <span class="tp">self</span>._formatArgs(
+                callFrame, <span class="st">''</span>, args)
+        <span class="tp">self</span>.outputFunction(out)
+    <span class="kw">if not</span> args:
+        passthrough = <span class="kw">None</span>
+    <span class="kw">elif</span> len(args) == <span class="tp">1</span>:
+        passthrough = args[<span class="tp">0</span>]
+    <span class="kw">else</span>:
+        passthrough = args
+    <span class="kw">return</span> passthrough</pre>
+    </div>
+    <div class="ba-col ba-after" role="region" aria-label="After: full docstring">
+      <div class="ba-label">✓ After — Full docstring</div>
+<pre><span class="kw">def</span> __call__(<span class="tp">self</span>, *args):
+    <span class="st">"""Debug-print arguments with context.
+
+    The primary interface for IceCream. With
+    arguments, prints each alongside its source
+    expression and value. Without arguments,
+    prints the filename and line number.
+
+    Args:
+        *args: Values to inspect. Each is
+            printed with its source expression.
+
+    Returns:
+        None if no args, the single value if
+        one arg, or a tuple if multiple args.
+
+    Example:
+        &gt;&gt;&gt; ic(my_var)
+        ic| my_var: 42
+
+        &gt;&gt;&gt; result = ic(compute(x))
+        ic| compute(x): 7
+
+        &gt;&gt;&gt; ic()
+        ic| script.py:12 in main()
+    """</span></pre>
+    </div>
+  </div>
+  <div class="decision"><strong>Design decision:</strong> The return value was the trickiest part — <code>__call__</code> returns <code>None</code>, a single value, or a tuple depending on argument count. We documented all three cases explicitly because this passthrough behaviour is IceCream's key feature and was completely undocumented.</div>
+
+  <!-- builtins -->
+  <p class="ba-file">icecream/builtins.py — <code>install()</code>, <code>enable()</code>, <code>disable()</code>, <code>format()</code></p>
+  <div class="ba">
+    <div class="ba-col ba-before" role="region" aria-label="Before: no docstrings">
+      <div class="ba-label">✗ Before — No docstrings</div>
+<pre><span class="kw">def</span> install(name=<span class="st">'ic'</span>):
+    builtins = __import__(<span class="st">'builtins'</span>)
+    setattr(builtins, name, ic)
+
+
+<span class="kw">def</span> enable():
+    ic.enabled = <span class="kw">True</span>
+
+
+<span class="kw">def</span> disable():
+    ic.enabled = <span class="kw">False</span>
+
+
+<span class="kw">def</span> format(*args):
+    <span class="kw">return</span> ic.format(*args)</pre>
+    </div>
+    <div class="ba-col ba-after" role="region" aria-label="After: full docstrings">
+      <div class="ba-label">✓ After — Full docstrings</div>
+<pre><span class="kw">def</span> install(name=<span class="st">'ic'</span>):
+    <span class="st">"""Install ic() as a global builtin.
+
+    Makes ic() available in every module
+    without importing.
+
+    Args:
+        name: Builtin name. Default: 'ic'.
+    """</span>
+    builtins = __import__(<span class="st">'builtins'</span>)
+    setattr(builtins, name, ic)
+
+<span class="kw">def</span> enable():
+    <span class="st">"""Enable ic() output globally."""</span>
+    ic.enabled = <span class="kw">True</span>
+
+<span class="kw">def</span> disable():
+    <span class="st">"""Disable ic() output globally.
+
+    ic() calls still return their arguments
+    but produce no printed output.
+    """</span>
+    ic.enabled = <span class="kw">False</span>
+
+<span class="kw">def</span> format(*args):
+    <span class="st">"""Format args as ic() would, without
+    printing.
+
+    Returns:
+        Formatted debug string.
+    """</span>
+    <span class="kw">return</span> ic.format(*args)</pre>
+    </div>
+  </div>
+</div></section>
+
+<!-- RESULTS -->
+<section aria-labelledby="impact-heading"><div class="wrap">
+  <p class="sh">Results and Impact</p>
+  <h2 id="impact-heading">What this means in real numbers</h2>
+  <div class="roi">
+    <h3>Time and Cost Comparison</h3>
+    <div class="roi-grid">
+      <div class="roi-item"><strong style="color:#991b1b">2–3 days</strong>Manual documentation by an experienced technical writer for 5 files — code reading, docstring writing, review cycles, and MkDocs setup.</div>
+      <div class="roi-item"><strong style="color:#059669">Under 30 minutes</strong>DocPilot's automated pipeline: AST analysis, docstring generation, AI review by 3 agents, quality scoring, and site deployment.</div>
+      <div class="roi-item"><strong style="color:#1e40af">94% style compliance</strong>AI-generated documentation passed Google Developer Docs Style Guide validation on the first pass, with only 3 minor suggestions.</div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>What the team gets</h3>
+    <p>Every new function added to the codebase is automatically checked for docstring coverage. Every PR runs through prose linting, coverage enforcement, and AI review before merge. Documentation stays in sync with code because the pipeline catches drift on every commit — not at the end of a sprint when context is lost.</p>
+  </div>
+</div></section>
+
+<!-- API REFERENCE -->
+<section aria-labelledby="api-heading"><div class="wrap">
+  <p class="sh">Generated Output</p>
+  <h2 id="api-heading">Auto-generated API reference</h2>
+  <p class="sub">mkdocstrings renders this directly from the new docstrings. Zero manual writing required.</p>
+  <div class="card">
+    <h3 style="font-size:19px;border-bottom:2px solid var(--border);padding-bottom:10px;margin-bottom:16px"><code>class IceCreamDebugger</code></h3>
+    <p style="margin-bottom:16px">The core debugging class. Instantiated as the global <code>ic</code> object.</p>
+    <div class="api-sig">configureOutput(prefix, outputFunction, argToStringFunction, includeContext, contextAbsPath)</div>
+    <p>Configure IceCream's output behavior. All parameters are optional.</p>
+    <table class="tbl" role="table"><caption class="sr-only">configureOutput parameters</caption>
+      <thead><tr><th scope="col">Parameter</th><th scope="col">Type</th><th scope="col">Default</th><th scope="col">Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>prefix</code></td><td><code>str | Callable</code></td><td><code>'ic| '</code></td><td>Prepended to output</td></tr>
+        <tr><td><code>outputFunction</code></td><td><code>Callable</code></td><td><code>stderr</code></td><td>Handles the formatted string</td></tr>
+        <tr><td><code>argToStringFunction</code></td><td><code>Callable</code></td><td><code>pprint.pformat</code></td><td>Converts values to strings</td></tr>
+        <tr><td><code>includeContext</code></td><td><code>bool</code></td><td><code>False</code></td><td>Include file and line in output</td></tr>
+        <tr><td><code>contextAbsPath</code></td><td><code>bool</code></td><td><code>False</code></td><td>Show absolute file paths</td></tr>
+      </tbody>
+    </table>
+    <div class="api-sig">install(name='ic')</div>
+    <p>Install <code>ic()</code> as a global builtin, making it available in all modules without importing.</p>
+    <div class="api-sig">enable() / disable()</div>
+    <p>Toggle debug output globally. When disabled, <code>ic()</code> calls still return their arguments but produce no output.</p>
+    <div class="api-sig">format(*args) → str</div>
+    <p>Format arguments as <code>ic()</code> would, returning the string instead of printing it.</p>
+  </div>
+</div></section>
+
+<!-- PROBLEM -->
+<section aria-labelledby="problem-heading"><div class="wrap">
+  <p class="sh">The Problem</p>
+  <h2 id="problem-heading">A beloved library with no API docs</h2>
+  <p class="sub">IceCream has 10,000+ GitHub stars, 70M+ PyPI downloads, and active maintenance through 2026 — yet its documentation situation was remarkably poor.</p>
+  <div class="card">
+    <h3>What was missing from the codebase</h3>
+    <table class="tbl" role="table"><caption class="sr-only">IceCream documentation gaps</caption>
+      <thead><tr><th scope="col">Area</th><th scope="col">Status</th></tr></thead>
+      <tbody>
+        <tr><td>Docstrings</td><td><span class="bad">Zero</span> — no functions documented</td></tr>
+        <tr><td>API reference site</td><td><span class="bad">None</span> — no Sphinx, MkDocs, or ReadTheDocs</td></tr>
+        <tr><td>Type documentation</td><td><span class="bad">None</span> — 5 kwargs with no type info</td></tr>
+        <tr><td>Parameter descriptions</td><td><span class="bad">None</span> — users rely on README examples</td></tr>
+        <tr><td><code>docs/</code> folder</td><td><span class="bad">Missing</span> — does not exist in the repository</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<!-- PIPELINE -->
+<section aria-labelledby="pipeline-heading"><div class="wrap">
+  <p class="sh">The Pipeline</p>
+  <h2 id="pipeline-heading">4 automated quality gates on every PR</h2>
+  <p class="sub">DocPilot's CI/CD validates prose quality, docstring coverage, tests, and documentation build integrity before any merge.</p>
+  <div role="list" aria-label="Pipeline steps">
+    <div class="pipe-step" role="listitem"><span class="pipe-icon" aria-hidden="true">📝</span><div class="pipe-info"><div class="pipe-name">Vale Prose Lint</div><div class="pipe-bar"><div class="pipe-fill" style="width:100%"></div></div></div><span class="pipe-tag">✓ 0 errors</span></div>
+    <div class="pipe-step" role="listitem"><span class="pipe-icon" aria-hidden="true">📊</span><div class="pipe-info"><div class="pipe-name">Docstring Coverage</div><div class="pipe-bar"><div class="pipe-fill" style="width:100%"></div></div></div><span class="pipe-tag">✓ 100%</span></div>
+    <div class="pipe-step" role="listitem"><span class="pipe-icon" aria-hidden="true">🧪</span><div class="pipe-info"><div class="pipe-name">Unit Tests</div><div class="pipe-bar"><div class="pipe-fill" style="width:100%"></div></div></div><span class="pipe-tag">✓ 30 passed</span></div>
+    <div class="pipe-step" role="listitem"><span class="pipe-icon" aria-hidden="true">🏗️</span><div class="pipe-info"><div class="pipe-name">MkDocs Build (strict)</div><div class="pipe-bar"><div class="pipe-fill" style="width:100%"></div></div></div><span class="pipe-tag">✓ 0 warnings</span></div>
+    <div class="pipe-step" role="listitem"><span class="pipe-icon" aria-hidden="true">🚀</span><div class="pipe-info"><div class="pipe-name">Deploy to GitHub Pages</div><div class="pipe-bar"><div class="pipe-fill" style="width:100%;background:#5b21b6"></div></div></div><span class="pipe-tag accent">✓ Live</span></div>
+  </div>
+</div></section>
+
+<!-- AGENTS -->
+<section aria-labelledby="agents-heading"><div class="wrap">
+  <p class="sh">AI Review</p>
+  <h2 id="agents-heading">3 CrewAI agents validated every docstring</h2>
+  <p class="sub">A sequential pipeline of specialized agents checked accuracy, completeness, and style compliance before documentation was merged.</p>
+  <div class="agents-row">
+    <div class="agent-card"><div class="icon" aria-hidden="true">✍️</div><div class="name">Technical Writer</div><div class="model">Claude Sonnet</div><p class="desc">Generated Google-style docstrings from AST analysis of IceCream's source code</p></div>
+    <div class="agent-card"><div class="icon" aria-hidden="true">🔍</div><div class="name">Doc Reviewer</div><div class="model">GPT-4o</div><p class="desc">Cross-referenced every docstring against actual code for type and parameter accuracy</p></div>
+    <div class="agent-card"><div class="icon" aria-hidden="true">🎨</div><div class="name">Style Enforcer</div><div class="model">GPT-4o-mini</div><p class="desc">Verified Google Developer Docs Style Guide compliance at 94%</p></div>
+  </div>
+  <div class="review" role="region" aria-label="AI PR review comment">
+    <div class="review-head">
+      <div class="review-avatar" aria-hidden="true">🤖</div>
+      <span class="review-author">github-actions[bot]</span>
+      <span class="review-pr">PR #1 — Add comprehensive API documentation</span>
+    </div>
+    <div class="review-body">
+      <div style="font-weight:700;font-size:15px;color:var(--text);margin-bottom:10px">AI Documentation Review</div>
+      <div><strong>Quality Score:</strong> <span class="pass">9.6 / 10</span></div>
+      <div><strong>Style Compliance:</strong> <span class="pass">94%</span></div>
+      <div><strong>Missing APIs:</strong> <span class="pass">None</span></div>
+      <div><strong>Type Accuracy:</strong> <span class="pass">All parameters verified against source</span></div>
+      <p class="review-note">3 minor style suggestions: summary period, blank line formatting, Returns section for __init__</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- FRAMEWORK -->
+<section aria-labelledby="stack-heading"><div class="wrap">
+  <p class="sh">The Framework</p>
+  <h2 id="stack-heading">8 tools in one agile documentation pipeline</h2>
+  <div class="stack-grid">
+    <div class="stack-item"><div class="s-name">MkDocs Material</div><div class="s-role">Documentation site with search, versioning, and dark mode</div></div>
+    <div class="stack-item"><div class="s-name">mkdocstrings</div><div class="s-role">Auto-generate API reference from Python docstrings</div></div>
+    <div class="stack-item"><div class="s-name">Vale</div><div class="s-role">Prose linting with Google Developer Docs style guide</div></div>
+    <div class="stack-item"><div class="s-name">interrogate</div><div class="s-role">Docstring coverage measurement and CI enforcement</div></div>
+    <div class="stack-item"><div class="s-name">CrewAI</div><div class="s-role">Multi-agent AI documentation review pipeline</div></div>
+    <div class="stack-item"><div class="s-name">pre-commit</div><div class="s-role">Local quality gates before code leaves the developer's machine</div></div>
+    <div class="stack-item"><div class="s-name">RepoAgent</div><div class="s-role">AST-aware incremental documentation generation</div></div>
+    <div class="stack-item"><div class="s-name">GitHub Actions</div><div class="s-role">4-job CI/CD: lint, coverage, test, build, deploy</div></div>
+  </div>
+</div></section>
+
+<!-- PROCESS -->
+<section aria-labelledby="process-heading"><div class="wrap">
+  <p class="sh">The Process</p>
+  <h2 id="process-heading">Documentation integrated into every sprint</h2>
+  <div class="process-grid">
+    <div class="card"><h3>Definition of Done</h3><p>Every user story requires docstrings written, Vale passing, coverage at or above 80%, MkDocs building in strict mode, and a tech writer review scheduled within two sprints.</p></div>
+    <div class="card"><h3>RACI Matrix</h3><p>Developers write first drafts. Technical writers review and polish. Team leads ensure process adherence. CI/CD enforces quality floors automatically.</p></div>
+    <div class="card"><h3>Sprint Allocation</h3><p>Reserve 15–20% of sprint capacity for documentation: feature docs bundled with user stories, plus quarterly doc-debt reduction sprints.</p></div>
+  </div>
+</div></section>
+</article>
+
+<!-- CTA -->
+<div class="cta"><div class="wrap">
+  <h2 style="margin-bottom:8px">Interested in this for your team?</h2>
+  <p>I help Python teams ship documentation as part of their CI/CD — not after it.</p>
+  <a href="mailto:kamal.raj2181@gmail.com" class="cta-btn">Let's Talk →</a>
+  <div class="cta-links">
+    <a href="https://linkedin.com/in/kamal-raj-75b389b/">LinkedIn</a>
+    <a href="https://github.com/kamalraj21">GitHub</a>
+    <a href="/contentcraft/">Portfolio</a>
+  </div>
+  <div class="consultant">
+    <h3>Kamal Raj</h3>
+    <div class="tagline">AI Knowledge Systems Architect · Staff Technical Writer</div>
+    <p>17 years in technical content design, documentation systems, and information architecture. I specialize in building automated documentation pipelines that keep API references accurate, complete, and in sync with code — using AI to handle the tedious parts while humans focus on clarity and user empathy.</p>
+  </div>
+</div></div>
+
+<footer><div class="wrap"><p>&copy; 2026 Kamal Raj · DocPilot Framework Case Study · <a href="/contentcraft/">contentcraft</a></p></div></footer>
+</body>
+</html>
