@@ -1,2 +1,2 @@
 # contentcraft
-My content design portfolio @2025
+My content design portfolio @2026
