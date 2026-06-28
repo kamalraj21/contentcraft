@@ -1,0 +1,7 @@
+---
+const { icon = "💡", children } = Astro.props;
+---
+<div class="callout-simple">
+  {icon && <span class="callout-icon">{icon}</span>}
+  <div class="callout-content">{children}</div>
+</div>
