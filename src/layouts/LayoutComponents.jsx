@@ -49,34 +49,23 @@ export const Navigation = ({ links, isMainNav }) => {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur-sm border-b border-violet-100">
+    <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur-sm border-b border-[#4DA8DA]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Left: Home Link */}
-          <div className="flex items-center">
-            <a 
-              href="/contentcraft/" 
-              className="text-sm text-violet-700 hover:text-violet-900 transition-colors"
-            >
-              Home
-            </a>
-          </div>
+          <a href="/contentcraft/" className="text-sm font-semibold text-[#12232e] hover:text-[#007CC7] transition-colors">
+            Kamal Raj
+          </a>
 
-          {/* Right: Navigation */}
           <div className="flex items-center space-x-8">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`
-                  ${link.isButton 
-                    ? 'px-4 py-2 bg-gradient-to-r from-violet-200 to-pink-200 text-violet-900 rounded-lg hover:from-violet-300 hover:to-pink-300 transition-colors'
-                    : `text-sm text-violet-700 hover:text-violet-900 transition-colors
-                      ${activeSection === link.href.substring(1) 
-                        ? 'text-violet-900 font-medium' 
-                        : ''}`
-                  }
-                `}
+                className={
+                  link.isButton
+                    ? 'px-4 py-2 bg-[#007CC7] text-white text-sm rounded-lg hover:bg-[#12232e] transition-colors'
+                    : `text-sm text-slate-600 hover:text-[#007CC7] transition-colors${activeSection === link.href.substring(1) ? ' text-[#007CC7] font-medium' : ''}`
+                }
               >
                 {link.label}
               </a>
