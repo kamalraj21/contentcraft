@@ -1,102 +1,73 @@
 ---
-const { projects } = Astro.props;
+import { getCollection } from 'astro:content';
 
-const projectData = [
-  {
-    title: "Microlearning Content Design",
-    subtitle: "Making Complex Topics Digestible",
-    before: { title: "Dense Documentation", description: "45-minute reading time, 55+ pages of technical content" },
-    after: { title: "Bite-sized Learning", description: "5-minute interactive modules with clear progress tracking" },
-    tags: ["Learning Design", "Content Strategy"],
-    link: "/contentcraft/projects/microlearning"
-  },
-  {
-    title: "Deployment Tool Content Design",
-    subtitle: "Simplifying AI Deployment Workflows",
-    before: { title: "Technical Complexity", description: "Exposed complex configurations with error-prone manual input" },
-    after: { title: "Smart Defaults", description: "Guided experience with recommended settings and progressive disclosure" },
-    tags: ["Technical Writing", "UX Design"],
-    link: "/contentcraft/projects/deployment-tool"
-  },
-  {
-    title: "Documentation Redesign",
-    subtitle: "Modernizing Technical Documentation",
-    before: { title: "Fragmented System", description: "Outdated content with unknown last-update dates" },
-    after: { title: "Unified Hub", description: "Real-time updates with task-based navigation" },
-    tags: ["Information Architecture", "Content Strategy"],
-    link: "/contentcraft/projects/documentation-redesign"
-  },
-  {
-    title: "DocPilot × IceCream",
-    subtitle: "AI Documentation Framework in Action",
-    before: { title: "Zero Docs", description: "10,000-star Python library with zero docstrings, no API reference, no docs site" },
-    after: { title: "Grade A Coverage", description: "100% docstring coverage, AI-reviewed, MkDocs site deployed via CI/CD" },
-    tags: ["AI Documentation", "Python"],
-    link: "/contentcraft/projects/docpilot-icecream"
-  }
-];
+const allProjects = await getCollection('projects');
+
+const featuredProjects = allProjects
+  .filter((project) => project.data.featured)
+  .sort((a, b) => a.data.sort_order - b.data.sort_order);
 ---
 
-
-<section id="projects" class="py-16 sm:py-24 bg-gradient-to-r from-violet-50/50 to-pink-50/50">
+<section id="work" class="py-16 sm:py-24 bg-gradient-to-b from-white to-[#EEFBFB]/50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-2xl mx-auto text-center mb-16">
-      <h2 class="text-3xl font-bold text-violet-900 sm:text-4xl mb-4">
-        Featured Projects
+      <h2 class="text-3xl font-bold leading-tight tracking-tight text-[#12232e] sm:text-4xl mb-4">
+        Work
       </h2>
-      <p class="text-lg text-slate-600">
-        Recent work in technical content design and documentation systems
+      <p class="text-lg leading-relaxed text-slate-600">
+        Documentation systems and AI tooling shipped in production.
       </p>
     </div>
 
-    <div class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      {projectData.map((project) => (
-        <a 
-          href={project.link} 
-          class="group p-4 sm:p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-violet-100 
-                 hover:bg-gradient-to-r hover:from-violet-200/50 hover:to-pink-200/50 
-                 transition-all duration-300 flex flex-col h-full"
-        >
-          <div class="flex flex-col flex-grow">
-            {/* Header */}
-            <div class="mb-6">
-              <h3 class="text-xl font-semibold text-violet-900 group-hover:text-violet-700 transition-colors mb-2">
-                {project.title}
-              </h3>
-              <p class="text-sm text-violet-700">{project.subtitle}</p>
+    <div class="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2">
+      {featuredProjects.map((project) => {
+        const { title, role_tag, description, outcome_metrics, tech_stack, github_repo, case_study_url, primary_track } = project.data;
+        const cardHref = case_study_url || github_repo;
+        const CardTag = cardHref ? 'a' : 'div';
+        const cardProps = case_study_url
+          ? { href: case_study_url }
+          : github_repo
+          ? { href: github_repo, target: '_blank', rel: 'noopener noreferrer' }
+          : {};
+
+        return (
+          <CardTag
+            {...cardProps}
+            data-primary-track={primary_track}
+            class="block p-6 sm:p-8 rounded-xl bg-white/80 backdrop-blur-sm border border-[#4DA8DA]/20 hover:border-[#007CC7]/50 hover:bg-gradient-to-b hover:from-white hover:to-[#EEFBFB]/60 hover:-translate-y-1 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] transition-all duration-300"
+          >
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <h3 class="text-xl font-semibold leading-tight text-[#12232e]">{title}</h3>
+              <span class="shrink-0 px-3 py-1 rounded-full text-xs font-mono bg-[#EEFBFB] text-[#007CC7] border border-[#4DA8DA]/40">
+                {role_tag}
+              </span>
             </div>
 
-            {/* Before/After Panel */}
-            <div class="mb-6 grid grid-cols-2 gap-4 p-4 bg-slate-50 rounded-lg">
-              <div class="space-y-2">
-                <h4 class="font-medium text-violet-900 text-sm">Before</h4>
-                <p class="text-sm text-slate-600">{project.before.description}</p>
-              </div>
-              <div class="space-y-2">
-                <h4 class="font-medium text-violet-900 text-sm">After</h4>
-                <p class="text-sm text-slate-600">{project.after.description}</p>
-              </div>
-            </div>
+            <p class="text-slate-600 leading-relaxed mb-6">{description}</p>
 
-            {/* Tags */}
-            <div class="flex flex-wrap gap-2 mt-auto mb-6">
-              {project.tags.map((tag) => (
-                <span class="px-3 py-1 text-sm text-violet-700 bg-violet-100/50 rounded-full">
-                  {tag}
-                </span>
+            {tech_stack?.length > 0 && (
+              <div class="flex flex-wrap gap-2 mb-6">
+                {tech_stack.map((tech) => (
+                  <span class="px-2 py-1 rounded-md text-xs font-mono bg-slate-50 text-slate-600 border border-slate-200">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-[#4DA8DA]/20">
+              {outcome_metrics.map((metric) => (
+                <div>
+                  <p class="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-[#007CC7] to-[#12232e] bg-clip-text text-transparent">
+                    {metric.value}
+                  </p>
+                  <p class="text-xs text-slate-600">{metric.label}</p>
+                </div>
               ))}
             </div>
-
-            {/* View Case Study Link */}
-            <div class="flex items-center text-violet-700 group-hover:text-violet-900 transition-colors mt-auto">
-              <span class="font-medium">View Case Study</span>
-              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </div>
-        </a>
-      ))}
+          </CardTag>
+        );
+      })}
     </div>
   </div>
 </section>

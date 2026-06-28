@@ -1,4 +1,10 @@
 ---
+// NOTE: skill cards below are unchanged from V1 — no V2 copy was specified
+// for these in v2_architecture.md Section 3 (only the intro paragraph and
+// the "content designer" -> "Information Architect" find-and-replace were
+// given). Left as-is rather than inventing new card copy; flagged in the
+// deployment guide as something you may want to revisit (e.g. adding an
+// "AI Tooling" card) on your own terms.
 const skills = [
   {
     title: "Content Strategy",
@@ -36,25 +42,28 @@ const skills = [
 <section id="about" class="py-16 sm:py-24">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-2xl mx-auto text-center mb-16">
-      <h2 class="text-3xl font-bold text-violet-900 sm:text-4xl mb-4">
+      <h2 class="text-3xl font-bold leading-tight tracking-tight text-[#12232e] sm:text-4xl mb-4">
         About Me
       </h2>
-      <p class="text-lg text-slate-600">
-        I'm a content designer specializing in technical documentation and UX writing. 
-        With over 16 years of experience, I help teams create content that bridges the gap 
-        between complex functionality and user understanding.
+      <p class="text-lg leading-relaxed text-slate-600">
+        17 years building documentation systems that hold up under pressure. At Salesforce,
+        I built and shipped 10 production AI tools for a writing team of 8 — RAG-grounded,
+        MCP-connected, agentic. At Intel, I owned developer documentation for OpenVINO and
+        Tiber Edge AI platforms. Across roles, the throughline is the same: documentation
+        systems built to move at the speed of the product, and the AI tooling to make that
+        possible at scale.
       </p>
     </div>
 
     <div class="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {skills.map((skill) => (
-         <div class="p-4 sm:p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-violet-100">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-r from-violet-200 to-pink-200 
+         <div class="p-4 sm:p-6 rounded-xl bg-white/80 backdrop-blur-sm border border-[#4DA8DA]/20 hover:border-[#4DA8DA]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-[#4DA8DA]/15 to-[#EEFBFB]
                       flex items-center justify-center mb-4">
             <span class="text-2xl" aria-hidden="true">{skill.icon}</span>
           </div>
-          <h3 class="text-lg font-semibold text-violet-900 mb-2">{skill.title}</h3>
-          <p class="text-slate-600">{skill.description}</p>
+          <h3 class="text-lg font-semibold leading-tight text-[#12232e] mb-2">{skill.title}</h3>
+          <p class="text-sm leading-relaxed text-slate-600">{skill.description}</p>
         </div>
       ))}
     </div>
