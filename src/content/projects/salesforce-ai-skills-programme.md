@@ -18,6 +18,7 @@ tech_stack:
   - "Slack"
   - "Python"
   - "Salesforce Einstein"
+case_study_url: "/contentcraft/projects/salesforce-ai-skills"
 ---
 
 ## Challenge
