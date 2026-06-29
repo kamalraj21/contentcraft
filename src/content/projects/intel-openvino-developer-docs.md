@@ -18,6 +18,7 @@ tech_stack:
   - "reStructuredText"
   - "GitHub Actions"
   - "OpenVINO"
+case_study_url: "/contentcraft/projects/intel-openvino"
 ---
 
 ## Scope

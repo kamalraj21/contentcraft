@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const pageTitle = "Intel OpenVINO Developer Docs — Kamal Raj";
+const description = "Developer documentation for Intel's OpenVINO toolkit and Tiber Edge AI platform — two inference toolchains, full developer journey from install to production.";
+---
+
+<Layout title={pageTitle} description={description}>
+  <main id="main">
+
+    <section class="pt-20 pb-16 bg-gradient-to-b from-[#EEFBFB] to-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-4 flex items-center gap-3">
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#007CC7] bg-[#007CC7]/10 px-3 py-1 rounded-full">Technical Writing · Information Architecture</span>
+          <span class="text-xs text-slate-400">Intel · 2021–2023</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold leading-tight tracking-tight text-[#12232e] mb-6">
+          Intel OpenVINO Developer Docs
+        </h1>
+        <p class="text-xl leading-relaxed text-slate-600 mb-8 max-w-3xl">
+          Owned developer documentation for OpenVINO and Tiber Edge AI platforms — two inference toolchains, two deployment environments, covering the full developer journey from install to production.
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-10">
+          {[
+            { value: "2", label: "Inference toolchains documented" },
+            { value: "2", label: "AI platforms covered" },
+            { value: "End-to-end", label: "Developer journey ownership" },
+          ].map(m => (
+            <div class="bg-white border border-[#4DA8DA]/20 rounded-xl p-4 text-center shadow-sm">
+              <div class="text-3xl font-bold text-[#007CC7]">{m.value}</div>
+              <div class="text-xs text-slate-500 mt-1 leading-snug">{m.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-2">
+          {["DITA", "Sphinx", "reStructuredText", "GitHub Actions", "OpenVINO"].map(t => (
+            <span class="text-xs bg-[#12232e]/5 text-[#12232e] border border-[#12232e]/10 rounded-full px-3 py-1">{t}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <nav class="sticky top-16 z-30 bg-white border-b border-slate-100 shadow-sm">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex gap-6 overflow-x-auto py-3 text-sm font-medium">
+          {[
+            { label: "Scope", href: "#scope" },
+            { label: "Approach", href: "#approach" },
+            { label: "Architecture", href: "#architecture" },
+            { label: "Insights", href: "#insights" },
+          ].map(l => (
+            <a href={l.href} class="whitespace-nowrap text-slate-500 hover:text-[#007CC7] transition-colors">{l.label}</a>
+          ))}
+        </div>
+      </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+      <section id="scope">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="w-8 h-px bg-[#007CC7]"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#007CC7]">Scope</span>
+        </div>
+        <h2 class="text-3xl font-bold text-[#12232e] mb-6">Two Toolchains, Two Platforms, One Developer Journey</h2>
+        <p class="text-lg leading-relaxed text-slate-600 mb-6">
+          OpenVINO and Tiber Edge AI serve distinct deployment environments — cloud edge and on-device — with overlapping but not identical developer audiences. Each toolchain has its own model conversion pipeline, inference engine API, and deployment workflow.
+        </p>
+        <p class="text-lg leading-relaxed text-slate-600 mb-10">
+          The documentation challenge was maintaining a coherent developer journey across both platforms without duplicating content or creating navigation dead-ends for developers who needed to move between toolchains.
+        </p>
+
+        <div class="grid sm:grid-cols-3 gap-4">
+          {[
+            { icon: "🔬", title: "OpenVINO toolkit", body: "Model optimization and inference for Intel hardware — install, model conversion, inference API, deployment walkthroughs" },
+            { icon: "⚡", title: "Tiber Edge AI", body: "On-device AI platform documentation covering the edge deployment pipeline and platform-specific APIs" },
+            { icon: "🗺️", title: "Cross-platform IA", body: "Unified information architecture and navigation serving developers across both toolchains" },
+          ].map(p => (
+            <div class="bg-[#EEFBFB] rounded-xl p-5 border border-[#4DA8DA]/20">
+              <div class="text-2xl mb-3">{p.icon}</div>
+              <h3 class="font-semibold text-[#12232e] mb-1 text-sm">{p.title}</h3>
+              <p class="text-sm text-slate-500 leading-relaxed">{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="approach">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="w-8 h-px bg-[#007CC7]"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#007CC7]">Approach</span>
+        </div>
+        <h2 class="text-3xl font-bold text-[#12232e] mb-6">Full Information Architecture Ownership</h2>
+        <p class="text-lg leading-relaxed text-slate-600 mb-10">
+          Owned the complete documentation stack — not just writing, but the architecture that determined how content was structured, versioned, and published across both platforms.
+        </p>
+
+        <div class="space-y-4">
+          {[
+            { icon: "📐", title: "Topic taxonomy and navigation structure", body: "Designed the information architecture from the ground up — topic hierarchy, cross-references, and navigation that served both beginner and expert developer paths." },
+            { icon: "🔄", title: "Versioning strategy", body: "Built a versioning approach that kept multiple OpenVINO releases accurate and navigable without creating maintenance overhead." },
+            { icon: "⚙️", title: "Doc toolchain", body: "Owned the Sphinx-based build and publish pipeline running on GitHub Actions — responsible for both the content and the system that delivered it." },
+            { icon: "✍️", title: "Core developer guides", body: "Wrote and maintained install guides, model conversion walkthroughs, inference engine API references, and deployment documentation across release cycles." },
+          ].map(s => (
+            <div class="bg-white rounded-xl border border-[#4DA8DA]/20 p-6 flex gap-5">
+              <div class="text-2xl shrink-0">{s.icon}</div>
+              <div>
+                <h3 class="font-semibold text-[#12232e] mb-1">{s.title}</h3>
+                <p class="text-sm text-slate-500 leading-relaxed">{s.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="architecture">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="w-8 h-px bg-[#007CC7]"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#007CC7]">Architecture</span>
+        </div>
+        <h2 class="text-3xl font-bold text-[#12232e] mb-6">Documentation as a System</h2>
+
+        <div class="grid sm:grid-cols-3 gap-6">
+          {[
+            { icon: "🏗️", title: "DITA-based structure", body: "Topic-based authoring with structured reuse across overlapping content between the two platforms." },
+            { icon: "🚀", title: "CI/CD publishing", body: "GitHub Actions pipeline building and deploying docs on every merge — documentation treated as a software artifact." },
+            { icon: "📊", title: "Multi-audience IA", body: "Separate entry points and progressive disclosure for developers new to edge AI vs. experienced OpenVINO users." },
+          ].map(c => (
+            <div class="bg-white rounded-xl border border-[#4DA8DA]/20 p-6 hover:border-[#4DA8DA]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+              <div class="text-3xl mb-4">{c.icon}</div>
+              <h3 class="font-semibold text-[#12232e] mb-2">{c.title}</h3>
+              <p class="text-sm text-slate-500 leading-relaxed">{c.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="insights" class="pb-16">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="w-8 h-px bg-[#007CC7]"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#007CC7]">Insights</span>
+        </div>
+        <h2 class="text-3xl font-bold text-[#12232e] mb-6">What This Project Demonstrates</h2>
+
+        <div class="space-y-4">
+          {[
+            "Owning the toolchain is as important as owning the content — a well-architected build pipeline keeps documentation accurate across release cycles without heroic manual effort.",
+            "Cross-platform documentation requires explicit architectural decisions, not just good writing. Navigation structure determines whether developers find what they need.",
+            "DITA topic-based authoring pays dividends when content overlaps across platforms — structured reuse prevents drift between parallel documentation sets.",
+          ].map((insight, i) => (
+            <div class="flex items-start gap-4 bg-white rounded-xl border border-[#4DA8DA]/20 p-5">
+              <span class="shrink-0 w-7 h-7 rounded-full bg-[#007CC7]/10 text-[#007CC7] text-xs font-bold flex items-center justify-center">{i + 1}</span>
+              <p class="text-sm leading-relaxed text-slate-600">{insight}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-12">
+          <a href="/contentcraft/#work" class="px-6 py-3 bg-[#007CC7] text-white text-sm font-medium rounded-lg hover:bg-[#12232e] transition-colors">
+            ← Back to Work
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Layout>
