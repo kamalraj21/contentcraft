@@ -9,7 +9,6 @@ interface Props {
 
 const { title, description, isMainNav = false } = Astro.props;
 
-// Main navigation links (for home page)
 const mainNavLinks = [
   { label: "Work", href: "/contentcraft/#work" },
   { label: "About", href: "/contentcraft/#about" },
@@ -17,7 +16,6 @@ const mainNavLinks = [
   { label: "Download CV", href: "https://drive.google.com/file/d/1rdgW6N0riZYCzkZou5DI5BuPh5xr-lPF/view?usp=sharing", isButton: true }
 ];
 
-// Case study section links
 const caseStudyLinks = [
   { label: "Challenge", href: "#challenge" },
   { label: "Strategy", href: "#strategy" },
@@ -37,7 +35,7 @@ const navigationLinks = isMainNav ? mainNavLinks : caseStudyLinks;
     {description && <meta name="description" content={description} />}
   </head>
   <body class="min-h-screen bg-gradient-to-r from-[#EEFBFB] to-white">
-    <div class="min-h-screen bg-white/95"> <!-- This creates a semi-transparent overlay -->
+    <div class="min-h-screen bg-white/95">
       <ScrollProgress client:load />
       <Navigation 
         client:load 

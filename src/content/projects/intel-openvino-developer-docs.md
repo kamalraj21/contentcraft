@@ -1,15 +1,15 @@
 ---
 title: "Intel OpenVINO Developer Docs"
 role_tag: "Technical Writer + Information Architect"
-description: "Owned developer documentation for OpenVINO and Tiber Edge AI platforms — two inference toolchains, two deployment platforms, covering the full developer journey from install to production."
+description: "OpenVINO is technically complex. Multiple frameworks, multiple stakeholders, engineers who needed convincing that documentation was worth their time. I owned the full information architecture for a product with 2M+ downloads and earned the buy-in to do it properly."
 featured: true
 sort_order: 3
 primary_track: "information-architecture"
 outcome_metrics:
+  - value: "2M+"
+    label: "OpenVINO downloads"
   - value: "2"
-    label: "toolchains documented"
-  - value: "2"
-    label: "AI platforms covered"
+    label: "AI platforms owned"
   - value: "End-to-end"
     label: "developer journey"
 tech_stack:
@@ -23,11 +23,11 @@ case_study_url: "/contentcraft/projects/intel-openvino"
 
 ## Scope
 
-Developer documentation for Intel's OpenVINO toolkit and Tiber Edge AI platform — two distinct inference toolchains targeting different deployment environments (cloud edge and on-device), with overlapping but not identical developer audiences.
+Developer documentation for Intel's OpenVINO toolkit and Tiber Edge AI platform: two distinct inference toolchains targeting different deployment environments (cloud edge and on-device), with overlapping but not identical developer audiences.
 
 ## Approach
 
-Owned the full information architecture: topic taxonomy, navigation structure, versioning strategy, and the toolchain that built and published docs across both platforms. Wrote and maintained the core developer guides — install, model conversion, inference engine APIs, and deployment walkthroughs — while coordinating with engineering for accuracy on release cycles that moved faster than traditional doc review could accommodate.
+Owned the full information architecture: topic taxonomy, navigation structure, versioning strategy, and the toolchain that built and published docs across both platforms. Wrote and maintained the core developer guides (install, model conversion, inference engine APIs, and deployment walkthroughs) while coordinating with engineering for accuracy on release cycles that moved faster than traditional doc review could accommodate.
 
 ## Note on metrics
 

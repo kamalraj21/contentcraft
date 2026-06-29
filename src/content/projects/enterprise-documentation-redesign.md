@@ -1,7 +1,7 @@
 ---
 title: "Enterprise Documentation Redesign"
 role_tag: "Information Architect"
-description: "Led a complete overhaul of a fragmented enterprise documentation system — unified content hub, task-based navigation, real-time updates replacing outdated static pages."
+description: "Led a complete overhaul of a fragmented enterprise documentation system. Unified content hub, task-based navigation, and real-time updates replacing outdated static pages."
 featured: true
 sort_order: 5
 primary_track: "information-architecture"
