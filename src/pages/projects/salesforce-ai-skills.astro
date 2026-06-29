@@ -1,0 +1,298 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const pageTitle = "Salesforce AI Skills Programme — Kamal Raj";
+const description = "An end-to-end agentic Slackbot suite automating the Document Development Life Cycle at Salesforce — from multi-source PRD analysis to production-ready Oxygen XML.";
+---
+
+<Layout title={pageTitle} description={description}>
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="pt-20 pb-16 bg-gradient-to-b from-[#EEFBFB] to-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-4 flex items-center gap-3">
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#007CC7] bg-[#007CC7]/10 px-3 py-1 rounded-full">AI Tooling · Information Architecture</span>
+          <span class="text-xs text-slate-400">Salesforce · 2023–2024</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold leading-tight tracking-tight text-[#12232e] mb-6">
+          Salesforce AI Skills Programme
+        </h1>
+        <p class="text-xl leading-relaxed text-slate-600 mb-8 max-w-3xl">
+          An end-to-end agentic Slackbot suite that automates the Document Development Life Cycle — from multi-source PRD analysis and automated UI validation to generating deterministic, DTD-compliant Oxygen XML.
+        </p>
+
+        <!-- Outcome metrics -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">
+          {[
+            { value: "80%", label: "Reduction in first-draft time" },
+            { value: "70%", label: "Reduction in review cycles" },
+            { value: "10", label: "Production AI skills shipped" },
+            { value: "4.5/5", label: "Rating at Salesforce AI Expo" },
+          ].map(m => (
+            <div class="bg-white border border-[#4DA8DA]/20 rounded-xl p-4 text-center shadow-sm">
+              <div class="text-3xl font-bold text-[#007CC7]">{m.value}</div>
+              <div class="text-xs text-slate-500 mt-1 leading-snug">{m.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Tech stack -->
+        <div class="mt-8 flex flex-wrap gap-2">
+          {["Agentic RAG", "MCP (Confluence)", "Slack API", "Playwright", "Oxygen XML / DTD", "Python", "Multi-agent orchestration"].map(t => (
+            <span class="text-xs bg-[#12232e]/5 text-[#12232e] border border-[#12232e]/10 rounded-full px-3 py-1">{t}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Section nav -->
+    <nav class="sticky top-16 z-30 bg-white border-b border-slate-100 shadow-sm">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex gap-6 overflow-x-auto py-3 text-sm font-medium">
+          {[
+            { label: "Challenge", href: "#challenge" },
+            { label: "Solution", href: "#solution" },
+            { label: "Architecture", href: "#architecture" },
+            { label: "Results", href: "#results" },
+            { label: "Insights", href: "#insights" },
+          ].map(l => (
+            <a href={l.href} class="whitespace-nowrap text-slate-500 hover:text-[#007CC7] transition-colors">{l.label}</a>
+          ))}
+        </div>
+      </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+      <!-- Challenge -->
+      <section id="challenge">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="w-8 h-px bg-[#007CC7]"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#007CC7]">The Challenge</span>
+        </div>
+        <h2 class="text-3xl font-bold text-[#12232e] mb-6">Scaling Documentation Across a Fast-Moving Product Org</h2>
+        <p class="text-lg leading-relaxed text-slate-600 mb-6">
+          In enterprise software, the Document Development Life Cycle spans multiple source systems — Quip, Google Docs, live Confluence pages, and engineering discussions in Slack. Keeping documentation accurate and up to date at the pace of product development requires a different approach than traditional workflows allow.
+        </p>
+        <p class="text-lg leading-relaxed text-slate-600 mb-10">
+          The opportunity was to build a system that handles the research, synthesis, and validation phases automatically — so writers could focus on content strategy and quality rather than source-chasing and boilerplate.
+        </p>
+
+        <div class="grid sm:grid-cols-3 gap-4">
+          {[
+            { icon: "🗂️", title: "Multi-source context", body: "PRD content distributed across Quip, GDocs, Confluence, and Slack — unified by the pipeline" },
+            { icon: "⚡", title: "Speed-to-publish", body: "Closing the gap between product ship cadence and documentation delivery" },
+            { icon: "🔁", title: "Review efficiency", body: "Automating validation steps to reduce editorial cycles and SME round-trips" },
+          ].map(p => (
+            <div class="bg-[#EEFBFB] rounded-xl p-5 border border-[#4DA8DA]/20">
+              <div class="text-2xl mb-3">{p.icon}</div>
+              <h3 class="font-semibold text-[#12232e] mb-1 text-sm">{p.title}</h3>
+              <p class="text-sm text-slate-500 leading-relaxed">{p.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Solution -->
+      <section id="solution">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="w-8 h-px bg-[#007CC7]"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#007CC7]">The Solution</span>
+        </div>
+        <h2 class="text-3xl font-bold text-[#12232e] mb-4">An Agentic Slackbot Pipeline</h2>
+        <p class="text-lg leading-relaxed text-slate-600 mb-12">
+          I designed and shipped a suite of 10 production AI Slackbot skills operating as an orchestrated multi-agent pipeline. Running directly in the writer's natural workspace — Slack — the system manages end-to-end DDLC through five specialised, autonomous stages.
+        </p>
+
+        <div class="space-y-6">
+          {[
+            {
+              stage: "01",
+              title: "Epic Analyzer",
+              subtitle: "Research & Retrieval",
+              color: "from-[#007CC7]/10 to-[#4DA8DA]/5",
+              border: "border-[#007CC7]/20",
+              points: [
+                "Multi-source RAG & MCP sweeps across Quip, GDocs, live Confluence pages, and Slack channels",
+                "Scope reasoning: flags deviations and detects undocumented dependencies",
+                "Drafts Slack-ready messages for PMs and devs; triggers Human-in-the-Loop questions for SMEs",
+                "Generates a Slack Canvas with synthesized context, provenance tracking, and confidence scoring",
+              ]
+            },
+            {
+              stage: "02",
+              title: "AI Editor",
+              subtitle: "Governance & Formatting",
+              color: "from-[#12232e]/5 to-[#12232e]/0",
+              border: "border-[#12232e]/10",
+              points: [
+                "Ingests company style guidelines and target deliverable formats (e.g. Release Notes)",
+                "Enforces voice, tone, and structural constraints for immediate publishing readiness",
+              ]
+            },
+            {
+              stage: "03",
+              title: "UI Validator",
+              subtitle: "Automated Testing",
+              color: "from-[#007CC7]/10 to-[#4DA8DA]/5",
+              border: "border-[#007CC7]/20",
+              points: [
+                "Uses Playwright in a secure sandbox to test UI labels and procedural steps against the live product",
+                "Provides validation reports and auto-updates drafts when gaps are found",
+              ]
+            },
+            {
+              stage: "04",
+              title: "Agile Manager",
+              subtitle: "GUS / JIRA Integration",
+              color: "from-[#12232e]/5 to-[#12232e]/0",
+              border: "border-[#12232e]/10",
+              points: [
+                "Integrates directly with GUS (Salesforce's JIRA equivalent)",
+                "Creates work items for sprints, estimates story points, and suggests actionable ticket comments",
+              ]
+            },
+            {
+              stage: "05",
+              title: "XML Pipeline",
+              subtitle: "Structured Output",
+              color: "from-[#007CC7]/10 to-[#4DA8DA]/5",
+              border: "border-[#007CC7]/20",
+              points: [
+                "Converts approved Slack text into production-ready Oxygen Author XML",
+                "Strictly validated against DITA/DTD constraints for CI/CD integration",
+                "Bridges natural language generation with deterministic enterprise publishing requirements",
+              ]
+            },
+          ].map(s => (
+            <div class={`rounded-xl border ${s.border} bg-gradient-to-r ${s.color} p-6`}>
+              <div class="flex items-start gap-4">
+                <div class="shrink-0 w-10 h-10 rounded-lg bg-white border border-[#4DA8DA]/20 flex items-center justify-center">
+                  <span class="text-xs font-bold text-[#007CC7]">{s.stage}</span>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-baseline gap-2 mb-3">
+                    <h3 class="font-bold text-[#12232e]">{s.title}</h3>
+                    <span class="text-xs text-slate-400">{s.subtitle}</span>
+                  </div>
+                  <ul class="space-y-2">
+                    {s.points.map(p => (
+                      <li class="flex items-start gap-2 text-sm text-slate-600">
+                        <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#007CC7] shrink-0"></span>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Architecture -->
+      <section id="architecture">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="w-8 h-px bg-[#007CC7]"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#007CC7]">Architecture</span>
+        </div>
+        <h2 class="text-3xl font-bold text-[#12232e] mb-6">Beyond Text Generation — Knowledge Engineering</h2>
+        <p class="text-lg leading-relaxed text-slate-600 mb-10">
+          The architecture is defined by three capabilities that move well past simple LLM prompting:
+        </p>
+
+        <div class="grid sm:grid-cols-3 gap-6">
+          {[
+            {
+              icon: "🧠",
+              title: "Orchestrated Multi-Agent Logic",
+              body: "Chaining specialised skills — Research, Governance, UI Testing, Lifecycle Management — that function in tandem as an autonomous pipeline."
+            },
+            {
+              icon: "📐",
+              title: "Deterministic XML Generation",
+              body: "Bridging the gap between creative LLM generation and strict, enterprise-grade publishing requirements via DITA/DTD validation."
+            },
+            {
+              icon: "🔌",
+              title: "Integration Maturity",
+              body: "MCP for live Confluence retrieval and Playwright for real-time UI validation — production-grade AI managing documentation against live products."
+            },
+          ].map(c => (
+            <div class="bg-white rounded-xl border border-[#4DA8DA]/20 p-6 hover:border-[#4DA8DA]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+              <div class="text-3xl mb-4">{c.icon}</div>
+              <h3 class="font-semibold text-[#12232e] mb-2">{c.title}</h3>
+              <p class="text-sm text-slate-500 leading-relaxed">{c.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section id="results">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="w-8 h-px bg-[#007CC7]"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#007CC7]">Results</span>
+        </div>
+        <h2 class="text-3xl font-bold text-[#12232e] mb-6">System Efficiency Gains</h2>
+        <p class="text-lg leading-relaxed text-slate-600 mb-10">
+          The pipeline delivers a fundamental shift in technical writing velocity by automating the research and validation phases upstream of the draft. Writers are elevated into content strategy and orchestration roles.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-6 mb-12">
+          {[
+            { value: "80%", label: "First-draft time saved", detail: "Automating multi-source research and synthesis eliminated the manual discovery phase entirely." },
+            { value: "70%", label: "Review cycles reduced", detail: "AI governance and UI validation pre-validate content before it reaches SME review." },
+            { value: "10", label: "Production skills shipped", detail: "Deployed across a writing team of 8 at Salesforce, each skill covering a distinct DDLC phase." },
+            { value: "4.5/5", label: "Salesforce AI Expo rating", detail: "Became a highly sought-after framework by Lead and Staff cloud writers across the organisation." },
+          ].map(r => (
+            <div class="bg-white rounded-xl border border-[#4DA8DA]/20 p-6 flex gap-5">
+              <div class="shrink-0 text-4xl font-bold text-[#007CC7] leading-none">{r.value}</div>
+              <div>
+                <div class="font-semibold text-[#12232e] mb-1 text-sm">{r.label}</div>
+                <p class="text-sm text-slate-500 leading-relaxed">{r.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="bg-gradient-to-r from-[#007CC7]/10 to-[#EEFBFB] rounded-xl p-6 border border-[#4DA8DA]/20">
+          <p class="text-base leading-relaxed text-slate-700 italic">
+            "Beyond the Expo rating, this toolsuite generated intense organic demand — becoming a highly sought-after framework by Lead and Staff-level cloud writers across the organisation."
+          </p>
+        </div>
+      </section>
+
+      <!-- Insights -->
+      <section id="insights" class="pb-16">
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="w-8 h-px bg-[#007CC7]"></span>
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#007CC7]">Insights</span>
+        </div>
+        <h2 class="text-3xl font-bold text-[#12232e] mb-6">What This Project Validates</h2>
+
+        <div class="space-y-4">
+          {[
+            "The highest-value AI intervention in technical writing is not generation — it's automating the research and validation phases upstream of the draft.",
+            "Slack as the deployment surface removes adoption friction. Writers don't change their workflow; the AI meets them where they already work.",
+            "Deterministic output constraints (DTD validation) are what separates a prototype from a production tool. LLM creativity must be bounded by publishing requirements.",
+            "Human-in-the-Loop checkpoints at the right junctions — not everywhere — is the key to trust and adoption in enterprise environments.",
+          ].map((insight, i) => (
+            <div class="flex items-start gap-4 bg-white rounded-xl border border-[#4DA8DA]/20 p-5">
+              <span class="shrink-0 w-7 h-7 rounded-full bg-[#007CC7]/10 text-[#007CC7] text-xs font-bold flex items-center justify-center">{i + 1}</span>
+              <p class="text-sm leading-relaxed text-slate-600">{insight}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-12 flex gap-4">
+          <a href="/contentcraft/#work" class="px-6 py-3 bg-[#007CC7] text-white text-sm font-medium rounded-lg hover:bg-[#12232e] transition-colors">
+            ← Back to Work
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Layout>
