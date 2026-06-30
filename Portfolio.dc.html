@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #F4EEE3; }
+    ::selection { background: #211C17; color: #F4EEE3; }
+    @keyframes kr-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  </style>
+</helmet>
+<div ref="{{ rootRef }}" style="background:#F4EEE3;color:#211C17;font-family:'Hanken Grotesk',sans-serif;min-height:100vh;overflow-x:hidden;position:relative;-webkit-font-smoothing:antialiased;">
+
+  <!-- ====== NAV ====== -->
+  <nav ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 44px;transition:background 300ms ease,padding 300ms ease,border-color 300ms ease;border-bottom:1px solid transparent;">
+    <a href="#top" style="text-decoration:none;display:flex;align-items:baseline;gap:9px;color:#211C17;">
+      <span style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;letter-spacing:-0.01em;">Kamal Raj</span>
+      <span style="font-family:'Hanken Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#9C9286;">Content &amp; AI</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:4px;">
+      <a href="#work" style="text-decoration:none;color:#4A443B;font-size:14px;font-weight:500;padding:8px 13px;border-radius:7px;transition:color 160ms ease;" style-hover="color:#211C17;">Work</a>
+      <a href="#about" style="text-decoration:none;color:#4A443B;font-size:14px;font-weight:500;padding:8px 13px;border-radius:7px;transition:color 160ms ease;" style-hover="color:#211C17;">About</a>
+      <a href="#experience" style="text-decoration:none;color:#4A443B;font-size:14px;font-weight:500;padding:8px 13px;border-radius:7px;transition:color 160ms ease;" style-hover="color:#211C17;">Experience</a>
+      <a href="#contact" style="text-decoration:none;color:#4A443B;font-size:14px;font-weight:500;padding:8px 13px;border-radius:7px;transition:color 160ms ease;" style-hover="color:#211C17;">Contact</a>
+      <a href="CV.dc.html" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-left:10px;background:#211C17;color:#F4EEE3;font-size:14px;font-weight:600;padding:10px 18px;border-radius:9px;transition:transform 160ms ease,background 160ms ease;" style-hover="transform:translateY(-2px);background:#3A3127;">
+        <i data-lucide="arrow-down-to-line" style="width:15px;height:15px;"></i>Download CV
+      </a>
+    </div>
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <header id="top" style="position:relative;max-width:1180px;margin:0 auto;padding:172px 44px 88px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:34px;">
+      <span data-reveal style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#B4471F;">Staff Technical Writer</span>
+      <span data-reveal style="width:24px;height:1px;background:#C9BFB0;"></span>
+      <span data-reveal style="font-size:12px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#9C9286;">Developer Docs &amp; AI Tooling</span>
+    </div>
+    <h1 data-reveal data-reveal-delay="60" style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(44px,6.4vw,86px);line-height:1.02;letter-spacing:-0.022em;margin:0 0 32px;max-width:14ch;text-wrap:balance;">
+      Documentation developers <span style="font-style:italic;font-weight:400;color:#B4471F;">actually trust</span>, built with AI that earns its place.
+    </h1>
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:64px;align-items:end;">
+      <div>
+        <p data-reveal data-reveal-delay="140" style="font-size:19px;line-height:1.62;color:#4A443B;max-width:600px;margin:0 0 36px;text-wrap:pretty;">
+          For 18 years I have owned developer documentation for fast-moving platforms at companies like Intel and Salesforce. Most recently I designed a suite of ten AI assistants for a team of eight writers, cutting first-draft time by 80% and review cycles by 70% with no drop in editorial quality. Equal parts technical writer, information architect, and builder.
+        </p>
+        <div data-reveal data-reveal-delay="220" style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="#work" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;background:#B4471F;color:#F8F4EC;font-size:16px;font-weight:600;padding:14px 26px;border-radius:10px;transition:transform 180ms cubic-bezier(0.22,1,0.36,1),background 180ms ease;" style-hover="transform:translateY(-3px);background:#8F3415;">
+            View selected work <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+          </a>
+          <a href="#contact" style="text-decoration:none;display:inline-flex;align-items:center;gap:9px;background:transparent;color:#211C17;font-size:16px;font-weight:600;padding:14px 24px;border-radius:10px;border:1px solid rgba(33,28,23,0.22);transition:transform 180ms ease,background 180ms ease,border-color 180ms ease;" style-hover="transform:translateY(-3px);background:rgba(33,28,23,0.04);border-color:rgba(33,28,23,0.4);">
+            Get in touch
+          </a>
+        </div>
+      </div>
+      <!-- Editorial stat block -->
+      <div data-reveal data-reveal-delay="180" style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(33,28,23,0.16);border-left:1px solid rgba(33,28,23,0.16);">
+        <div style="padding:20px 18px;border-right:1px solid rgba(33,28,23,0.16);border-bottom:1px solid rgba(33,28,23,0.16);">
+          <div style="font-family:'Newsreader',serif;font-weight:400;font-size:46px;line-height:0.95;letter-spacing:-0.02em;"><span data-count="18">0</span></div>
+          <div style="font-size:12.5px;color:#6B6358;margin-top:8px;letter-spacing:0.01em;">years writing docs</div>
+        </div>
+        <div style="padding:20px 18px;border-bottom:1px solid rgba(33,28,23,0.16);">
+          <div style="font-family:'Newsreader',serif;font-weight:400;font-size:46px;line-height:0.95;letter-spacing:-0.02em;"><span data-count="10">0</span></div>
+          <div style="font-size:12.5px;color:#6B6358;margin-top:8px;">AI assistants shipped</div>
+        </div>
+        <div style="padding:20px 18px;border-right:1px solid rgba(33,28,23,0.16);border-bottom:1px solid rgba(33,28,23,0.16);">
+          <div style="font-family:'Newsreader',serif;font-weight:400;font-size:46px;line-height:0.95;letter-spacing:-0.02em;"><span data-count="80">0</span>%</div>
+          <div style="font-size:12.5px;color:#6B6358;margin-top:8px;">faster first drafts</div>
+        </div>
+        <div style="padding:20px 18px;border-bottom:1px solid rgba(33,28,23,0.16);">
+          <div style="font-family:'Newsreader',serif;font-weight:400;font-size:46px;line-height:0.95;letter-spacing:-0.02em;"><span data-count="70">0</span>%</div>
+          <div style="font-size:12.5px;color:#6B6358;margin-top:8px;">shorter review cycles</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== TICKER ====== -->
+  <div style="border-top:1px solid rgba(33,28,23,0.14);border-bottom:1px solid rgba(33,28,23,0.14);padding:15px 0;overflow:hidden;position:relative;">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:90px;z-index:2;background:linear-gradient(90deg,#F4EEE3,transparent);pointer-events:none;"></div>
+    <div style="position:absolute;right:0;top:0;bottom:0;width:90px;z-index:2;background:linear-gradient(270deg,#F4EEE3,transparent);pointer-events:none;"></div>
+    <div style="display:flex;width:max-content;animation:kr-marquee 44s linear infinite;">
+      <div style="display:flex;align-items:center;gap:0;font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A8175;white-space:nowrap;">
+        <span style="padding:0 26px;">RAG</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">MCP</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Agentic Search</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Python</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">C++</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">DITA</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Sphinx</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">reStructuredText</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Markdown</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">GitHub Actions</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">CI/CD</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Oxygen XML</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Perforce</span><span style="color:#C9BFB0;">·</span>
+      </div>
+      <div aria-hidden="true" style="display:flex;align-items:center;gap:0;font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A8175;white-space:nowrap;">
+        <span style="padding:0 26px;">RAG</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">MCP</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Agentic Search</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Python</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">C++</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">DITA</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Sphinx</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">reStructuredText</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Markdown</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">GitHub Actions</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">CI/CD</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Oxygen XML</span><span style="color:#C9BFB0;">·</span><span style="padding:0 26px;">Perforce</span><span style="color:#C9BFB0;">·</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== WORK ====== -->
+  <section id="work" style="max-width:1180px;margin:0 auto;padding:108px 44px 32px;">
+    <div data-reveal style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:52px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#B4471F;margin-bottom:18px;">Selected work</div>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,4.4vw,56px);letter-spacing:-0.02em;line-height:1.04;margin:0;max-width:16ch;">A few problems worth solving well.</h2>
+      </div>
+      <p style="font-size:16px;color:#6B6358;max-width:300px;margin:0;line-height:1.6;">Where information architecture, AI, and docs-as-code met a real release deadline.</p>
+    </div>
+
+    <!-- Featured -->
+    <a data-reveal href="case-study.dc.html" style="text-decoration:none;display:block;background:#FBF7EF;border:1px solid rgba(33,28,23,0.12);border-radius:18px;padding:42px;margin-bottom:40px;transition:transform 260ms cubic-bezier(0.22,1,0.36,1),box-shadow 260ms ease,border-color 260ms ease;box-shadow:0 1px 3px rgba(33,28,23,0.05);" style-hover="transform:translateY(-4px);box-shadow:0 18px 44px rgba(33,28,23,0.13);border-color:rgba(33,28,23,0.22);">
+      <div style="display:grid;grid-template-columns:1.55fr 1fr;gap:52px;align-items:center;">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:7px;color:#B4471F;font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;margin-bottom:18px;">
+            <i data-lucide="bookmark" style="width:13px;height:13px;"></i>Flagship case study
+          </div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:33px;letter-spacing:-0.018em;line-height:1.08;margin:0 0 7px;">Salesforce CX AI Content Suite</h3>
+          <div style="font-size:13.5px;color:#8A8175;font-weight:500;margin-bottom:18px;">Staff Technical Writer · AI Tooling · Salesforce</div>
+          <p style="font-size:16px;line-height:1.62;color:#4A443B;margin:0 0 24px;max-width:520px;">A team of eight writers supporting products that shipped faster than traditional doc cycles could keep up with. I designed and built ten AI assistants using RAG, MCP, and agentic search that cut first-draft time by 80% and automated 75% of standard writing work, with subject-matter approval preserved at every gate.</p>
+          <div style="display:flex;gap:7px;flex-wrap:wrap;">
+            <span style="font-size:12px;font-weight:500;color:#6B6358;border:1px solid rgba(33,28,23,0.16);border-radius:6px;padding:5px 11px;">RAG</span>
+            <span style="font-size:12px;font-weight:500;color:#6B6358;border:1px solid rgba(33,28,23,0.16);border-radius:6px;padding:5px 11px;">MCP</span>
+            <span style="font-size:12px;font-weight:500;color:#6B6358;border:1px solid rgba(33,28,23,0.16);border-radius:6px;padding:5px 11px;">Agentic Search</span>
+            <span style="font-size:12px;font-weight:500;color:#6B6358;border:1px solid rgba(33,28,23,0.16);border-radius:6px;padding:5px 11px;">Python</span>
+            <span style="font-size:12px;font-weight:500;color:#6B6358;border:1px solid rgba(33,28,23,0.16);border-radius:6px;padding:5px 11px;">DITA</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(33,28,23,0.14);border-left:1px solid rgba(33,28,23,0.14);">
+          <div style="padding:20px 16px;border-right:1px solid rgba(33,28,23,0.14);border-bottom:1px solid rgba(33,28,23,0.14);"><div style="font-family:'Newsreader',serif;font-size:30px;line-height:0.95;letter-spacing:-0.02em;">10</div><div style="font-size:11.5px;color:#8A8175;margin-top:7px;">AI assistants</div></div>
+          <div style="padding:20px 16px;border-bottom:1px solid rgba(33,28,23,0.14);"><div style="font-family:'Newsreader',serif;font-size:30px;line-height:0.95;letter-spacing:-0.02em;">80%</div><div style="font-size:11.5px;color:#8A8175;margin-top:7px;">faster drafts</div></div>
+          <div style="padding:20px 16px;border-right:1px solid rgba(33,28,23,0.14);border-bottom:1px solid rgba(33,28,23,0.14);"><div style="font-family:'Newsreader',serif;font-size:30px;line-height:0.95;letter-spacing:-0.02em;">75%</div><div style="font-size:11.5px;color:#8A8175;margin-top:7px;">tasks automated</div></div>
+          <div style="padding:20px 16px;border-bottom:1px solid rgba(33,28,23,0.14);"><div style="font-family:'Newsreader',serif;font-size:30px;line-height:0.95;letter-spacing:-0.02em;">700+</div><div style="font-size:11.5px;color:#8A8175;margin-top:7px;">DITA topics</div></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;color:#B4471F;font-size:14.5px;font-weight:600;margin-top:30px;">Read the case study <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></div>
+    </a>
+
+    <!-- Editorial row list -->
+    <div style="border-top:1px solid rgba(33,28,23,0.16);">
+      <sc-for list="{{ projects }}" as="proj" hint-placeholder-count="4">
+        <a data-reveal href="{{ proj.href }}" target="{{ proj.target }}" style="text-decoration:none;color:#211C17;display:grid;grid-template-columns:48px 2.1fr 1.4fr auto;gap:32px;align-items:center;padding:30px 8px;border-bottom:1px solid rgba(33,28,23,0.16);transition:padding 220ms cubic-bezier(0.22,1,0.36,1),background 220ms ease;" style-hover="padding-left:20px;padding-right:20px;background:rgba(33,28,23,0.025);">
+          <div style="font-family:'Newsreader',serif;font-size:20px;color:#B4471F;font-style:italic;">{{ proj.num }}</div>
+          <div>
+            <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:25px;letter-spacing:-0.015em;line-height:1.12;margin:0 0 6px;">{{ proj.title }}</h3>
+            <div style="font-size:13px;color:#8A8175;font-weight:500;">{{ proj.role }}</div>
+          </div>
+          <p style="font-size:14.5px;line-height:1.55;color:#6B6358;margin:0;">{{ proj.blurb }}</p>
+          <div style="display:flex;align-items:center;justify-content:flex-end;gap:14px;">
+            <div style="display:flex;gap:18px;">
+              <sc-for list="{{ proj.stats }}" as="st" hint-placeholder-count="2">
+                <div style="text-align:right;">
+                  <div style="font-family:'Newsreader',serif;font-size:22px;line-height:1;letter-spacing:-0.02em;">{{ st.value }}</div>
+                  <div style="font-size:11px;color:#9C9286;margin-top:4px;white-space:nowrap;">{{ st.label }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <i data-lucide="arrow-up-right" style="width:19px;height:19px;color:#B4471F;flex-shrink:0;"></i>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ====== ABOUT ====== -->
+  <section id="about" style="max-width:1180px;margin:0 auto;padding:108px 44px;">
+    <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:72px;align-items:start;">
+      <div data-reveal style="position:sticky;top:108px;">
+        <div style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#B4471F;margin-bottom:18px;">About</div>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,3.8vw,50px);letter-spacing:-0.02em;line-height:1.05;margin:0;">I make complicated platforms make sense.</h2>
+      </div>
+      <div data-reveal data-reveal-delay="120">
+        <p style="font-size:19px;line-height:1.68;color:#3A332B;margin:0 0 22px;text-wrap:pretty;">The work usually starts the same way: a system that is genuinely hard to explain, a team that is short on time, and developers who need a clear answer fast. I have spent eighteen years getting good at exactly that.</p>
+        <p style="font-size:19px;line-height:1.68;color:#3A332B;margin:0 0 22px;text-wrap:pretty;">At Salesforce I was selected as the writing team's AI champion. I designed and shipped a suite of ten AI assistants for eight writers, using RAG, MCP, and agentic search to cut first-draft time by 80% while keeping subject-matter approval at every stage. The work was presented at the VP CX quarterly review as part of a company-wide AI initiative.</p>
+        <p style="font-size:19px;line-height:1.68;color:#3A332B;margin:0;text-wrap:pretty;">At Intel I owned developer documentation for the OpenVINO and Tiber Edge AI platforms, writing API references, programming guides, and runnable code samples in Python and C++. The thread across every role is the same: learn the technical detail properly, earn the trust of the engineers, and make the product measurably easier to adopt.</p>
+
+        <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid rgba(33,28,23,0.16);">
+          <sc-for list="{{ capabilities }}" as="cap" hint-placeholder-count="6">
+            <div data-reveal style="padding:24px 22px 24px 0;border-bottom:1px solid rgba(33,28,23,0.14);">
+              <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;">
+                <i data-lucide="{{ cap.icon }}" style="width:17px;height:17px;color:#B4471F;"></i>
+                <h4 style="font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15.5px;letter-spacing:-0.005em;margin:0;color:#211C17;">{{ cap.title }}</h4>
+              </div>
+              <p style="font-size:14px;line-height:1.55;color:#6B6358;margin:0;">{{ cap.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== EXPERIENCE ====== -->
+  <section id="experience" style="max-width:1180px;margin:0 auto;padding:0 44px 108px;">
+    <div data-reveal style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#B4471F;margin-bottom:34px;">Experience</div>
+    <div style="border-top:1px solid rgba(33,28,23,0.18);">
+      <sc-for list="{{ roles }}" as="r" hint-placeholder-count="6">
+        <div data-reveal style="display:grid;grid-template-columns:170px 1fr;gap:40px;padding:26px 4px;border-bottom:1px solid rgba(33,28,23,0.14);align-items:baseline;">
+          <div style="font-size:13px;color:#8A8175;font-weight:500;letter-spacing:0.01em;white-space:nowrap;">{{ r.dates }}</div>
+          <div style="display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:baseline;">
+            <div style="min-width:250px;">
+              <div style="font-family:'Newsreader',serif;font-weight:400;font-size:21px;letter-spacing:-0.012em;line-height:1.18;">{{ r.title }}</div>
+              <div style="font-size:13.5px;color:#B4471F;margin-top:4px;font-weight:500;">{{ r.company }}</div>
+            </div>
+            <div style="font-size:14px;line-height:1.55;color:#6B6358;max-width:420px;text-wrap:pretty;">{{ r.note }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT (dark band) ====== -->
+  <section id="contact" style="background:#1A1714;color:#F4EEE3;">
+    <div style="max-width:1180px;margin:0 auto;padding:104px 44px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;">
+      <div data-reveal>
+        <div style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#E0764A;margin-bottom:18px;">Contact</div>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,4.4vw,56px);letter-spacing:-0.02em;line-height:1.04;margin:0 0 22px;">Let's talk about your documentation.</h2>
+        <p style="font-size:18px;line-height:1.6;color:#B5ABA0;margin:0 0 38px;max-width:420px;">Hiring, collaborating, or comparing notes on AI and developer content? I read and reply to every message.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="mailto:kamal.raj2181@gmail.com" style="text-decoration:none;display:inline-flex;align-items:center;gap:14px;color:#F4EEE3;font-size:15.5px;font-weight:500;padding:15px 18px;border:1px solid rgba(255,255,255,0.14);border-radius:11px;transition:border-color 180ms ease,transform 180ms ease,background 180ms ease;" style-hover="border-color:rgba(224,118,74,0.6);transform:translateX(4px);background:rgba(255,255,255,0.03);">
+            <i data-lucide="mail" style="width:19px;height:19px;color:#E0764A;"></i>kamal.raj2181@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/kamal-raj-75b389b/" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;gap:14px;color:#F4EEE3;font-size:15.5px;font-weight:500;padding:15px 18px;border:1px solid rgba(255,255,255,0.14);border-radius:11px;transition:border-color 180ms ease,transform 180ms ease,background 180ms ease;" style-hover="border-color:rgba(224,118,74,0.6);transform:translateX(4px);background:rgba(255,255,255,0.03);">
+            <svg viewBox="0 0 24 24" fill="#E0764A" style="width:19px;height:19px;flex-shrink:0;" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>linkedin.com/in/kamal-raj-75b389b
+          </a>
+          <a href="CV.dc.html" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;gap:14px;color:#F4EEE3;font-size:15.5px;font-weight:500;padding:15px 18px;border:1px solid rgba(255,255,255,0.14);border-radius:11px;transition:border-color 180ms ease,transform 180ms ease,background 180ms ease;" style-hover="border-color:rgba(224,118,74,0.6);transform:translateX(4px);background:rgba(255,255,255,0.03);">
+            <i data-lucide="file-text" style="width:19px;height:19px;color:#E0764A;"></i>Download CV
+          </a>
+        </div>
+      </div>
+
+      <form data-reveal data-reveal-delay="120" onSubmit="{{ onSubmit }}" style="background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:34px;">
+        <div style="margin-bottom:20px;">
+          <label style="display:block;font-size:12px;font-weight:600;color:#B5ABA0;margin-bottom:9px;letter-spacing:0.1em;text-transform:uppercase;">Name</label>
+          <input type="text" required value="{{ form.name }}" onChange="{{ onName }}" placeholder="Jane Doe" style="width:100%;box-sizing:border-box;background:#15120F;border:1px solid rgba(255,255,255,0.14);border-radius:9px;padding:13px 15px;color:#F4EEE3;font-size:15px;font-family:'Hanken Grotesk',sans-serif;outline:none;transition:border-color 160ms ease;" style-focus="border-color:#E0764A;">
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="display:block;font-size:12px;font-weight:600;color:#B5ABA0;margin-bottom:9px;letter-spacing:0.1em;text-transform:uppercase;">Email</label>
+          <input type="email" required value="{{ form.email }}" onChange="{{ onEmail }}" placeholder="jane@company.com" style="width:100%;box-sizing:border-box;background:#15120F;border:1px solid rgba(255,255,255,0.14);border-radius:9px;padding:13px 15px;color:#F4EEE3;font-size:15px;font-family:'Hanken Grotesk',sans-serif;outline:none;transition:border-color 160ms ease;" style-focus="border-color:#E0764A;">
+        </div>
+        <div style="margin-bottom:22px;">
+          <label style="display:block;font-size:12px;font-weight:600;color:#B5ABA0;margin-bottom:9px;letter-spacing:0.1em;text-transform:uppercase;">Message</label>
+          <textarea required rows="4" value="{{ form.message }}" onChange="{{ onMessage }}" placeholder="A line about the role or the problem you're solving." style="width:100%;box-sizing:border-box;background:#15120F;border:1px solid rgba(255,255,255,0.14);border-radius:9px;padding:13px 15px;color:#F4EEE3;font-size:15px;font-family:'Hanken Grotesk',sans-serif;outline:none;resize:vertical;transition:border-color 160ms ease;" style-focus="border-color:#E0764A;"></textarea>
+        </div>
+        <button type="submit" style="width:100%;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#B4471F;color:#F8F4EC;font-size:16px;font-weight:600;font-family:'Hanken Grotesk',sans-serif;padding:15px;border:none;border-radius:10px;cursor:pointer;transition:background 180ms ease,transform 120ms ease;" style-hover="background:#C9542A;" style-active="transform:scale(0.98);">
+          <span>{{ submitLabel }}</span><i data-lucide="send" style="width:17px;height:17px;"></i>
+        </button>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:15px;display:flex;align-items:center;gap:9px;color:#8FCB9B;font-size:14px;font-weight:500;">
+            <i data-lucide="check-circle-2" style="width:17px;height:17px;"></i>Thank you. I'll be in touch shortly.
+          </div>
+        </sc-if>
+      </form>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer style="padding:48px 44px 44px;">
+    <div style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:baseline;gap:9px;">
+        <span style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;letter-spacing:-0.01em;color:#211C17;">Kamal Raj</span>
+        <span style="font-size:13px;color:#8A8175;">Staff Technical Writer &amp; AI Tooling</span>
+      </div>
+      <div style="display:flex;gap:24px;align-items:center;">
+        <a href="mailto:kamal.raj2181@gmail.com" style="text-decoration:none;color:#6B6358;font-size:14px;transition:color 160ms ease;" style-hover="color:#B4471F;">Email</a>
+        <a href="https://linkedin.com/in/kamal-raj-75b389b/" target="_blank" rel="noopener" style="text-decoration:none;color:#6B6358;font-size:14px;transition:color 160ms ease;" style-hover="color:#B4471F;">LinkedIn</a>
+        <a href="CV.dc.html" target="_blank" rel="noopener" style="text-decoration:none;color:#6B6358;font-size:14px;transition:color 160ms ease;" style-hover="color:#B4471F;">CV</a>
+      </div>
+    </div>
+    <div style="max-width:1180px;margin:28px auto 0;padding-top:24px;border-top:1px solid rgba(33,28,23,0.12);font-size:13px;color:#9C9286;">© 2026 Kamal Raj. All rights reserved.</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = {
+    form: { name: '', email: '', message: '' },
+    sent: false,
+  };
+
+  rootRef = (el) => { this.root = el; };
+  navRef = (el) => { this.nav = el; };
+
+  componentDidMount() {
+    this.refreshIcons();
+    this.setupNav();
+    this.setupCounters();
+    this.setupLinks();
+  }
+
+  setupLinks() {
+    if (!this.root) return;
+    this._onLinkClick = (e) => {
+      const a = e.target.closest ? e.target.closest('a') : null;
+      if (!a) return;
+      const href = a.getAttribute('href') || '';
+      if (!/\.dc\.html/.test(href) || /^https?:/i.test(href)) return;
+      e.preventDefault();
+      const q = window.location.search || '';
+      const [path, hash] = href.split('#');
+      const url = path + q + (hash ? '#' + hash : '');
+      if (a.target === '_blank') { const w = window.open(url, '_blank'); if (!w) window.location.href = url; }
+      else { window.location.href = url; }
+    };
+    this.root.addEventListener('click', this._onLinkClick);
+  }
+
+  setupCounters() {
+    if (!this.root) return;
+    const counters = Array.from(this.root.querySelectorAll('[data-count]'));
+    // Seed final value first so a row of zeros is never shown
+    counters.forEach((c) => { c.textContent = c.getAttribute('data-count'); });
+    const check = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      counters.forEach((c) => {
+        if (c._counted) return;
+        const r = c.getBoundingClientRect();
+        if (r.top < vh * 0.92 && r.bottom > -40) this.animateCount(c);
+      });
+    };
+    check();
+    setTimeout(check, 120);
+    window.addEventListener('scroll', check, { passive: true });
+    this._counterCheck = check;
+  }
+
+  refreshIcons() {
+    if (window.lucide && window.lucide.createIcons) {
+      try { window.lucide.createIcons(); } catch (e) {}
+    } else {
+      setTimeout(() => this.refreshIcons(), 200);
+    }
+  }
+
+  setupNav() {
+    const onScroll = () => {
+      if (!this.nav) return;
+      if (window.scrollY > 24) {
+        this.nav.style.background = 'rgba(244,238,227,0.86)';
+        this.nav.style.backdropFilter = 'blur(12px)';
+        this.nav.style.webkitBackdropFilter = 'blur(12px)';
+        this.nav.style.borderBottomColor = 'rgba(33,28,23,0.12)';
+        this.nav.style.padding = '14px 44px';
+      } else {
+        this.nav.style.background = 'transparent';
+        this.nav.style.backdropFilter = 'none';
+        this.nav.style.webkitBackdropFilter = 'none';
+        this.nav.style.borderBottomColor = 'transparent';
+        this.nav.style.padding = '22px 44px';
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    this._onScroll = onScroll;
+    onScroll();
+  }
+
+  setupReveal() {
+    if (!this.root) return;
+    const els = Array.from(this.root.querySelectorAll('[data-reveal]'));
+    els.forEach((el) => {
+      const delay = parseInt(el.getAttribute('data-reveal-delay') || '0', 10);
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 720ms cubic-bezier(0.16,1,0.3,1) ' + delay + 'ms, transform 720ms cubic-bezier(0.16,1,0.3,1) ' + delay + 'ms';
+      el.style.willChange = 'opacity, transform';
+    });
+    const reveal = (el) => {
+      if (el._shown) return;
+      el._shown = true;
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+      el.querySelectorAll('[data-count]').forEach((c) => this.animateCount(c));
+    };
+    const check = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      els.forEach((el) => {
+        if (el._shown) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < vh * 0.92 && r.bottom > -40) reveal(el);
+      });
+    };
+    check();
+    requestAnimationFrame(() => requestAnimationFrame(check));
+    setTimeout(check, 80);
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check, { passive: true });
+    this._revealCheck = check;
+    this._revealFallback = setTimeout(() => els.forEach(reveal), 1500);
+  }
+
+  animateCount(el) {
+    if (el._counted) return;
+    el._counted = true;
+    const target = parseFloat(el.getAttribute('data-count'));
+    const dur = 1400;
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(target * eased).toString();
+      if (t < 1) requestAnimationFrame(step);
+      else el.textContent = target.toString();
+    };
+    requestAnimationFrame(step);
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this._counterCheck) window.removeEventListener('scroll', this._counterCheck);
+    if (this._onLinkClick && this.root) this.root.removeEventListener('click', this._onLinkClick);
+  }
+
+  onName = (e) => { const v = e.target.value; this.setState((s) => ({ form: { ...s.form, name: v }, sent: false })); };
+  onEmail = (e) => { const v = e.target.value; this.setState((s) => ({ form: { ...s.form, email: v }, sent: false })); };
+  onMessage = (e) => { const v = e.target.value; this.setState((s) => ({ form: { ...s.form, message: v }, sent: false })); };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ sent: true, form: { name: '', email: '', message: '' } });
+  };
+
+  renderVals() {
+    return {
+      rootRef: this.rootRef,
+      navRef: this.navRef,
+      form: this.state.form,
+      sent: this.state.sent,
+      submitLabel: this.state.sent ? 'Sent' : 'Send message',
+      onName: this.onName,
+      onEmail: this.onEmail,
+      onMessage: this.onMessage,
+      onSubmit: this.onSubmit,
+      projects: [
+        {
+          num: '01',
+          title: 'Intel OpenVINO & Tiber Edge AI',
+          role: 'Developer Experience Technical Writer, Intel',
+          blurb: 'Owned developer docs for two AI inference platforms: API references, programming guides, CLI references, and runnable Python and C++ samples.',
+          href: 'https://docs.openvino.ai', target: '_blank',
+          stats: [ { value: '2', label: 'AI platforms' }, { value: '25%', label: 'faster onboarding' } ],
+        },
+        {
+          num: '02',
+          title: 'DocPilot',
+          role: 'Independent project, docs-as-code',
+          blurb: 'Open-source Python documentation pipeline: multi-agent generation wired into GitHub Actions CI/CD, built with Cursor and Claude Code.',
+          href: 'https://github.com/kamalraj21/contentcraft', target: '_blank',
+          stats: [ { value: 'CI/CD', label: 'every commit' }, { value: 'OSS', label: 'open source' } ],
+        },
+        {
+          num: '03',
+          title: 'Axon Networks DITA Pipeline',
+          role: 'Independent project, structured authoring',
+          blurb: 'A hand-authored DITA 1.3 system for an enterprise network OS: six structured topics, two ditamaps, one reusable fragment, zero duplication.',
+          href: 'https://github.com/kamalraj21/axon-docs', target: '_blank',
+          stats: [ { value: '6', label: 'DITA topics' }, { value: '0', label: 'duplicated' } ],
+        },
+        {
+          num: '04',
+          title: 'Token Mastery',
+          role: 'Independent project, course',
+          blurb: 'A self-paced course on LLM context engineering. Six modules, twenty-one lessons, published as an interactive web app.',
+          href: 'https://kamalraj21.github.io/token-mastery', target: '_blank',
+          stats: [ { value: '21', label: 'lessons' }, { value: 'Live', label: 'web app' } ],
+        },
+      ],
+      capabilities: [
+        { icon: 'bot', title: 'AI tooling', body: 'Production AI systems for writing teams: RAG pipelines, MCP-connected tools, and agentic search that absorb the slowest parts of the work.' },
+        { icon: 'network', title: 'Information architecture', body: 'Knowledge systems at scale: taxonomies, single-source publishing, and navigation that serves more than one developer audience at once.' },
+        { icon: 'git-branch', title: 'Docs-as-code', body: 'Markdown and DITA sources, CI/CD publishing with GitHub Actions, and validation that keeps content correct as products keep shipping.' },
+        { icon: 'book-open', title: 'Technical writing', body: 'Developer documentation for AI toolchains, enterprise platforms, and APIs, written for the engineers who build on top of them.' },
+        { icon: 'brain', title: 'Agentic systems', body: 'Multi-agent pipelines with human-in-the-loop review: AI drafts, experts approve, and editorial accuracy stays intact.' },
+        { icon: 'pen-tool', title: 'Content strategy', body: 'UX writing, terminology, accessibility, and localization aligned across product surfaces, in step with engineering and design.' },
+      ],
+      roles: [
+        { dates: 'Jan 2025 – Present', title: 'Staff Technical Writer', company: 'Salesforce', note: 'Content strategy and end-to-end docs for Enterprise Sales Management across four clouds. Built a ten-assistant AI content suite for the CX writing team.' },
+        { dates: 'Aug 2021 – Nov 2024', title: 'Developer Experience Technical Writer', company: 'Intel Corporation', note: 'Documentation for the OpenVINO and Tiber Edge AI platforms, with runnable Python and C++ samples. Cut developer onboarding time by 25%.' },
+        { dates: 'Feb 2021 – Jul 2021', title: 'Senior Technical Writer', company: 'Rakuten', note: 'Developer and DevOps documentation for Big Data platforms, with UX flows mapped in Figma.' },
+        { dates: 'Oct 2018 – Jan 2021', title: 'Senior Technical Writer', company: 'Netcracker Technology', note: 'Documentation for cloud services, aligned to Google style guidelines for readability and consistency.' },
+        { dates: 'Nov 2017 – Jun 2018', title: 'Senior Technical Writer', company: 'AgilePoint', note: 'DITA-based online help that improved content reuse by 40%.' },
+        { dates: 'Jun 2015 – May 2016', title: 'Senior Technical Writer', company: 'Evolving Systems', note: 'User guides, tutorials, and infographics that cut new-customer training time by 20%.' },
+        { dates: 'Jun 2011 – Feb 2014', title: 'Technical Writer', company: 'Oracle India', note: 'ERP and Order Management documentation for enterprise systems. 95% satisfaction from the implementation team.' },
+        { dates: 'Aug 2008 – May 2010', title: 'Technical Writer', company: 'Phantasm Games Studio', note: 'Game design, technical design, and tools and workflow guides that improved cross-team collaboration.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
