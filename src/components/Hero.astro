@@ -51,10 +51,19 @@
 </header>
 
 <!-- Tech ticker -->
+<style is:global>
+  @keyframes kr-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .kr-ticker-track { animation: none !important; }
+  }
+</style>
 <div style="border-top:1px solid rgba(33,28,23,0.14);border-bottom:1px solid rgba(33,28,23,0.14);padding:15px 0;overflow:hidden;position:relative;">
   <div style="position:absolute;left:0;top:0;bottom:0;width:90px;z-index:2;background:linear-gradient(90deg,#F4EEE3,transparent);pointer-events:none;"></div>
   <div style="position:absolute;right:0;top:0;bottom:0;width:90px;z-index:2;background:linear-gradient(270deg,#F4EEE3,transparent);pointer-events:none;"></div>
-  <div style="display:flex;width:max-content;animation:kr-marquee 44s linear infinite;">
+  <div class="kr-ticker-track" style="display:flex;width:max-content;animation:kr-marquee 44s linear infinite;">
     {['RAG','MCP','Agentic Search','Python','C++','DITA','Sphinx','reStructuredText','Markdown','GitHub Actions','CI/CD','Oxygen XML','Perforce'].flatMap((t, i, a) => [
       <span style="padding:0 26px;font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#8A8175;white-space:nowrap;">{t}</span>,
       i < a.length - 1 ? <span style="color:#C9BFB0;">·</span> : null
