@@ -1,0 +1,87 @@
+---
+import CaseStudy from '../../layouts/CaseStudy.astro';
+
+const sections = [
+  {
+    id: 'challenge', label: 'The challenge',
+    heading: 'From a heavyweight CMS to Git as the source of truth',
+    intro: 'At Intel, documentation ran on a docs-as-code setup paired with Adobe Experience Manager and a CI/CD pipeline. It worked, but publishing was heavy: content lived partly in the CMS, releases were coupled to it, and every change carried more process than the content itself warranted.',
+    blocks: [
+      { type: 'para', text: 'The goal was to make Git the single source of truth: author in Markdown, treat docs like code, and publish to a lightweight static site with one click, so ContentOps stopped being a bottleneck and writers could ship without waiting on the CMS.' },
+      { type: 'cards', items: [
+        { title: 'Content in a CMS', body: 'Source of truth split between the repo and AEM, so authoring and publishing pulled in two directions.' },
+        { title: 'Heavy release path', body: 'Publishing coupled to the CMS and its CI/CD, adding process to every routine content change.' },
+        { title: 'Two audiences ahead', body: 'Human readers today, and AI coding agents next, that need structured content rather than scraped HTML.' },
+      ]},
+    ],
+  },
+  {
+    id: 'role', label: 'My role',
+    heading: 'ContentOps, working across the org',
+    intro: 'I worked mainly on ContentOps for the migration, partnering with system architects, developers, and product managers and owners to move authoring and publishing onto GitHub as a headless CMS with one-click publishing.',
+    blocks: [
+      { type: 'steps', items: [
+        { n: '01', title: 'Content operations', points: ['Shaped how content was structured, versioned, and reviewed once Git was the source of truth: repo layout, frontmatter, and the review-as-pull-request workflow.'] },
+        { n: '02', title: 'Cross-functional partnership', points: ['Worked with system architects on the publishing architecture, with developers on the pipeline, and with PMs and POs on scope, sequencing, and rollout.'] },
+        { n: '03', title: 'One-click publishing', points: ['Helped move publishing off the CMS and onto an automated pipeline: edit as a pull request, ship with a single action or merge.'] },
+      ]},
+    ],
+  },
+  {
+    id: 'prototype', label: 'The prototype',
+    heading: 'A working reference implementation I own',
+    intro: 'To make the pattern concrete, defensible, and independent of any employer’s internal systems, I built a small open-source reference implementation from scratch in 2026. It is real code that runs, not a diagram.',
+    blocks: [
+      { type: 'para', text: 'One note on timeline, for accuracy: the headless CMS and one-click publishing above was my Intel engagement. The Model Context Protocol layer below is my own later prototype, built after that engagement and after MCP existed. It extends the same headless pattern to a new audience; it does not describe anything shipped at Intel.' },
+      { type: 'para', text: 'Documentation lives as Markdown with frontmatter in Git. A GitHub Actions workflow publishes it to a static site with one click or on merge. The same Markdown is served to AI agents over the Model Context Protocol, so an agent queries structured content instead of scraping a rendered page.' },
+      { type: 'steps', items: [
+        { n: '01', title: 'Git as the headless CMS', points: ['Each topic is one Markdown file with structured frontmatter (title, slug, summary, tags, audience) and an explicit "Rules for agents" section written as constraints, not prose.'] },
+        { n: '02', title: 'One-click publishing', points: ['A GitHub Actions workflow builds a static site plus a machine-readable index and deploys to GitHub Pages, triggered manually or automatically when content changes.'] },
+        { n: '03', title: 'MCP server for agents', points: ['A Node.js MCP server exposes list, get, and search tools over the same Markdown, so agents such as Claude Desktop or Cline retrieve grounded answers instead of hallucinating.'] },
+      ]},
+    ],
+  },
+  {
+    id: 'outcome', label: 'The outcome',
+    heading: 'One source, two audiences',
+    blocks: [
+      { type: 'metrics', items: [
+        { value: 'AEM → Git', label: 'Platform shift', detail: 'Moved the source of truth into the repository, so authoring and publishing stopped pulling in two directions.' },
+        { value: 'One click', label: 'Publishing', detail: 'Editing is a pull request; shipping is a single action or a merge, with no CMS in the loop.' },
+        { value: 'MCP', label: 'Machine access', detail: 'The working prototype serves the same content to AI agents as structured, queryable tools.' },
+      ]},
+      { type: 'quote', text: 'Treat documentation as code and you get one source of truth. Deliver it headlessly and the same content can serve both human readers and the AI agents that are becoming a second audience.' },
+    ],
+  },
+  {
+    id: 'insights', label: 'What it shows',
+    heading: 'What this project demonstrates',
+    blocks: [
+      { type: 'list', items: [
+        'ContentOps is an architecture problem as much as a writing one: repo layout, frontmatter, and the review workflow decide whether a headless setup scales.',
+        'Making Git the single source of truth removes a whole class of drift between a CMS and the repository.',
+        'The same structured content that publishes cleanly for humans is what an AI agent needs to answer without hallucinating.',
+        'A small working prototype you own and can run is the most defensible way to show a pattern you have led professionally.',
+      ]},
+    ],
+  },
+];
+---
+
+<CaseStudy
+  title="Headless Documentation: Git as CMS, one-click publishing, machine-ready content"
+  description="Moving documentation from a heavyweight CMS to GitHub as a headless CMS with one-click publishing, and a working MCP prototype that serves the same content to AI agents."
+  kicker="ContentOps · Docs-as-Code · AI Tooling"
+  org="Intel + independent prototype"
+  date="2021–2024 · prototype 2026"
+  lead="At Intel I worked on ContentOps to move documentation from a docs-as-code and AEM setup onto GitHub as a headless CMS with one-click publishing. I then built an independent, open-source prototype that extends the pattern to serve the same content to AI agents over the Model Context Protocol."
+  metrics={[
+    { value: 'AEM → Git', label: 'Headless CMS migration' },
+    { value: 'One click', label: 'Publishing pipeline' },
+    { value: 'MCP', label: 'Docs served to AI agents' },
+    { value: '2', label: 'Audiences: humans + agents' },
+  ]}
+  tech={['Git', 'GitHub Actions', 'Markdown', 'Headless CMS', 'Model Context Protocol', 'Node.js', 'ContentOps', 'CI/CD']}
+  repoUrl="https://github.com/kamalraj21/headless-docs-mcp"
+  sections={sections}
+/>
