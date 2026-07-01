@@ -42,6 +42,37 @@ const sections = [
     ],
   },
   {
+    id: 'plain', label: 'In plain terms',
+    heading: 'What this is, without the jargon',
+    intro: 'A short version for anyone who does not work with documentation tooling day to day.',
+    blocks: [
+      { type: 'para', text: 'Documentation is normally written for people to read in a browser. AI assistants, like the ones built into modern coding tools, increasingly need that same information too. They work far better when it is handed to them as clean, structured data than when they have to read a web page and guess.' },
+      { type: 'para', text: 'This project keeps one copy of the documentation, written as plain text files in GitHub, the place software teams already store their code. From that single copy, two things happen automatically: a normal website is published for people, and a small program (the "MCP server") makes the exact same content available to an AI assistant whenever it asks. Change the text once, and both the website and the AI stay in sync.' },
+      { type: 'para', text: 'MCP, the Model Context Protocol, is simply an open standard for how an AI assistant asks an outside source for information. Here it lets the assistant look things up in the real documentation instead of inventing an answer. The payoff: no duplicated effort, no separate system to maintain, and AI that answers from your actual docs.' },
+    ],
+  },
+  {
+    id: 'try', label: 'Try it',
+    heading: 'Connect an AI assistant to it yourself',
+    intro: 'The prototype is open source and runs locally. With Node.js and an MCP-capable client such as Claude Desktop, you can point an assistant at these docs in a couple of minutes.',
+    blocks: [
+      { type: 'steps', items: [
+        { n: '01', title: 'Get the code', points: ['Clone the repository and run npm install to pull the one dependency, the official MCP SDK.'] },
+        { n: '02', title: 'Point your client at the server', points: ['Add the server to your MCP client. For Claude Desktop, add this to claude_desktop_config.json and restart the app.'] },
+        { n: '03', title: 'Ask a question', points: ['Ask the assistant something like "search the docs for how to handle a 429". It calls the server’s tools and answers from the real files rather than guessing.'] },
+      ]},
+      { type: 'code', text: `{
+  "mcpServers": {
+    "headless-docs": {
+      "command": "node",
+      "args": ["/absolute/path/to/headless-docs-mcp/src/server.mjs"]
+    }
+  }
+}` },
+      { type: 'para', text: 'Prefer to just look? The published docs site and its machine-readable index are linked at the top of this page. The site is what a person sees; the MCP server serves the same content to an agent.' },
+    ],
+  },
+  {
     id: 'outcome', label: 'The outcome',
     heading: 'One source, two audiences',
     blocks: [
