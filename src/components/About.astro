@@ -1,67 +1,56 @@
 ---
-import { ArrowUpRight } from 'lucide-react';
-
 const capabilities = [
-  { icon: 'bot', title: 'AI tooling', body: 'Building doc pipelines with RAG, MCP agents, and constraint-bound generation.' },
-  { icon: 'network', title: 'Information architecture', body: 'Structuring large content systems so everything is findable and nothing is duplicated.' },
-  { icon: 'git-branch', title: 'Docs-as-code', body: 'Docs that live in version control, ship with CI/CD, and review like software.' },
-  { icon: 'pen-tool', title: 'Technical writing', body: 'Developer-grade clarity for API references, SDKs, guides, and release notes.' },
-  { icon: 'brain', title: 'Agentic systems', body: 'Designing multi-step AI workflows that produce consistent, auditable output at scale.' },
-  { icon: 'book-open', title: 'Content strategy', body: 'Content audits, taxonomy design, and doc-site IA for complex product surfaces.' },
+  { title: 'AI tooling', body: 'Building doc pipelines with RAG, MCP agents, and constraint-bound generation.' },
+  { title: 'Information architecture', body: 'Structuring large content systems so everything is findable and nothing is duplicated.' },
+  { title: 'Docs-as-code', body: 'Docs that live in version control, ship with CI/CD, and review like software.' },
+  { title: 'Technical writing', body: 'Developer-grade clarity for API references, SDKs, guides, and release notes.' },
+  { title: 'Agentic systems', body: 'Designing multi-step AI workflows that produce consistent, auditable output at scale.' },
+  { title: 'Content strategy', body: 'Content audits, taxonomy design, and doc-site IA for complex product surfaces.' },
 ];
-
-const iconPaths: Record<string, string> = {
-  'bot': 'M12 8V4H8M8 8H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V10a2 2 0 00-2-2h-4M8 8h8M12 12h.01M8 12h.01M16 12h.01',
-  'network': 'M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18',
-  'git-branch': 'M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9',
-  'pen-tool': 'M12 19l7-7 3 3-7 7-3-3zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5zM2 2l7.586 7.586M11 13a2 2 0 11-4 0 2 2 0 014 0z',
-  'brain': 'M9.5 2A2.5 2.5 0 017 4.5v.5H5a3 3 0 00-3 3v9a3 3 0 003 3h14a3 3 0 003-3v-9a3 3 0 00-3-3h-2v-.5A2.5 2.5 0 0014.5 2h-5zM7 10h10M7 14h10',
-  'book-open': 'M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z',
-};
 ---
 
-<section id="about" style="padding:108px 0;">
-  <div style="max-width:1180px;margin:0 auto;padding:0 44px;">
-    <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:start;">
-
-      <!-- Sticky left -->
-      <div style="position:sticky;top:112px;">
-        <p data-reveal style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#B4471F;margin:0 0 18px;">About</p>
-        <h2 data-reveal data-reveal-delay="60" style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,4.4vw,56px);letter-spacing:-0.02em;line-height:1.1;margin:0;">I make complicated platforms make sense.</h2>
+<section id="about" class="cds-section cds-rule-top">
+  <div class="cds-container">
+    <div class="about">
+      <div class="about__sticky">
+        <p class="type-label" data-reveal>About</p>
+        <h2 class="type-h2" data-reveal data-reveal-delay="60">I make complicated platforms make sense.</h2>
       </div>
 
-      <!-- Right: narrative + capabilities -->
-      <div>
-        <div data-reveal style="margin-bottom:48px;">
-          <p style="font-size:17px;line-height:1.65;color:#4A443B;margin:0 0 20px;">
-            I started writing developer documentation in 2008 and have spent most of the years since on the hard cases: inference SDKs, enterprise CX platforms, structured authoring systems, and internal tools that never had a doc team before I showed up.
-          </p>
-          <p style="font-size:17px;line-height:1.65;color:#4A443B;margin:0 0 20px;">
-            At Salesforce I spent two years designing AI-assisted workflows for a documentation team. Not automation for its own sake. Targeted tools that removed the parts of the job that grind writers down, so the editorial judgment they're actually good at could go further and faster.
-          </p>
-          <p style="font-size:17px;line-height:1.65;color:#4A443B;margin:0;">
-            I work in the stack now, not just the editor. Git, Python, CI/CD, agent frameworks. That lets me build systems that fit how engineering teams actually ship, not how someone thought they might.
-          </p>
+      <div class="about__body">
+        <div class="about__narrative" data-reveal>
+          <p>I started writing developer documentation in 2008 and have spent most of the years since on the hard cases: inference SDKs, enterprise CX platforms, structured authoring systems, and internal tools that never had a doc team before I showed up.</p>
+          <p>At Salesforce I spent two years designing AI-assisted workflows for a documentation team. Not automation for its own sake. Targeted tools that removed the parts of the job that grind writers down, so the editorial judgment they're actually good at could go further and faster.</p>
+          <p>I work in the stack now, not just the editor. Git, Python, CI/CD, agent frameworks. That lets me build systems that fit how engineering teams actually ship.</p>
         </div>
 
-        <!-- Capability list -->
-        <div data-reveal data-reveal-delay="60" style="border-top:1px solid rgba(33,28,23,0.12);">
-          <div style="display:grid;grid-template-columns:1fr 1fr;">
-            {capabilities.map((c, i) => (
-              <div style={`padding:24px 20px 24px 0;border-bottom:1px solid rgba(33,28,23,0.10);${i % 2 === 0 ? 'padding-right:32px;border-right:1px solid rgba(33,28,23,0.10);' : 'padding-left:32px;'}`}>
-                <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B4471F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                    <path d={iconPaths[c.icon]} />
-                  </svg>
-                  <span style="font-size:14px;font-weight:600;color:#211C17;">{c.title}</span>
-                </div>
-                <p style="font-size:13px;line-height:1.55;color:#6B6358;margin:0;">{c.body}</p>
-              </div>
-            ))}
-          </div>
+        <div class="cap" data-reveal data-reveal-delay="60">
+          {capabilities.map(c => (
+            <div class="cap__item">
+              <div class="cap__title"><span class="cap__dot"></span>{c.title}</div>
+              <p class="cap__body">{c.body}</p>
+            </div>
+          ))}
         </div>
       </div>
-
     </div>
   </div>
 </section>
+
+<style>
+  .about { display: grid; grid-template-columns: 1fr; gap: var(--sp-08); }
+  @media (min-width: 1056px) { .about { grid-template-columns: 1fr 1.3fr; gap: var(--sp-10); } }
+  .about__sticky .type-h2 { margin-top: var(--sp-04); }
+  @media (min-width: 1056px) { .about__sticky { position: sticky; top: 96px; } }
+
+  .about__narrative p { font-size: clamp(1rem, 1.3vw, 1.125rem); line-height: 1.6; color: var(--cds-text-secondary); margin: 0 0 var(--sp-05); }
+  .about__narrative { margin-bottom: var(--sp-08); }
+
+  .cap { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--cds-border-subtle); }
+  @media (min-width: 672px) { .cap { grid-template-columns: 1fr 1fr; } }
+  .cap__item { padding: var(--sp-05) 0; border-bottom: 1px solid var(--cds-border-subtle); }
+  @media (min-width: 672px) { .cap__item:nth-child(odd) { padding-right: var(--sp-07); border-right: 1px solid var(--cds-border-subtle); } .cap__item:nth-child(even) { padding-left: var(--sp-07); } }
+  .cap__title { display: flex; align-items: center; gap: var(--sp-03); font-size: 0.9375rem; font-weight: 600; color: var(--cds-text-primary); margin-bottom: var(--sp-03); }
+  .cap__dot { width: 8px; height: 8px; background: var(--cds-link-primary); flex-shrink: 0; }
+  .cap__body { font-size: 0.8125rem; line-height: 1.5; color: var(--cds-text-helper); margin: 0; }
+</style>

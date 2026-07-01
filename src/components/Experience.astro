@@ -13,27 +13,36 @@ const roles = [
 ];
 ---
 
-<section id="experience" style="padding:108px 0;border-top:1px solid rgba(33,28,23,0.10);">
-  <div style="max-width:1180px;margin:0 auto;padding:0 44px;">
-
-    <div data-reveal style="margin-bottom:56px;">
-      <p style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#B4471F;margin:0 0 18px;">Experience</p>
-      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,4.4vw,56px);letter-spacing:-0.02em;line-height:1.1;margin:0;">Eighteen years of making platforms make sense.</h2>
+<section id="experience" class="cds-section cds-rule-top">
+  <div class="cds-container">
+    <div class="exp__head" data-reveal>
+      <p class="type-label">Experience</p>
+      <h2 class="type-h2">Eighteen years of making platforms make sense.</h2>
     </div>
 
-    <div style="border-top:1px solid rgba(33,28,23,0.12);">
+    <div class="exp__list">
       {roles.map((r, i) => (
-        <div data-reveal data-reveal-delay={`${Math.min(i * 40, 220)}`}
-          style="display:grid;grid-template-columns:170px 1fr;gap:40px;padding:28px 0;border-bottom:1px solid rgba(33,28,23,0.10);align-items:baseline;">
-          <div style="font-size:13px;color:#8A8175;font-weight:400;padding-top:2px;">{r.dates}</div>
+        <div class="exp__row" data-reveal data-reveal-delay={`${Math.min(i * 40, 200)}`}>
+          <div class="exp__dates mono">{r.dates}</div>
           <div>
-            <div style="font-family:'Newsreader',serif;font-size:20px;font-weight:400;letter-spacing:-0.012em;color:#211C17;margin-bottom:3px;">{r.title}</div>
-            <div style="font-size:13px;font-weight:600;color:#B4471F;letter-spacing:0.04em;margin-bottom:6px;">{r.company}</div>
-            <div style="font-size:14px;line-height:1.55;color:#6B6358;">{r.note}</div>
+            <div class="exp__title">{r.title}</div>
+            <div class="exp__company">{r.company}</div>
+            <div class="exp__note">{r.note}</div>
           </div>
         </div>
       ))}
     </div>
-
   </div>
 </section>
+
+<style>
+  .exp__head { margin-bottom: var(--sp-08); }
+  .exp__head .type-h2 { margin-top: var(--sp-04); }
+  .exp__list { border-top: 1px solid var(--cds-border-subtle); }
+  .exp__row { display: grid; grid-template-columns: 1fr; gap: var(--sp-02); padding: var(--sp-06) 0; border-bottom: 1px solid var(--cds-border-subtle); }
+  @media (min-width: 672px) { .exp__row { grid-template-columns: 170px 1fr; gap: var(--sp-08); align-items: baseline; } }
+  .exp__dates { font-size: 0.8125rem; color: var(--cds-text-helper); }
+  .exp__title { font-size: 1.125rem; font-weight: 400; margin-bottom: var(--sp-01); }
+  .exp__company { font-size: 0.8125rem; font-weight: 600; color: var(--cds-link-primary); margin-bottom: var(--sp-03); }
+  .exp__note { font-size: 0.9375rem; line-height: 1.5; color: var(--cds-text-secondary); }
+</style>
