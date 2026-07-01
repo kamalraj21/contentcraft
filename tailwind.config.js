@@ -3,29 +3,34 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        violet: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          900: '#4c1d95',
+        paper: '#F4EEE3',
+        'paper-raised': '#FBF7EF',
+        ink: '#211C17',
+        'ink-soft': '#3A332B',
+        'ink-mid': '#4A443B',
+        muted: '#6B6358',
+        faint: '#8A8175',
+        fainter: '#9C9286',
+        rust: '#B4471F',
+        'rust-hover': '#8F3415',
+        'rust-dark': '#E0764A',
+        'contact-band': '#1A1714',
+        success: '#8FCB9B',
+      },
+      fontFamily: {
+        serif: ['Newsreader', 'Georgia', 'serif'],
+        sans: ['Hanken Grotesk', 'system-ui', 'sans-serif'],
+      },
+      keyframes: {
+        'kr-marquee': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
         },
-        pink: {
-          200: '#fbcfe8',
-          300: '#f9a8d4',
-        },
-        slate: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          600: '#475569',
-          900: '#0f172a',
-        }
-      }
-    }
+      },
+      animation: {
+        'kr-marquee': 'kr-marquee 44s linear infinite',
+      },
+    },
   },
   plugins: [],
-}; 
+};

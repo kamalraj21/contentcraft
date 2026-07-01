@@ -1,73 +1,131 @@
 ---
-import { getCollection } from 'astro:content';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-const allProjects = await getCollection('projects');
+const featured = {
+  title: 'Salesforce CX AI Content Suite',
+  role: 'Staff Technical Writer, Salesforce',
+  blurb: 'Designed and built a suite of ten AI writing assistants embedded in the documentation workflow for a team of eight technical writers. The system spans structured content intake, constraint-bound generation, and a structured review layer.',
+  chips: ['RAG', 'MCP', 'Python', 'Agentic Search', 'Claude API'],
+  stats: [
+    { value: '10', label: 'AI assistants built' },
+    { value: '80%', label: 'faster first drafts' },
+    { value: '75%', label: 'reduction in review passes' },
+    { value: '700+', label: 'content items migrated' },
+  ],
+  href: `${base}/projects/salesforce-ai-skills`,
+};
 
-const featuredProjects = allProjects
-  .filter((project) => project.data.featured)
-  .sort((a, b) => a.data.sort_order - b.data.sort_order);
+const projects = [
+  {
+    num: '01',
+    title: 'Intel OpenVINO & Tiber Edge AI',
+    role: 'Developer Experience Technical Writer, Intel',
+    blurb: 'Owned developer docs for two AI inference platforms: API references, programming guides, CLI references, and runnable Python and C++ samples.',
+    href: 'https://docs.openvino.ai',
+    target: '_blank',
+    stats: [{ value: '2', label: 'AI platforms' }, { value: '25%', label: 'faster onboarding' }],
+  },
+  {
+    num: '02',
+    title: 'DocPilot',
+    role: 'Independent project, docs-as-code',
+    blurb: 'Open-source Python documentation pipeline: multi-agent generation wired into GitHub Actions CI/CD, built with Cursor and Claude Code.',
+    href: 'https://github.com/kamalraj21/contentcraft',
+    target: '_blank',
+    stats: [{ value: 'CI/CD', label: 'every commit' }, { value: 'OSS', label: 'open source' }],
+  },
+  {
+    num: '03',
+    title: 'Axon Networks DITA Pipeline',
+    role: 'Independent project, structured authoring',
+    blurb: 'A hand-authored DITA 1.3 system for an enterprise network OS: six structured topics, two ditamaps, one reusable fragment, zero duplication.',
+    href: 'https://github.com/kamalraj21/axon-docs',
+    target: '_blank',
+    stats: [{ value: '6', label: 'DITA topics' }, { value: '0', label: 'duplicated' }],
+  },
+  {
+    num: '04',
+    title: 'Token Mastery',
+    role: 'Independent project, course',
+    blurb: 'A self-paced course on LLM context engineering. Six modules, twenty-one lessons, published as an interactive web app.',
+    href: 'https://kamalraj21.github.io/token-mastery',
+    target: '_blank',
+    stats: [{ value: '21', label: 'lessons' }, { value: 'Live', label: 'web app' }],
+  },
+];
 ---
 
-<section id="work" class="py-16 sm:py-24 bg-gradient-to-b from-white to-[#EEFBFB]/50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="max-w-2xl mx-auto text-center mb-16">
-      <h2 class="text-3xl font-bold leading-tight tracking-tight text-[#12232e] sm:text-4xl mb-4">
-        Work
-      </h2>
-      <p class="text-lg leading-relaxed text-slate-600">
-        Documentation systems and AI tooling shipped in production.
-      </p>
+<section id="work" style="padding:108px 0 0;">
+  <div style="max-width:1180px;margin:0 auto;padding:0 44px;">
+
+    <div data-reveal style="margin-bottom:56px;">
+      <p style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#B4471F;margin:0 0 18px;">Selected work</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,4.4vw,56px);letter-spacing:-0.02em;line-height:1.1;margin:0 0 12px;">Projects that shipped and held.</h2>
+      <p style="font-size:15px;color:#6B6358;margin:0;">A mix of enterprise deliverables, independent builds, and tools I designed from scratch.</p>
     </div>
 
-    <div class="grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-2">
-      {featuredProjects.map((project) => {
-        const { title, role_tag, description, outcome_metrics, tech_stack, github_repo, case_study_url, primary_track } = project.data;
-        const cardHref = case_study_url || github_repo;
-        const CardTag = cardHref ? 'a' : 'div';
-        const cardProps = case_study_url
-          ? { href: case_study_url }
-          : github_repo
-          ? { href: github_repo, target: '_blank', rel: 'noopener noreferrer' }
-          : {};
-
-        return (
-          <CardTag
-            {...cardProps}
-            data-primary-track={primary_track}
-            class="block p-6 sm:p-8 rounded-xl bg-white/80 backdrop-blur-sm border border-[#4DA8DA]/20 hover:border-[#007CC7]/50 hover:bg-gradient-to-b hover:from-white hover:to-[#EEFBFB]/60 hover:-translate-y-1 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] transition-all duration-300"
-          >
-            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-              <h3 class="text-xl font-semibold leading-tight text-[#12232e]">{title}</h3>
-              <span class="shrink-0 px-3 py-1 rounded-full text-xs font-mono bg-[#EEFBFB] text-[#007CC7] border border-[#4DA8DA]/40">
-                {role_tag}
-              </span>
-            </div>
-
-            <p class="text-slate-600 leading-relaxed mb-6">{description}</p>
-
-            {tech_stack?.length > 0 && (
-              <div class="flex flex-wrap gap-2 mb-6">
-                {tech_stack.map((tech) => (
-                  <span class="px-2 py-1 rounded-md text-xs font-mono bg-slate-50 text-slate-600 border border-slate-200">
-                    {tech}
-                  </span>
-                ))}
+    <!-- Featured card -->
+    <div data-reveal data-reveal-delay="60" style="background:#FBF7EF;border:1px solid rgba(33,28,23,0.14);border-radius:18px;padding:48px;margin-bottom:0;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">
+        <span style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#B4471F;">Flagship case study</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(22px,2.6vw,33px);letter-spacing:-0.015em;line-height:1.2;margin:0 0 10px;">{featured.title}</h3>
+          <p style="font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#6B6358;margin:0 0 20px;">{featured.role}</p>
+          <p style="font-size:15px;line-height:1.62;color:#4A443B;margin:0 0 24px;">{featured.blurb}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;">
+            {featured.chips.map(chip => (
+              <span style="font-size:12px;font-weight:500;padding:5px 12px;border:1px solid rgba(33,28,23,0.18);border-radius:6px;color:#3A332B;">{chip}</span>
+            ))}
+          </div>
+          <a href={featured.href} style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#211C17;background:#211C17;color:#F4EEE3;padding:13px 24px;border-radius:10px;text-decoration:none;transition:transform 200ms ease,background 200ms ease;"
+            onmouseover="this.style.background='#3A332B';this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.background='#211C17';this.style.transform='translateY(0)'">
+            Read case study
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+        </div>
+        <div>
+          <!-- Ledger stat grid -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(33,28,23,0.14);border-left:1px solid rgba(33,28,23,0.14);">
+            {featured.stats.map(s => (
+              <div style="padding:28px 24px 24px;border-right:1px solid rgba(33,28,23,0.14);border-bottom:1px solid rgba(33,28,23,0.14);">
+                <div style="font-family:'Newsreader',serif;font-size:clamp(28px,3.2vw,42px);font-weight:400;letter-spacing:-0.02em;line-height:0.95;margin-bottom:8px;">{s.value}</div>
+                <div style="font-size:12px;font-weight:500;color:#6B6358;letter-spacing:0.06em;text-transform:uppercase;">{s.label}</div>
               </div>
-            )}
-
-            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-[#4DA8DA]/20">
-              {outcome_metrics.map((metric) => (
-                <div>
-                  <p class="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-[#007CC7] to-[#12232e] bg-clip-text text-transparent">
-                    {metric.value}
-                  </p>
-                  <p class="text-xs text-slate-600">{metric.label}</p>
-                </div>
-              ))}
-            </div>
-          </CardTag>
-        );
-      })}
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Editorial row list -->
+    <div style="margin-top:0;border-top:1px solid rgba(33,28,23,0.12);">
+      {projects.map((p, i) => (
+        <a href={p.href} target={p.target} rel={p.target === '_blank' ? 'noopener noreferrer' : undefined}
+          data-reveal data-reveal-delay={`${60 + i * 60}`}
+          style="display:grid;grid-template-columns:56px 1fr auto;gap:24px;align-items:center;padding:28px 0;border-bottom:1px solid rgba(33,28,23,0.10);text-decoration:none;transition:padding 180ms ease,background 180ms ease;"
+          onmouseover="this.style.paddingLeft='12px';this.style.paddingRight='12px';this.style.background='rgba(33,28,23,0.03)';this.style.borderRadius='10px'"
+          onmouseout="this.style.paddingLeft='0';this.style.paddingRight='0';this.style.background='transparent';this.style.borderRadius='0'">
+          <span style="font-family:'Newsreader',serif;font-size:15px;color:#9C9286;font-weight:400;">{p.num}</span>
+          <div>
+            <div style="font-family:'Newsreader',serif;font-size:21px;font-weight:400;letter-spacing:-0.012em;color:#211C17;margin-bottom:4px;">{p.title}</div>
+            <div style="font-size:13px;color:#6B6358;margin-bottom:6px;">{p.role}</div>
+            <div style="font-size:14px;line-height:1.55;color:#4A443B;">{p.blurb}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end;min-width:120px;">
+            {p.stats.map(s => (
+              <div style="text-align:right;">
+                <div style="font-family:'Newsreader',serif;font-size:18px;font-weight:400;color:#211C17;">{s.value}</div>
+                <div style="font-size:11px;color:#8A8175;letter-spacing:0.08em;text-transform:uppercase;">{s.label}</div>
+              </div>
+            ))}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B4471F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:4px;"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          </div>
+        </a>
+      ))}
+    </div>
+
   </div>
 </section>

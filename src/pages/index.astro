@@ -3,120 +3,38 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Projects from '../components/Projects.astro';
 import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 
-const title = "Kamal Raj — Information Architect & AI Tooling Builder";
-const description = "Information Architect and AI tooling builder with 17 years turning complexity into clarity. Shipped 10 production AI tools at Salesforce, cutting documentation cycle times by 80%.";
+const title = "Kamal Raj — Staff Technical Writer, Developer Docs & AI Tooling";
+const description = "Staff Technical Writer with 18 years owning developer documentation for fast-moving platforms at Intel and Salesforce. Designed ten AI writing assistants that cut first-draft time by 80%.";
 ---
 
-<Layout title={title} description={description} isMainNav={true}>
-  <div class="min-h-screen flex flex-col">
-    <main class="flex-grow">
-      <Hero />
-      <Projects />
-      <About />
-      <Contact />
-    </main>
-    <Footer />
-  </div>
+<Layout title={title} description={description}>
+  <main>
+    <Hero />
+    <Projects />
+    <About />
+    <Experience />
+    <Contact />
+  </main>
+  <Footer />
 </Layout>
 
 <script>
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
       const href = this.getAttribute('href');
       if (!href) return;
-      const target = document.querySelector(href);
+      const hashIndex = href.indexOf('#');
+      if (hashIndex === -1) return;
+      const hash = href.slice(hashIndex);
+      const target = document.querySelector(hash);
       if (!target) return;
-      target.scrollIntoView({ behavior: 'smooth' });
-      history.pushState(null, '', href);
-    });
-  });
-
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData);
-      try {
-        console.log('Form submitted:', data);
-        form.reset();
-        alert('Thank you for your message! I\'ll get back to you soon.');
-      } catch (error) {
-        console.error('Error submitting form:', error);
-        alert('There was an error sending your message. Please try again.');
-      }
+      target.scrollIntoView({ behavior: 'smooth' });
+      history.pushState(null, '', hash);
     });
-  }
-
-  // Scroll-reveal with staggered card animation
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-fade-in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-  });
-
-  // Staggered reveal for grid cards inside sections
-  const cardObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const cards = entry.target.querySelectorAll(':scope > div > div > a, :scope > div > div > div');
-        cards.forEach((card, i) => {
-          setTimeout(() => {
-            card.classList.add('animate-card-in');
-          }, i * 80);
-        });
-        cardObserver.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('section').forEach(section => {
-    cardObserver.observe(section);
   });
 </script>
-
-<style>
-  :global(.animate-fade-in) {
-    animation: fadeIn 0.8s ease-out forwards;
-  }
-
-  :global(.animate-card-in) {
-    animation: fadeIn 0.6s ease-out forwards;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    :global(.animate-fade-in),
-    :global(.animate-card-in) {
-      animation: none;
-      opacity: 1;
-      transform: none;
-    }
-  }
-</style>

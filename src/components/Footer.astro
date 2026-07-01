@@ -1,77 +1,24 @@
 ---
-const currentYear = new Date().getFullYear();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const email = 'kamal.raj2181@gmail.com';
+const linkedin = 'https://linkedin.com/in/kamal-raj-75b389b';
 ---
 
-<footer class="py-12 bg-gradient-to-r from-[#EEFBFB] to-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-      <!-- Navigation -->
+<footer style="background:#1A1714;color:#C9BFB0;padding:0 0 48px;">
+  <div style="max-width:1180px;margin:0 auto;padding:0 44px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:32px;padding-bottom:36px;">
       <div>
-        <h3 class="text-[#12232e] font-semibold mb-4">Navigation</h3>
-        <ul class="space-y-2">
-          <li>
-            <a href="#work" class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors">Work</a>
-          </li>
-          <li>
-            <a href="#about" class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors">About</a>
-          </li>
-          <li>
-            <a href="#contact" class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors">Contact</a>
-          </li>
-        </ul>
+        <div style="font-family:'Newsreader',serif;font-size:26px;font-weight:400;letter-spacing:-0.015em;color:#F4EEE3;margin-bottom:6px;">Kamal Raj</div>
+        <div style="font-size:13px;letter-spacing:0.04em;color:#8A8175;">Staff Technical Writer · Developer Docs &amp; AI Tooling</div>
       </div>
-
-      <!-- Case Studies -->
-      <div>
-        <h3 class="text-[#12232e] font-semibold mb-4">Case Studies</h3>
-        <ul class="space-y-2">
-          <li><a href="/contentcraft/projects/salesforce-ai-skills" class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors">Salesforce AI Skills</a></li>
-<li><a href="/contentcraft/projects/docpilot-icecream" class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors">DocPilot × IceCream</a></li>
-<li><a href="/contentcraft/projects/intel-openvino" class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors">Intel OpenVINO</a></li>
-<li><a href="/contentcraft/projects/microlearning" class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors">Microlearning</a></li>
-<li><a href="/contentcraft/projects/documentation-redesign" class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors">Documentation Redesign</a></li>
-        </ul>
-      </div>
-
-      <!-- Connect -->
-      <div>
-        <h3 class="text-[#12232e] font-semibold mb-4">Connect</h3>
-        <ul class="space-y-2">
-          <li>
-            <a href="mailto:kamal.raj2181@gmail.com" class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors">Email</a>
-          </li>
-          <li>
-            <a href="https://linkedin.com/in/kamal-raj-75b389b/" class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors">LinkedIn</a>
-          </li>
-          <li>
-            <a href="https://github.com/kamalraj21" class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors">GitHub</a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Resources -->
-      <div>
-        <h3 class="text-[#12232e] font-semibold mb-4">Resources</h3>
-        <ul class="space-y-2">
-          <li>
-            <a
-              href="https://drive.google.com/file/d/1rdgW6N0riZYCzkZou5DI5BuPh5xr-lPF/view?usp=sharing"
-              class="text-slate-600 hover:text-[#007CC7] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007CC7] rounded transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Download CV
-            </a>
-          </li>
-        </ul>
+      <div style="display:flex;gap:28px;">
+        <a href={`mailto:${email}`} style="font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#C9BFB0;text-decoration:none;transition:color 180ms ease;" onmouseover="this.style.color='#E0764A'" onmouseout="this.style.color='#C9BFB0'">Email</a>
+        <a href={linkedin} target="_blank" rel="noopener noreferrer" style="font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#C9BFB0;text-decoration:none;transition:color 180ms ease;" onmouseover="this.style.color='#E0764A'" onmouseout="this.style.color='#C9BFB0'">LinkedIn</a>
+        <a href={`${base}/cv`} style="font-size:13px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#C9BFB0;text-decoration:none;transition:color 180ms ease;" onmouseover="this.style.color='#E0764A'" onmouseout="this.style.color='#C9BFB0'">CV</a>
       </div>
     </div>
-
-    <!-- Copyright -->
-    <div class="mt-12 pt-8 border-t border-[#4DA8DA]/30">
-      <p class="text-center text-slate-600">
-        © {currentYear} Information Architect. All rights reserved.
-      </p>
+    <div style="border-top:1px solid rgba(244,238,227,0.12);padding-top:28px;">
+      <p style="font-size:12px;color:#8A8175;margin:0;">© 2026 Kamal Raj. All rights reserved.</p>
     </div>
   </div>
 </footer>

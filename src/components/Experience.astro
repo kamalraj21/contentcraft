@@ -1,0 +1,37 @@
+---
+const roles = [
+  { dates: 'Jan 2025 – Present', title: 'Staff Technical Writer', company: 'Salesforce', note: 'Content strategy and end-to-end docs for Enterprise Sales Management across four clouds. Built a ten-assistant AI content suite for the CX writing team.' },
+  { dates: 'Aug 2021 – Nov 2024', title: 'Developer Experience Technical Writer', company: 'Intel Corporation', note: 'Documentation for the OpenVINO and Tiber Edge AI platforms, with runnable Python and C++ samples. Cut developer onboarding time by 25%.' },
+  { dates: 'Feb 2021 – Jul 2021', title: 'Senior Technical Writer', company: 'Rakuten', note: 'Developer and DevOps documentation for Big Data platforms, with UX flows mapped in Figma.' },
+  { dates: 'Oct 2018 – Jan 2021', title: 'Senior Technical Writer', company: 'Netcracker Technology', note: 'Documentation for cloud services, aligned to Google style guidelines for readability and consistency.' },
+  { dates: 'Nov 2017 – Jun 2018', title: 'Senior Technical Writer', company: 'AgilePoint', note: 'DITA-based online help that improved content reuse by 40%.' },
+  { dates: 'Jun 2015 – May 2016', title: 'Senior Technical Writer', company: 'Evolving Systems', note: 'User guides, tutorials, and infographics that cut new-customer training time by 20%.' },
+  { dates: 'Jun 2011 – Feb 2014', title: 'Technical Writer', company: 'Oracle India', note: 'ERP and Order Management documentation for enterprise systems. 95% satisfaction from the implementation team.' },
+  { dates: 'Aug 2008 – May 2010', title: 'Technical Writer', company: 'Phantasm Games Studio', note: 'Game design, technical design, and tools and workflow guides that improved cross-team collaboration.' },
+];
+---
+
+<section id="experience" style="padding:108px 0;border-top:1px solid rgba(33,28,23,0.10);">
+  <div style="max-width:1180px;margin:0 auto;padding:0 44px;">
+
+    <div data-reveal style="margin-bottom:56px;">
+      <p style="font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#B4471F;margin:0 0 18px;">Experience</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,4.4vw,56px);letter-spacing:-0.02em;line-height:1.1;margin:0;">Eighteen years of making platforms make sense.</h2>
+    </div>
+
+    <div style="border-top:1px solid rgba(33,28,23,0.12);">
+      {roles.map((r, i) => (
+        <div data-reveal data-reveal-delay={`${Math.min(i * 40, 220)}`}
+          style="display:grid;grid-template-columns:170px 1fr;gap:40px;padding:28px 0;border-bottom:1px solid rgba(33,28,23,0.10);align-items:baseline;">
+          <div style="font-size:13px;color:#8A8175;font-weight:400;padding-top:2px;">{r.dates}</div>
+          <div>
+            <div style="font-family:'Newsreader',serif;font-size:20px;font-weight:400;letter-spacing:-0.012em;color:#211C17;margin-bottom:3px;">{r.title}</div>
+            <div style="font-size:13px;font-weight:600;color:#B4471F;letter-spacing:0.04em;margin-bottom:6px;">{r.company}</div>
+            <div style="font-size:14px;line-height:1.55;color:#6B6358;">{r.note}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
