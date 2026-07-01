@@ -9,8 +9,8 @@ const linkedin = 'https://linkedin.com/in/kamal-raj-75b389b';
     <div class="contact__grid">
       <div class="contact__left">
         <p class="type-label contact__label" data-reveal>Contact</p>
-        <h2 class="type-h2 contact__h2" data-reveal data-reveal-delay="60">Let's talk about your documentation.</h2>
-        <p class="contact__intro" data-reveal data-reveal-delay="120">Whether you need a docs team led, an AI workflow built, or a content system untangled, I'd like to hear about it.</p>
+        <h2 class="type-h2 contact__h2" data-reveal data-reveal-delay="60">Get in touch.</h2>
+        <p class="contact__intro" data-reveal data-reveal-delay="120">Always glad to connect with writers, engineers, and teams working on documentation, developer experience, and AI tooling. Send a note and I'll reply.</p>
 
         <div class="contact__rows" data-reveal data-reveal-delay="180">
           <a href={`mailto:${email}`} class="contact__row">
@@ -28,7 +28,7 @@ const linkedin = 'https://linkedin.com/in/kamal-raj-75b389b';
         </div>
       </div>
 
-      <form id="kr-contact-form" class="contact__form" data-reveal data-reveal-delay="120" action="https://formspree.io/f/xpzgkqyw" method="POST">
+      <form id="kr-contact-form" class="contact__form" data-reveal data-reveal-delay="120">
         <div class="field">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required />
@@ -46,7 +46,7 @@ const linkedin = 'https://linkedin.com/in/kamal-raj-75b389b';
             <span id="kr-submit-text">Send message</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
           </button>
-          <span id="kr-success" class="contact__success">Sent. I'll be in touch shortly.</span>
+          <span id="kr-success" class="contact__success">Your email app should open with the message ready to send.</span>
         </div>
       </form>
     </div>
@@ -85,14 +85,17 @@ const linkedin = 'https://linkedin.com/in/kamal-raj-75b389b';
     if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var btnText = document.getElementById('kr-submit-text');
       var success = document.getElementById('kr-success');
-      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
-        .then(function (res) {
-          if (res.ok) { btnText.textContent = 'Sent'; success.style.display = 'inline'; form.reset(); }
-          else { btnText.textContent = 'Try again'; }
-        })
-        .catch(function () { btnText.textContent = 'Try again'; });
+      var name = (form.querySelector('#name') || {}).value || '';
+      var email = (form.querySelector('#email') || {}).value || '';
+      var message = (form.querySelector('#message') || {}).value || '';
+      var subject = 'Portfolio enquiry from ' + name;
+      var body = message + '\n\nFrom: ' + name + ' (' + email + ')';
+      var href = 'mailto:kamal.raj2181@gmail.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+      window.location.href = href;
+      success.style.display = 'inline';
     });
   })();
 </script>
