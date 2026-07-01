@@ -3,27 +3,26 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 const posts = await getCollection('blog');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<Layout title="Blog | Your Portfolio" isMainNav={true}>
-  <main class="max-w-3xl mx-auto py-12 px-4">
-    <h1 class="text-4xl font-bold mb-8 text-violet-700">Blog</h1>
-    <ul class="space-y-6">
-      {posts.length === 0 && (
-        <li class="text-gray-500">No blog posts yet.</li>
-      )}
-      {posts.map(post => (
-        <li class="bg-white/80 rounded-lg shadow p-6 hover:shadow-lg transition">
-          <a
-            href={`/contentcraft/blog/${post.slug}/`}
-            class="text-2xl font-semibold text-pink-600 hover:underline"
-          >
-            {post.data.title}
+<Layout title="Blog — Kamal Raj">
+  <main class="cds-section" style="padding-top:120px;">
+    <div class="cds-container" style="max-width:820px;">
+      <p class="type-label">Writing</p>
+      <h1 class="type-h2" style="margin:12px 0 32px;">Blog</h1>
+      <div style="border-top:1px solid var(--cds-border-subtle);">
+        {posts.length === 0 && (
+          <p class="type-body" style="padding:32px 0;">No posts yet.</p>
+        )}
+        {posts.map(post => (
+          <a href={`${base}/blog/${post.slug}/`} style="display:block;padding:24px 0;border-bottom:1px solid var(--cds-border-subtle);text-decoration:none;color:inherit;">
+            <div style="font-size:1.25rem;font-weight:400;margin-bottom:6px;color:var(--cds-link-primary);">{post.data.title}</div>
+            <p class="type-body" style="margin:0 0 6px;">{post.data.description}</p>
+            <small class="type-meta">{post.data.pubDate}</small>
           </a>
-          <p class="mt-2 text-gray-700">{post.data.description}</p>
-          <small class="block mt-2 text-gray-500">{post.data.pubDate}</small>
-        </li>
-      ))}
-    </ul>
+        ))}
+      </div>
+    </div>
   </main>
 </Layout>

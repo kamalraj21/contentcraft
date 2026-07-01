@@ -1,120 +1,70 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import CaseStudyNavigation from '../../components/CaseStudyNavigation.astro';
-import DeploymentCaseStudy from '../../components/DeploymentCaseStudy.jsx';
+import CaseStudy from '../../layouts/CaseStudy.astro';
 
-const pageTitle = "Deployment Tool Content Design";
-
-const sectionNavLinks = [
-  { label: "Challenge", href: "#challenge" },
-  { label: "Strategy", href: "#strategy" },
-  { label: "Results", href: "#results" },
-  { label: "Insights", href: "#insights" }
-];
-
-const projectInfo = {
-  client: "AI Infrastructure Team",
-  role: "Content Design Lead",
-  timeline: "2022-2023",
-  focus: "Technical UX Writing"
-};
-
-const challenge = {
-  title: "The Challenge",
-  description: "Simplify complex AI deployment workflows for both technical and non-technical users while maintaining advanced functionality and technical accuracy.",
-  painPoints: [
-    "Complex deployment processes causing user friction",
-    "Technical jargon creating barriers for non-ML engineers",
-    "High support ticket volume for basic deployments",
-    "Inconsistent documentation across deployment stages"
-  ]
-};
-
-const strategy = {
-  title: "Strategic Approach",
-  steps: [
-    {
-      action: "User Research & Journey Mapping",
-      details: "Conducted in-depth interviews with different user personas from ML engineers to DevOps teams, mapping their deployment journeys and pain points"
-    },
-    {
-      action: "Content Architecture Design",
-      details: "Developed a progressive disclosure framework that adapts to user expertise levels, creating clear pathways for different deployment scenarios"
-    },
-    {
-      action: "In-Tool Guidance System",
-      details: "Implemented contextual help, smart defaults, and interactive tutorials directly within the deployment interface"
-    },
-    {
-      action: "Validation & Iteration",
-      details: "Established continuous feedback loops with users, measuring success through deployment completion rates and support ticket reduction"
-    }
-  ]
-};
-
-const implementation = {
-  title: "Implementation Details",
-  areas: [
-    {
-      title: "Smart Defaults & Tooltips",
-      description: "Implemented intelligent default settings with clear explanations, helping users make informed decisions without deep technical knowledge"
-    },
-    {
-      title: "Interactive Tutorials",
-      description: "Created step-by-step tutorials with real-time validation for common deployment scenarios"
-    },
-    {
-      title: "Error Prevention",
-      description: "Developed proactive guidance system that flags potential issues before they occur"
-    }
-  ]
-};
-
-const outcomes = [
+const sections = [
   {
-    metric: "30%",
-    label: "Faster Deployments",
-    description: "Reduced average deployment time through streamlined guidance"
+    id: 'challenge', label: 'The challenge',
+    heading: 'Making complex AI deployment approachable',
+    intro: 'Simplify complex AI deployment workflows for both technical and non-technical users while maintaining advanced functionality and technical accuracy.',
+    blocks: [
+      { type: 'list', items: [
+        'Complex deployment processes causing user friction.',
+        'Technical jargon creating barriers for non-ML engineers.',
+        'High support ticket volume for basic deployments.',
+        'Inconsistent documentation across deployment stages.',
+      ]},
+    ],
   },
   {
-    metric: "85%",
-    label: "User Satisfaction",
-    description: "Improvement in user confidence and successful deployments"
+    id: 'strategy', label: 'The approach',
+    heading: 'Progressive disclosure and in-tool guidance',
+    blocks: [
+      { type: 'steps', items: [
+        { n: '01', title: 'User research and journey mapping', points: ['Conducted in-depth interviews with personas from ML engineers to DevOps teams, mapping their deployment journeys and pain points.'] },
+        { n: '02', title: 'Content architecture design', points: ['Developed a progressive disclosure framework that adapts to user expertise levels, with clear pathways for different deployment scenarios.'] },
+        { n: '03', title: 'In-tool guidance system', points: ['Implemented contextual help, smart defaults, and interactive tutorials directly within the deployment interface.'] },
+        { n: '04', title: 'Validation and iteration', points: ['Established continuous feedback loops, measuring success through deployment completion rates and support ticket reduction.'] },
+      ]},
+    ],
   },
   {
-    metric: "25%",
-    label: "Support Reduction",
-    description: "Decrease in support tickets through improved self-service"
-  }
-];
-
-const insights = [
-  "Progressive disclosure is crucial for managing complex technical processes without overwhelming users",
-  "Contextual guidance at decision points significantly reduces errors and improves confidence",
-  "Cross-functional collaboration between ML engineers and content designers is essential for accurate, user-friendly documentation",
-  "Regular user testing with different personas ensures content meets diverse user needs"
+    id: 'results', label: 'The outcome',
+    heading: 'Faster, more confident deployments',
+    blocks: [
+      { type: 'metrics', items: [
+        { value: '30%', label: 'Faster deployments', detail: 'Reduced average deployment time through streamlined guidance.' },
+        { value: '85%', label: 'User satisfaction', detail: 'Improvement in user confidence and successful deployments.' },
+        { value: '25%', label: 'Support reduction', detail: 'Decrease in support tickets through improved self-service.' },
+      ]},
+    ],
+  },
+  {
+    id: 'insights', label: 'What it shows',
+    heading: 'Key learnings',
+    blocks: [
+      { type: 'list', items: [
+        'Progressive disclosure is crucial for managing complex technical processes without overwhelming users.',
+        'Contextual guidance at decision points significantly reduces errors and improves confidence.',
+        'Cross-functional collaboration between ML engineers and content designers is essential for accurate, user-friendly documentation.',
+        'Regular user testing with different personas ensures content meets diverse user needs.',
+      ]},
+    ],
+  },
 ];
 ---
 
-<Layout title={pageTitle}>
-  <DeploymentCaseStudy 
-    sectionNavLinks={sectionNavLinks}
-    projectInfo={projectInfo}
-    challenge={challenge}
-    strategy={strategy}
-    implementation={implementation}
-    outcomes={outcomes}
-    insights={insights}
-    client:load 
-  />
-  
-  <CaseStudyNavigation currentSlug="deployment-tool" />
-</Layout>
-<style>
-  .progress-bar {
-    width: 0;
-    transition: width 0.2s ease-out;
-  }
-</style>
-
-
+<CaseStudy
+  title="AI Deployment Tool Content Design"
+  description="Simplifying complex AI deployment workflows through progressive disclosure and in-tool guidance."
+  kicker="Technical UX Writing · Content Design"
+  org="AI Infrastructure Team"
+  date="2022–2023"
+  lead="Simplified complex AI deployment workflows for both technical and non-technical users through progressive disclosure and contextual, in-tool guidance."
+  metrics={[
+    { value: '30%', label: 'Faster deployments' },
+    { value: '85%', label: 'User satisfaction' },
+    { value: '25%', label: 'Fewer support tickets' },
+  ]}
+  tech={['Technical UX Writing', 'Content Design', 'Progressive Disclosure', 'In-tool Guidance']}
+  sections={sections}
+/>

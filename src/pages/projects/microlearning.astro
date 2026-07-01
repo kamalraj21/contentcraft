@@ -1,232 +1,70 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import CaseStudyNavigation from '../../components/CaseStudyNavigation.astro';
-import MicrolearningCaseStudy from '../../components/MicrolearningCaseStudy.jsx';
+import CaseStudy from '../../layouts/CaseStudy.astro';
 
-const pageTitle = "Microlearning Content Design";
-
-const sectionNavLinks = [
-  { label: "Challenge", href: "#challenge" },
-  { label: "Strategy", href: "#strategy" },
-  { label: "Results", href: "#results" },
-  { label: "Insights", href: "#insights" }
-];
-
-const projectInfo = {
-  client: "Intel Corporation",
-  role: "Content Design Lead",
-  timeline: "2021-2022",
-  focus: "Learning Design"
-};
-
-const challenge = {
-  title: "The Challenge",
-  description: "Transform complex technical documentation into bite-sized, engaging learning experiences that increase retention and accelerate developer onboarding while maintaining technical accuracy.",
-  painPoints: [
-    "Dense technical content overwhelming users",
-    "Long onboarding time for new developers",
-    "Low completion rates for documentation",
-    "Poor information retention rates"
-  ]
-};
-
-const strategy = {
-  title: "Strategic Approach",
-  steps: [
-    {
-      action: "Learning Pattern Analysis",
-      details: "Analyzed developer learning patterns and identified key friction points in the documentation journey through comprehensive user research"
-    },
-    {
-      action: "Content Architecture",
-      details: "Developed modular content framework that breaks complex topics into digestible, interconnected learning units"
-    },
-    {
-      action: "Interactive Components",
-      details: "Created interactive code examples and hands-on exercises to reinforce learning and improve engagement"
-    },
-    {
-      action: "Progressive Learning Path",
-      details: "Implemented adaptive learning paths that adjust to user proficiency levels and learning preferences"
-    }
-  ]
-};
-
-const implementation = {
-  title: "Implementation Details",
-  areas: [
-    {
-      title: "Bite-sized Modules",
-      description: "Transformed lengthy documentation into 5-minute learning modules with clear learning objectives"
-    },
-    {
-      title: "Interactive Examples",
-      description: "Integrated live code editors and real-time validation for hands-on learning"
-    },
-    {
-      title: "Progress Tracking",
-      description: "Implemented learning analytics to help users track their progress and identify knowledge gaps"
-    }
-  ]
-};
-
-const outcomes = [
+const sections = [
   {
-    metric: "50%",
-    label: "Learning Time",
-    description: "Reduction in time-to-competency through focused learning modules"
+    id: 'challenge', label: 'The challenge',
+    heading: 'Turning dense docs into learning that sticks',
+    intro: 'Transform complex technical documentation into bite-sized, engaging learning experiences that increase retention and accelerate developer onboarding while maintaining technical accuracy.',
+    blocks: [
+      { type: 'list', items: [
+        'Dense technical content overwhelming users.',
+        'Long onboarding time for new developers.',
+        'Low completion rates for documentation.',
+        'Poor information retention rates.',
+      ]},
+    ],
   },
   {
-    metric: "85%",
-    label: "Info Retention",
-    description: "Improvement in knowledge retention through interactive learning"
+    id: 'strategy', label: 'The approach',
+    heading: 'A modular, interactive learning framework',
+    blocks: [
+      { type: 'steps', items: [
+        { n: '01', title: 'Learning pattern analysis', points: ['Analyzed developer learning patterns and identified key friction points in the documentation journey through comprehensive user research.'] },
+        { n: '02', title: 'Content architecture', points: ['Developed a modular content framework that breaks complex topics into digestible, interconnected learning units.'] },
+        { n: '03', title: 'Interactive components', points: ['Created interactive code examples and hands-on exercises to reinforce learning and improve engagement.'] },
+        { n: '04', title: 'Progressive learning path', points: ['Implemented adaptive learning paths that adjust to user proficiency levels and learning preferences.'] },
+      ]},
+    ],
   },
   {
-    metric: "3x",
-    label: "Engagement",
-    description: "Increase in documentation engagement and completion rates"
-  }
-];
-
-const insights = [
-  "Breaking complex information into digestible chunks significantly improves learning outcomes",
-  "Interactive elements and practical examples increase engagement and retention",
-  "Personalized learning paths cater to different learning styles and expertise levels",
-  "Regular feedback loops are essential for continuous content improvement"
+    id: 'results', label: 'The outcome',
+    heading: 'Faster onboarding, better retention',
+    blocks: [
+      { type: 'metrics', items: [
+        { value: '50%', label: 'Less learning time', detail: 'Reduction in time-to-competency through focused learning modules.' },
+        { value: '85%', label: 'Info retention', detail: 'Improvement in knowledge retention through interactive learning.' },
+        { value: '3x', label: 'Engagement', detail: 'Increase in documentation engagement and completion rates.' },
+      ]},
+    ],
+  },
+  {
+    id: 'insights', label: 'What it shows',
+    heading: 'Key learnings',
+    blocks: [
+      { type: 'list', items: [
+        'Breaking complex information into digestible chunks significantly improves learning outcomes.',
+        'Interactive elements and practical examples increase engagement and retention.',
+        'Personalized learning paths cater to different learning styles and expertise levels.',
+        'Regular feedback loops are essential for continuous content improvement.',
+      ]},
+    ],
+  },
 ];
 ---
 
-<Layout title={pageTitle}>
-  <MicrolearningCaseStudy 
-    sectionNavLinks={sectionNavLinks}
-    projectInfo={projectInfo}
-    challenge={challenge}
-    strategy={strategy}
-    implementation={implementation}
-    outcomes={outcomes}
-    insights={insights}
-    client:load 
-  />
-  
-  <CaseStudyNavigation currentSlug="microlearning" />
-</Layout>
-
-<style>
-  .progress-bar {
-    width: 0;
-    transition: width 0.2s ease-out;
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const progressBar = document.querySelector('.progress-bar');
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
-    // Handle main navigation links
-    document.querySelectorAll('a[href^="/contentcraft/#"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        const href = link.getAttribute('href');
-        if (href) {
-          e.preventDefault();
-          window.location.href = href;
-        }
-      });
-    });
-
-    // Progress bar functionality
-    function updateProgressBar() {
-      if (!progressBar) return;
-
-      const winScroll = window.scrollY;
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = (winScroll / height) * 100;
-      progressBar.style.width = scrolled + '%';
-    }
-
-    // Section navigation (smooth scroll)
-    navLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        if (!targetId) return;
-
-        const targetSection = document.querySelector(targetId);
-        if (targetSection) {
-          const headerOffset = 80;
-          const elementPosition = targetSection.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // Active section highlighting
-    function updateActiveSection() {
-      const fromTop = window.scrollY + 100;
-
-      sections.forEach(section => {
-        const id = section.getAttribute('id');
-        const link = document.querySelector(`nav a[href="#${id}"]`);
-        
-        if (!link) return;
-
-        const scrollAtSectionTop = section.offsetTop;
-        const scrollAtSectionBottom = scrollAtSectionTop + section.offsetHeight;
-
-        if (fromTop >= scrollAtSectionTop && fromTop <= scrollAtSectionBottom) {
-          link.classList.add('text-blue-600');
-          link.classList.remove('text-gray-500');
-        } else {
-          link.classList.remove('text-blue-600');
-          link.classList.add('text-gray-500');
-        }
-      });
-    }
-
-    // Event listeners
-    window.addEventListener('scroll', () => {
-      updateProgressBar();
-      updateActiveSection();
-    });
-
-    window.addEventListener('resize', updateProgressBar);
-    
-    // Initial update
-    updateProgressBar();
-    updateActiveSection();
-    
-    // Handle window resize
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        updateProgressBar();
-        updateActiveSection();
-      }, 250);
-    });
-
-    // Handle mobile menu
-    const mobileMenuButton = document.querySelector('[aria-label="Open menu"]');
-    const mobileMenu = document.querySelector('#mobile-menu');
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', () => {
-        const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-        mobileMenuButton.setAttribute('aria-expanded', !expanded);
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
-
-    // Cleanup function
-    return () => {
-      window.removeEventListener('scroll', updateProgressBar);
-      window.removeEventListener('scroll', updateActiveSection);
-      window.removeEventListener('resize', updateProgressBar);
-    };
-  });
-</script>
+<CaseStudy
+  title="Microlearning at Intel"
+  description="Transforming dense technical documentation into bite-sized interactive modules, cutting learning time by 50% while improving retention."
+  kicker="Learning Design · Content Strategy"
+  org="Intel Corporation"
+  date="2021–2022"
+  lead="Transformed complex technical documentation into bite-sized, engaging learning experiences that cut learning time by 50% and improved retention."
+  metrics={[
+    { value: '50%', label: 'Less learning time' },
+    { value: '85%', label: 'Info retention' },
+    { value: '3x', label: 'Engagement' },
+  ]}
+  tech={['Learning Design', 'Content Strategy', 'DITA', 'Interactive Modules']}
+  sections={sections}
+/>

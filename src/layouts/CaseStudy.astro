@@ -1,0 +1,244 @@
+---
+import '../styles/carbon.css';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+interface Metric { value: string; label: string; detail?: string; }
+interface Step { n: string; title: string; subtitle?: string; points: string[]; }
+interface Card { title: string; body: string; }
+interface Block {
+  type: 'para' | 'steps' | 'cards' | 'metrics' | 'list' | 'quote';
+  text?: string; items?: any[];
+}
+interface Section { id: string; label: string; heading: string; intro?: string; blocks: Block[]; }
+interface Props {
+  title: string; description?: string;
+  kicker: string; org: string; date: string; lead: string;
+  metrics: Metric[]; tech: string[]; sections: Section[];
+}
+const { title, description, kicker, org, date, lead, metrics, tech, sections } = Astro.props;
+const pageTitle = `${title} — Kamal Raj`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <header class="cs-topnav">
+      <div class="cs-topnav__inner">
+        <a href={`${base}/#work`} class="cs-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+          Back to portfolio
+        </a>
+        <a href={`${base}/#contact`} class="btn btn--primary cs-topnav__cta">
+          Get in touch
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <main class="cs">
+      <!-- Hero -->
+      <section class="cs-hero cds-container">
+        <div class="cs-hero__meta">
+          <span class="type-label" style="margin:0;">{kicker}</span>
+          <span class="cs-hero__org mono">{org} · {date}</span>
+        </div>
+        <h1 class="type-display cs-hero__title">{title}</h1>
+        <p class="type-lead cs-hero__lead">{lead}</p>
+
+        <div class="cs-metrics">
+          {metrics.map(m => (
+            <div class="cs-metric">
+              <div class="cs-metric__num">{m.value}</div>
+              <div class="cs-metric__label">{m.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div class="cs-tech">
+          {tech.map(t => <span class="tag">{t}</span>)}
+        </div>
+      </section>
+
+      <!-- Body -->
+      <div class="cds-container">
+        {sections.map(s => (
+          <section id={s.id} class="cs-section">
+            <div class="cs-section__label">
+              <span class="type-label">{s.label}</span>
+            </div>
+            <div class="cs-section__body">
+              <h2 class="type-h2 cs-section__heading">{s.heading}</h2>
+              {s.intro && <p class="cs-section__intro">{s.intro}</p>}
+
+              {s.blocks.map(b => (
+                <>
+                  {b.type === 'para' && <p class="cs-para">{b.text}</p>}
+
+                  {b.type === 'quote' && (
+                    <blockquote class="cs-quote">{b.text}</blockquote>
+                  )}
+
+                  {b.type === 'list' && (
+                    <ol class="cs-insights">
+                      {b.items.map((it: string, i: number) => (
+                        <li class="cs-insight"><span class="cs-insight__n">{i + 1}</span><span>{it}</span></li>
+                      ))}
+                    </ol>
+                  )}
+
+                  {b.type === 'metrics' && (
+                    <div class="cs-detailgrid">
+                      {b.items.map((m: Metric) => (
+                        <div class="cs-detail">
+                          <div class="cs-detail__num">{m.value}</div>
+                          <div class="cs-detail__body">
+                            <div class="cs-detail__label">{m.label}</div>
+                            {m.detail && <p class="cs-detail__text">{m.detail}</p>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {b.type === 'cards' && (
+                    <div class="cs-cards">
+                      {b.items.map((c: Card) => (
+                        <div class="cs-card">
+                          <h3 class="cs-card__title">{c.title}</h3>
+                          <p class="cs-card__body">{c.body}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {b.type === 'steps' && (
+                    <div class="cs-steps">
+                      {b.items.map((st: Step) => (
+                        <div class="cs-step">
+                          <span class="cs-step__n mono">{st.n}</span>
+                          <div class="cs-step__main">
+                            <div class="cs-step__head">
+                              <span class="cs-step__title">{st.title}</span>
+                              {st.subtitle && <span class="cs-step__sub">{st.subtitle}</span>}
+                            </div>
+                            <ul class="cs-step__points">
+                              {st.points.map((p: string) => <li>{p}</li>)}
+                            </ul>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </>
+              ))}
+            </div>
+          </section>
+        ))}
+
+        <div class="cs-cta">
+          <a href={`${base}/#work`} class="btn btn--ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            Back to all work
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="cs-footer">
+      <div class="cds-container">
+        <div class="cs-footer__row">
+          <div>
+            <div class="cs-footer__name">Kamal Raj</div>
+            <div class="cs-footer__role mono">Staff Technical Writer · Developer Docs &amp; AI Tooling</div>
+          </div>
+          <div class="cs-footer__links">
+            <a href="mailto:kamal.raj2181@gmail.com">Email</a>
+            <a href="https://linkedin.com/in/kamal-raj-75b389b" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href={`${base}/cv`}>CV</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      .cs-topnav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--cds-border-subtle); }
+      .cs-topnav__inner { max-width: var(--cds-container); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 48px; padding: 0 16px; }
+      @media (min-width: 672px) { .cs-topnav__inner { padding: 0 32px; height: 56px; } }
+      @media (min-width: 1056px) { .cs-topnav__inner { padding: 0 40px; } }
+      .cs-back { display: inline-flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--cds-text-secondary); text-decoration: none; }
+      .cs-back:hover { color: var(--cds-text-primary); }
+      .cs-topnav__cta { min-height: 40px; }
+
+      .cs-hero { padding-top: var(--sp-09); padding-bottom: var(--sp-08); }
+      @media (min-width: 1056px) { .cs-hero { padding-top: var(--sp-11); } }
+      .cs-hero__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-05); margin-bottom: var(--sp-06); }
+      .cs-hero__org { font-size: 0.8125rem; color: var(--cds-text-helper); }
+      .cs-hero__title { max-width: 20ch; margin-bottom: var(--sp-06); }
+      .cs-hero__lead { max-width: 60ch; margin: 0 0 var(--sp-08); }
+
+      .cs-metrics { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--cds-border-subtle); border-left: 1px solid var(--cds-border-subtle); margin-bottom: var(--sp-06); }
+      @media (min-width: 672px) { .cs-metrics { grid-template-columns: repeat(4, 1fr); } }
+      .cs-metric { padding: var(--sp-05); border-right: 1px solid var(--cds-border-subtle); border-bottom: 1px solid var(--cds-border-subtle); }
+      .cs-metric__num { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1; margin-bottom: var(--sp-03); }
+      .cs-metric__label { font-size: 0.75rem; color: var(--cds-text-helper); line-height: 1.3; }
+      .cs-tech { display: flex; flex-wrap: wrap; gap: var(--sp-03); }
+
+      .cs-section { display: grid; grid-template-columns: 1fr; gap: var(--sp-05); padding: var(--sp-09) 0; border-top: 1px solid var(--cds-border-subtle); }
+      @media (min-width: 900px) { .cs-section { grid-template-columns: 1fr 2.1fr; gap: var(--sp-09); } }
+      @media (min-width: 900px) { .cs-section__label { position: sticky; top: 80px; align-self: start; } }
+      .cs-section__heading { margin-bottom: var(--sp-06); }
+      .cs-section__intro { font-size: clamp(1rem, 1.3vw, 1.125rem); line-height: 1.6; color: var(--cds-text-secondary); margin: 0 0 var(--sp-07); }
+      .cs-para { font-size: 0.9375rem; line-height: 1.6; color: var(--cds-text-secondary); margin: 0 0 var(--sp-05); }
+
+      .cs-quote { margin: var(--sp-06) 0 0; padding: var(--sp-05) 0 var(--sp-05) var(--sp-06); border-left: 2px solid var(--cds-link-primary); font-size: 1.125rem; line-height: 1.5; color: var(--cds-text-primary); font-style: italic; }
+
+      .cs-insights { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--sp-04); }
+      .cs-insight { display: flex; gap: var(--sp-04); align-items: flex-start; border: 1px solid var(--cds-border-subtle); padding: var(--sp-05); }
+      .cs-insight__n { flex-shrink: 0; width: 24px; height: 24px; background: rgba(15,98,254,0.1); color: var(--cds-link-primary); font-size: 0.75rem; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+      .cs-insight span:last-child { font-size: 0.9375rem; line-height: 1.55; color: var(--cds-text-secondary); }
+
+      .cs-detailgrid { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--cds-border-subtle); border-left: 1px solid var(--cds-border-subtle); }
+      @media (min-width: 560px) { .cs-detailgrid { grid-template-columns: 1fr 1fr; } }
+      .cs-detail { display: flex; gap: var(--sp-05); padding: var(--sp-06); border-right: 1px solid var(--cds-border-subtle); border-bottom: 1px solid var(--cds-border-subtle); }
+      .cs-detail__num { flex-shrink: 0; font-size: 2rem; font-weight: 300; letter-spacing: -0.02em; line-height: 1; color: var(--cds-link-primary); }
+      .cs-detail__label { font-size: 0.875rem; font-weight: 600; margin-bottom: var(--sp-02); }
+      .cs-detail__text { font-size: 0.8125rem; line-height: 1.5; color: var(--cds-text-helper); margin: 0; }
+
+      .cs-cards { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--cds-border-subtle); border-left: 1px solid var(--cds-border-subtle); }
+      @media (min-width: 672px) { .cs-cards { grid-template-columns: 1fr 1fr 1fr; } }
+      .cs-card { padding: var(--sp-06); border-right: 1px solid var(--cds-border-subtle); border-bottom: 1px solid var(--cds-border-subtle); }
+      .cs-card__title { font-size: 0.9375rem; font-weight: 600; margin: 0 0 var(--sp-03); }
+      .cs-card__body { font-size: 0.8125rem; line-height: 1.5; color: var(--cds-text-helper); margin: 0; }
+
+      .cs-steps { display: flex; flex-direction: column; border-top: 1px solid var(--cds-border-subtle); }
+      .cs-step { display: grid; grid-template-columns: 40px 1fr; gap: var(--sp-05); padding: var(--sp-06) 0; border-bottom: 1px solid var(--cds-border-subtle); }
+      .cs-step__n { color: var(--cds-link-primary); font-size: 0.875rem; font-weight: 500; padding-top: 2px; }
+      .cs-step__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-03); margin-bottom: var(--sp-04); }
+      .cs-step__title { font-size: 1.0625rem; font-weight: 600; }
+      .cs-step__sub { font-size: 0.75rem; color: var(--cds-text-helper); text-transform: uppercase; letter-spacing: 0.06em; }
+      .cs-step__points { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--sp-03); }
+      .cs-step__points li { position: relative; padding-left: 16px; font-size: 0.9375rem; line-height: 1.5; color: var(--cds-text-secondary); }
+      .cs-step__points li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; background: var(--cds-link-primary); }
+
+      .cs-cta { padding: var(--sp-09) 0; border-top: 1px solid var(--cds-border-subtle); }
+
+      .cs-footer { background: var(--cds-inverse-bg); color: #c6c6c6; padding: var(--sp-08) 0; margin-top: var(--sp-08); }
+      .cs-footer__row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--sp-06); }
+      .cs-footer__name { font-size: 1.25rem; font-weight: 600; color: #fff; margin-bottom: var(--sp-02); }
+      .cs-footer__role { font-size: 0.8125rem; color: #8d8d8d; }
+      .cs-footer__links { display: flex; gap: var(--sp-06); }
+      .cs-footer__links a { font-size: 0.8125rem; color: #c6c6c6; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; }
+      .cs-footer__links a:hover { color: var(--cds-inverse-link); }
+    </style>
+  </body>
+</html>

@@ -30,29 +30,35 @@ const pageTitle = "DocPilot × IceCream — AI Documentation Case Study";
 */
 :root {
   --bg: #ffffff;
-  --surface: #f5f4ff;
-  --surface2: #eeedf8;
-  --border: #d4d2e8;
-  --text: #1a1a2e;
-  --body: #374151;
-  --secondary: #4b5563;
-  --accent: #5b21b6;
-  --accent-bg: #f5f3ff;
-  --accent-border: #c4b5fd;
-  --green-text: #065f46;
-  --green-bg: #d1fae5;
-  --green-border: #6ee7b7;
-  --red-text: #991b1b;
-  --red-bg: #fee2e2;
-  --red-border: #fca5a5;
-  --blue-text: #1e40af;
-  --blue-bg: #dbeafe;
-  --amber-text: #92400e;
-  --amber-bg: #fef3c7;
-  --code-bg: #f8f7ff;
-  --mono: 'JetBrains Mono', monospace;
-  --sans: 'DM Sans', sans-serif;
+  --surface: #f4f4f4;
+  --surface2: #e8e8e8;
+  --border: #e0e0e0;
+  --text: #161616;
+  --body: #393939;
+  --secondary: #525252;
+  --accent: #0f62fe;
+  --accent-bg: #edf5ff;
+  --accent-border: #a6c8ff;
+  --green-text: #0e6027;
+  --green-bg: #defbe6;
+  --green-border: #a7f0ba;
+  --red-text: #a2191f;
+  --red-bg: #fff1f1;
+  --red-border: #ffb3b8;
+  --blue-text: #0043ce;
+  --blue-bg: #d0e2ff;
+  --amber-text: #684e00;
+  --amber-bg: #fcf4d6;
+  --code-bg: #f4f4f4;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', system-ui, sans-serif;
 }
+/* Carbon: square the corners */
+.card,.metric,.ba-col,.roi,.pipe-step,.agent-card,.review,.review-body,.stack-item,
+.consultant,.cta-btn,.api-sig,.decision,.scope-note,.pipe-tag,.pipe-bar,.pipe-fill,
+code,nav a,.review-avatar { border-radius: 0 !important; }
+a:hover { color: var(--blue-text); }
+.cta-btn:hover { background: #0353e9; }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box }
 body { font-family: var(--sans); background: var(--bg); color: var(--body); line-height: 1.7; -webkit-font-smoothing: antialiased }
 a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px }

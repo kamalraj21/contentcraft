@@ -1,112 +1,71 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import CaseStudyNavigation from '../../components/CaseStudyNavigation.astro';
-import DocumentationCaseStudy from '../../components/DocumentationCaseStudy.jsx';
+import CaseStudy from '../../layouts/CaseStudy.astro';
 
-const pageTitle = "Documentation Redesign";
-
-const sectionNavLinks = [
-  { label: "Challenge", href: "#challenge" },
-  { label: "Strategy", href: "#strategy" },
-  { label: "Results", href: "#results" },
-  { label: "Insights", href: "#insights" }
-];
-
-const projectInfo = {
-  client: "Enterprise Platform Team",
-  role: "Documentation Lead",
-  timeline: "2022-2023",
-  focus: "Information Architecture"
-};
-
-const challenge = {
-  title: "The Challenge",
-  description: "Transform a complex, outdated documentation system into a modern, user-friendly knowledge hub that scales with the product while reducing maintenance overhead.",
-  painPoints: [
-    "Fragmented documentation across multiple platforms",
-    "Inconsistent information architecture and style",
-    "High maintenance overhead and outdated content",
-    "Poor search functionality and content discoverability"
-  ]
-};
-
-const strategy = {
-  title: "Strategic Approach",
-  steps: [
-    {
-      action: "Content Audit & Analysis",
-      details: "Conducted comprehensive inventory of existing documentation, analyzing user behavior patterns and identifying critical gaps and redundancies"
-    },
-    {
-      action: "Information Architecture Redesign",
-      details: "Developed new task-based navigation system and content hierarchy, focusing on user journeys and common workflows"
-    },
-    {
-      action: "Content Strategy Development",
-      details: "Created scalable content framework with reusable components, style guides, and automated validation processes"
-    },
-    {
-      action: "Implementation & Migration",
-      details: "Executed phased migration to new system while maintaining content integrity and improving searchability"
-    }
-  ]
-};
-
-const implementation = {
-  title: "Implementation Details",
-  areas: [
-    {
-      title: "Task-Based Navigation",
-      description: "Reorganized content around user tasks and goals, improving findability and relevance"
-    },
-    {
-      title: "Content Components",
-      description: "Created reusable content blocks and templates to ensure consistency and reduce maintenance"
-    },
-    {
-      title: "Automated Validation",
-      description: "Implemented automated checks for content quality, links, and style guide compliance"
-    }
-  ]
-};
-
-const outcomes = [
+const sections = [
   {
-    metric: "35%",
-    label: "User Satisfaction",
-    description: "Improved satisfaction scores through better content organization"
+    id: 'challenge', label: 'The challenge',
+    heading: 'Modernizing fragmented technical documentation',
+    intro: 'Transform a complex, outdated documentation system into a modern, user-friendly knowledge hub that scales with the product while reducing maintenance overhead.',
+    blocks: [
+      { type: 'list', items: [
+        'Fragmented documentation across multiple platforms.',
+        'Inconsistent information architecture and style.',
+        'High maintenance overhead and outdated content.',
+        'Poor search functionality and content discoverability.',
+      ]},
+    ],
   },
   {
-    metric: "40%",
-    label: "Update Speed",
-    description: "Faster content updates through streamlined processes"
+    id: 'strategy', label: 'The approach',
+    heading: 'A scalable, user-centered documentation system',
+    blocks: [
+      { type: 'steps', items: [
+        { n: '01', title: 'Content audit and analysis', points: ['Conducted a comprehensive inventory of existing documentation, analyzing user behavior patterns and identifying critical gaps and redundancies.'] },
+        { n: '02', title: 'Information architecture redesign', points: ['Developed a new task-based navigation system and content hierarchy, focusing on user journeys and common workflows.'] },
+        { n: '03', title: 'Content strategy development', points: ['Created a scalable content framework with reusable components, style guides, and automated validation processes.'] },
+        { n: '04', title: 'Implementation and migration', points: ['Executed a phased migration to the new system while maintaining content integrity and improving searchability.'] },
+      ]},
+    ],
   },
   {
-    metric: "25%",
-    label: "Support Load",
-    description: "Reduction in documentation-related support queries"
-  }
-];
-
-const insights = [
-  "User behavior analysis is crucial for effective information architecture",
-  "Standardized content components significantly reduce maintenance overhead",
-  "Automated validation processes ensure consistent content quality",
-  "Regular user testing drives continuous improvement in documentation usability"
+    id: 'results', label: 'The outcome',
+    heading: 'A unified knowledge hub',
+    blocks: [
+      { type: 'metrics', items: [
+        { value: '35%', label: 'User satisfaction', detail: 'Improved satisfaction scores through better content organization.' },
+        { value: '40%', label: 'Update speed', detail: 'Faster content updates through streamlined processes.' },
+        { value: '25%', label: 'Support load', detail: 'Reduction in documentation-related support queries.' },
+      ]},
+      { type: 'quote', text: 'By focusing on user tasks and maintaining a single source of truth, we created documentation that truly serves its purpose: helping users succeed.' },
+    ],
+  },
+  {
+    id: 'insights', label: 'What it shows',
+    heading: 'Key learnings',
+    blocks: [
+      { type: 'list', items: [
+        'User behavior analysis is crucial for effective information architecture.',
+        'Standardized content components significantly reduce maintenance overhead.',
+        'Automated validation processes ensure consistent content quality.',
+        'Regular user testing drives continuous improvement in documentation usability.',
+      ]},
+    ],
+  },
 ];
 ---
 
-<Layout title={pageTitle}>
-  <DocumentationCaseStudy 
-    sectionNavLinks={sectionNavLinks}
-    projectInfo={projectInfo}
-    challenge={challenge}
-    strategy={strategy}
-    implementation={implementation}
-    outcomes={outcomes}
-    insights={insights}
-    client:load 
-  />
-  
-  <CaseStudyNavigation currentSlug="documentation-redesign" />
-</Layout>
+<CaseStudy
+  title="Enterprise Documentation Redesign"
+  description="Transforming fragmented enterprise documentation into a unified, task-based knowledge hub with a real-time update pipeline."
+  kicker="Information Architecture"
+  org="Enterprise Platform Team"
+  date="2022–2023"
+  lead="How I transformed fragmented documentation into a unified knowledge hub, improving user satisfaction by 35% and reducing maintenance overhead by 40%."
+  metrics={[
+    { value: '35%', label: 'Higher user satisfaction' },
+    { value: '40%', label: 'Faster content updates' },
+    { value: '25%', label: 'Fewer support queries' },
+  ]}
+  tech={['Information Architecture', 'Content Strategy', 'Task-based Navigation', 'Automated Validation']}
+  sections={sections}
+/>
