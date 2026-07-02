@@ -23,7 +23,7 @@ const sections = [
       { type: 'steps', items: [
         { n: '01', title: 'Content operations', points: ['Shaped how content was structured, versioned, and reviewed once Git was the source of truth: repo layout, frontmatter, and the review-as-pull-request workflow.'] },
         { n: '02', title: 'Cross-functional partnership', points: ['Worked with system architects on the publishing architecture, with developers on the pipeline, and with PMs and POs on scope, sequencing, and rollout.'] },
-        { n: '03', title: 'One-click publishing', points: ['Helped move publishing off the CMS and onto an automated pipeline: edit as a pull request, ship with a single action or merge.'] },
+        { n: '03', title: 'One-click publishing', points: ['Helped move publishing off the CMS and onto Jenkins CI/CD with GitHub Pages hosting: nightly builds by default, urgent fixes live in minutes instead of the 1.5 to 2 weeks the AEM pipeline took.'] },
       ]},
     ],
   },
@@ -77,8 +77,8 @@ const sections = [
     heading: 'One source, two audiences',
     blocks: [
       { type: 'metrics', items: [
+        { value: '2 wks → nightly', label: 'Publishing turnaround', detail: 'Publishing a change took 1.5 to 2 weeks through the AEM pipeline. On the new stack, Jenkins CI/CD shipped nightly builds to GitHub Pages, with urgent fixes live in minutes.' },
         { value: 'AEM → Git', label: 'Platform shift', detail: 'Moved the source of truth into the repository, so authoring and publishing stopped pulling in two directions.' },
-        { value: 'One click', label: 'Publishing', detail: 'Editing is a pull request; shipping is a single action or a merge, with no CMS in the loop.' },
         { value: 'MCP', label: 'Machine access', detail: 'The working prototype serves the same content to AI agents as structured, queryable tools.' },
       ]},
       { type: 'quote', text: 'Treat documentation as code and you get one source of truth. Deliver it headlessly and the same content can serve both human readers and the AI agents that are becoming a second audience.' },
@@ -108,7 +108,7 @@ const sections = [
   lead="At Intel I worked on ContentOps to move documentation from a docs-as-code and AEM setup onto GitHub as a headless CMS with one-click publishing. I then built an independent, open-source prototype that extends the pattern to serve the same content to AI agents over the Model Context Protocol."
   metrics={[
     { value: 'AEM → Git', label: 'Headless CMS migration' },
-    { value: 'One click', label: 'Publishing pipeline' },
+    { value: '2 wks → nightly', label: 'Publishing turnaround' },
     { value: 'MCP', label: 'Docs served to AI agents' },
     { value: '2', label: 'Audiences: humans + agents' },
   ]}

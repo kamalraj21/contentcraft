@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout
+  title="Writing Samples — Kamal Raj"
+  description="Two representative samples of Kamal Raj's developer documentation: a task-oriented get-started guide and a REST API reference, both authored at Intel."
+>
+  <main class="ws cds-section" style="padding-top:120px;">
+    <div class="cds-container ws__wrap">
+
+      <header class="ws__head" data-reveal>
+        <p class="type-label">Writing samples</p>
+        <h1 class="type-h2">The sentences behind the systems.</h1>
+        <p class="type-body ws__note">
+          Case studies show how I think; these show how I write. Two representative excerpts from developer
+          documentation I authored at Intel: a task-oriented get-started guide and a REST API reference.
+          The original pages have since been retired from intel.com as the product lines evolved, so the
+          excerpts are reproduced here with identifying keys and credentials removed. Full samples available on request.
+        </p>
+      </header>
+
+      <!-- Sample 1 -->
+      <article class="ws__sample" data-reveal>
+        <div class="ws__meta">
+          <span class="tag">Get-started guide</span>
+          <span class="tag">Edge AI</span>
+          <span class="ws__origin mono">Automated Self-Checkout · Intel reference implementation</span>
+        </div>
+        <h2 class="ws__title">Get Started Guide for Automated Self-Checkout</h2>
+        <p class="ws__why">Why this one: a multi-step install and evaluation flow compressed to a 30-minute path, with prerequisites stated up front, every command runnable, and verification built into each stage.</p>
+
+        <div class="ws__doc">
+          <p><strong>Time to complete:</strong> 30 minutes &nbsp;·&nbsp; <strong>Languages:</strong> Python, Bash</p>
+          <p>This guide helps you get started with the automated self-checkout system. You will learn how to install the required software, run pre-configured pipelines, and monitor the system using Grafana.</p>
+
+          <h3>Prerequisites</h3>
+          <ul>
+            <li>Intel® Core™ processor, 16 GB RAM or higher, 64 GB available disk</li>
+            <li>Docker installed; Docker Compose v2 (optional); Git installed</li>
+            <li>Ubuntu LTS boot device and an internet connection</li>
+          </ul>
+
+          <h3>Install the package</h3>
+          <ol>
+            <li>Download the reference implementation package.</li>
+            <li>Unzip the package: <code>unzip automated-self-checkout.zip</code></li>
+            <li>Navigate to the directory: <code>cd automated-self-checkout</code></li>
+            <li>Change permissions for the executable: <code>chmod 755 edgesoftware</code></li>
+            <li>Install: <code>./edgesoftware install</code></li>
+          </ol>
+          <p>You will be prompted for a product key during installation. Upon success, you will see “Installation of package complete” and the status of each module.</p>
+
+          <h3>Run and evaluate the pipeline</h3>
+          <p>The solution processes video streams from multiple cameras to detect and classify products. Start the pipeline server, then launch the Grafana dashboard to visualize detection and tracking, including bounding boxes and average FPS per stream.</p>
+          <pre><code>make run-pipeline-server
+docker ps                          # confirm containers are up
+./src/pipeline-server/status.sh   # average FPS and pipeline latency</code></pre>
+          <p>Stop the services after evaluation with <code>make down-pipeline-server</code>.</p>
+        </div>
+      </article>
+
+      <!-- Sample 2 -->
+      <article class="ws__sample" data-reveal>
+        <div class="ws__meta">
+          <span class="tag">API reference</span>
+          <span class="tag">REST</span>
+          <span class="ws__origin mono">Edge Video Analytics Microservice (EVAM) · Intel</span>
+        </div>
+        <h2 class="ws__title">EVAM REST API Reference</h2>
+        <p class="ws__why">Why this one: reference writing is a different discipline from guides. Every endpoint carries its method, path, parameters, request and response examples, and error behavior, in a shape a developer can consume without reading top to bottom.</p>
+
+        <div class="ws__doc">
+          <p>The Edge Video Analytics Microservice (EVAM) REST API allows you to manage and control video analytics pipelines: configure, start, stop, and monitor them through the endpoints below.</p>
+
+          <h3>Authentication</h3>
+          <p>Include your API key in the <code>X-API-Key</code> header of each request. A missing or invalid key returns <code>401 Unauthorized</code>.</p>
+
+          <h3>Deploy a pipeline</h3>
+          <p><strong>POST</strong> <code>/pipelines/&#123;name&#125;/&#123;version&#125;</code></p>
+          <table>
+            <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><code>name</code></td><td>String</td><td>Yes</td><td>The pipeline to deploy. Alphanumeric characters only.</td></tr>
+              <tr><td><code>version</code></td><td>String</td><td>Yes</td><td>The version of the pipeline.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Responses:</strong> <code>200 OK</code> means the pipeline instance started. <code>400 Bad Request</code> means an invalid name or version.</p>
+
+          <h3>Retrieve pipeline status</h3>
+          <p><strong>GET</strong> <code>/pipelines/status</code> returns every instance with its state and performance:</p>
+          <pre><code>[
+  &#123; "id": 1, "state": "COMPLETED", "avg_fps": 8.93, "avg_pipeline_latency": 0.45 &#125;,
+  &#123; "id": 2, "state": "RUNNING",   "avg_fps": 6.36, "avg_pipeline_latency": 0.65 &#125;
+]</code></pre>
+          <table>
+            <thead><tr><th>Key</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><code>state</code></td><td>Current state of the instance (COMPLETED, RUNNING, and so on).</td></tr>
+              <tr><td><code>avg_fps</code></td><td>Average frames per second processed by the pipeline.</td></tr>
+              <tr><td><code>avg_pipeline_latency</code></td><td>Average latency, in seconds, experienced by the pipeline.</td></tr>
+            </tbody>
+          </table>
+
+          <h3>Stop a pipeline</h3>
+          <p><strong>DELETE</strong> <code>/pipelines/&#123;instance_id&#125;</code> stops a running or queued instance. <code>404 Not Found</code> if the instance does not exist.</p>
+        </div>
+      </article>
+
+      <div class="ws__back" data-reveal>
+        <a href={`${base}/#work`} class="btn btn--ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Back to portfolio
+        </a>
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .ws__wrap { max-width: 860px; }
+  .ws__head { margin-bottom: var(--sp-09); }
+  .ws__head .type-h2 { margin: var(--sp-04) 0 var(--sp-05); }
+  .ws__note { max-width: 68ch; }
+
+  .ws__sample { border-top: 1px solid var(--cds-border-subtle); padding: var(--sp-08) 0; }
+  .ws__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-03); margin-bottom: var(--sp-05); }
+  .ws__origin { font-size: 0.75rem; color: var(--cds-text-helper); }
+  .ws__title { font-weight: 300; font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -0.01em; margin: 0 0 var(--sp-04); }
+  .ws__why { font-size: 0.9375rem; line-height: 1.55; color: var(--cds-text-secondary); border-left: 2px solid var(--cds-link-primary); padding-left: var(--sp-05); margin: 0 0 var(--sp-07); }
+
+  .ws__doc { background: var(--cds-layer-01); border: 1px solid var(--cds-border-subtle); padding: var(--sp-07); font-size: 0.9375rem; line-height: 1.6; color: #393939; }
+  .ws__doc h3 { font-size: 1.05rem; font-weight: 600; margin: var(--sp-06) 0 var(--sp-03); }
+  .ws__doc h3:first-of-type { margin-top: var(--sp-05); }
+  .ws__doc p { margin: 0 0 var(--sp-04); }
+  .ws__doc ul, .ws__doc ol { margin: 0 0 var(--sp-04); padding-left: 20px; }
+  .ws__doc li { margin-bottom: var(--sp-02); }
+  .ws__doc code { font-family: 'IBM Plex Mono', monospace; font-size: 0.85em; background: #fff; border: 1px solid var(--cds-border-subtle); padding: 1px 6px; }
+  .ws__doc pre { background: #fff; border: 1px solid var(--cds-border-subtle); padding: var(--sp-05); overflow-x: auto; margin: 0 0 var(--sp-04); }
+  .ws__doc pre code { border: none; padding: 0; }
+  .ws__doc table { border-collapse: collapse; width: 100%; margin: 0 0 var(--sp-04); font-size: 0.875rem; }
+  .ws__doc th, .ws__doc td { border: 1px solid var(--cds-border-subtle); padding: 8px 12px; text-align: left; background: #fff; }
+  .ws__doc th { background: var(--cds-layer-01); font-weight: 600; }
+
+  .ws__back { padding-top: var(--sp-07); border-top: 1px solid var(--cds-border-subtle); }
+</style>

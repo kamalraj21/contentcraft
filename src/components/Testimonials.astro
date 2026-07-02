@@ -1,0 +1,64 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const quotes = [
+  {
+    text: 'Kamal is an outstanding technical writer, and I have enjoyed my time working with him. He brings a high level of technical expertise and reliability to every project. He seamlessly guided our teams through a new publication process, even as he was mastering it himself, demonstrating both his adaptability and leadership.',
+    name: 'Adreanne Bertrand',
+    role: 'Senior Content Designer at Meta, formerly Intel',
+    context: 'Worked with Kamal on the same team · LinkedIn recommendation',
+  },
+  {
+    text: 'His skills as a Technical Writer are outstanding. He effectively translates complex concepts into clear, user-friendly documentation. His insights into user experience and attention to detail greatly enhance our projects. I highly recommend him for any opportunity in UX Technical Writing.',
+    name: 'Paras Gulati',
+    role: 'Designer at Salesforce, formerly Intel and MathWorks',
+    context: 'Worked with Kamal on the same team · LinkedIn recommendation',
+  },
+];
+---
+
+<section id="proof" class="cds-section cds-rule-top">
+  <div class="cds-container">
+    <div class="proof__head" data-reveal>
+      <p class="type-label">What colleagues say</p>
+      <h2 class="type-h2">On the record.</h2>
+    </div>
+
+    <div class="proof__grid">
+      {quotes.map((q, i) => (
+        <figure class="proof__card" data-reveal data-reveal-delay={`${60 + i * 60}`}>
+          <blockquote class="proof__quote">“{q.text}”</blockquote>
+          <figcaption>
+            <div class="proof__name">{q.name}</div>
+            <div class="proof__role">{q.role}</div>
+            <div class="proof__context mono">{q.context}</div>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <div class="proof__foot" data-reveal data-reveal-delay="180">
+      <p class="proof__award"><span class="proof__award-label mono">Recognition</span> One Intel award, 2022, for solution design during the feasibility phase of Intel’s EII 4.0 planning exercise.</p>
+      <a href={`${base}/writing`} class="cds-link proof__samples">Read two of my writing samples →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .proof__head { margin-bottom: var(--sp-08); }
+  .proof__head .type-h2 { margin-top: var(--sp-04); }
+
+  .proof__grid { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--cds-border-subtle); border-left: 1px solid var(--cds-border-subtle); }
+  @media (min-width: 900px) { .proof__grid { grid-template-columns: 1fr 1fr; } }
+
+  .proof__card { margin: 0; padding: var(--sp-07); border-right: 1px solid var(--cds-border-subtle); border-bottom: 1px solid var(--cds-border-subtle); display: flex; flex-direction: column; justify-content: space-between; gap: var(--sp-06); }
+  .proof__quote { margin: 0; font-size: 1.0625rem; line-height: 1.6; color: var(--cds-text-primary); font-weight: 300; }
+  .proof__name { font-size: 0.9375rem; font-weight: 600; }
+  .proof__role { font-size: 0.8125rem; color: var(--cds-text-secondary); margin-top: 2px; }
+  .proof__context { font-size: 0.6875rem; color: var(--cds-text-helper); margin-top: var(--sp-03); letter-spacing: 0.04em; text-transform: uppercase; }
+
+  .proof__foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--sp-05); margin-top: var(--sp-07); }
+  .proof__award { font-size: 0.875rem; color: var(--cds-text-secondary); margin: 0; max-width: 60ch; }
+  .proof__award-label { font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cds-link-primary); margin-right: var(--sp-04); }
+  .proof__samples { font-size: 0.9375rem; font-weight: 500; }
+</style>
