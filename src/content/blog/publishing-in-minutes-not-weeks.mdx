@@ -1,0 +1,42 @@
+---
+title: "What It Actually Takes to Go From a Two-Week Publish Cycle to Nightly"
+pubDate: "2026-06-18"
+description: "Notes from leading ContentOps on a migration from a CMS-coupled docs pipeline to GitHub as a headless CMS: what changed, what didn't, and the part nobody warns you about."
+author: "Kamal"
+---
+
+A few years ago, publishing a documentation change on a platform I supported took 1.5 to 2 weeks. Not because the writing took that long. The content lived partly in the repo and partly in Adobe Experience Manager, and releasing it meant going through AEM's own pipeline, on AEM's own schedule, coupled to a release process built for a different kind of content entirely.
+
+By the time we were done, the same kind of change shipped as a nightly build through Jenkins CI/CD onto GitHub Pages, and an urgent fix could be live in minutes instead of weeks. I led ContentOps for that migration. Here is what actually mattered, and what I expected to matter but didn't.
+
+## The real problem was never "our CMS is slow"
+
+That is how the problem gets described in a status meeting, and it is not quite true. The real problem was that the source of truth was split. Some content lived in the repository, structured and versioned like the code around it. The rest lived in AEM, versioned differently, reviewed differently, and released on AEM's calendar. Every change had to reconcile two systems before it could ship.
+
+A slow pipeline is a symptom. A divided source of truth is the disease. If you fix the pipeline speed without fixing where content actually lives, you get a faster version of the same problem.
+
+## What moved, and why it was mostly not technical
+
+The technical shape of the fix is simple to describe: Markdown in Git as the single source, Jenkins CI/CD building on every merge, GitHub Pages as the target. None of that took long to stand up.
+
+The work that took time was ContentOps: deciding how content would be structured now that Git was the source of truth, what the pull-request review workflow looked like for people who had never reviewed a documentation change like a code change, and how the migration would be sequenced so nothing broke in the meantime. I partnered with system architects on the publishing architecture, with developers on the pipeline itself, and with product managers and product owners on scope and rollout order. Getting eight or nine stakeholders across three functions to agree on a repo layout took longer than writing the GitHub Actions workflow that used it.
+
+## The part nobody warns you about
+
+Writers who had only ever worked in a CMS did not automatically know how to work in Git. "Just make a pull request" is a one-line instruction that assumes a working model most technical writers were never taught. The real rollout cost was training and templates: a PR checklist, a couple of worked examples, someone available for the first few reviews when a merge conflict looked like a catastrophe instead of a normal Tuesday.
+
+If you plan the technical migration and skip this part, you will ship a faster pipeline that half your team is afraid to use.
+
+## What I would tell someone starting this today
+
+Name the actual problem before you pick a tool. "Publishing is slow" and "our source of truth is split" call for different fixes, and only one of them is a headless CMS migration.
+
+Sequence the org work before the org work becomes the blocker. The pipeline will be the easy 20%. Getting agreement on structure and review process from people who do not report to each other is the hard 80%, and it is ContentOps work, not engineering work, even though it enables the engineering.
+
+Budget real time for onboarding writers to Git-based workflows. This is not optional and not free. Treat it as part of the project, not an afterthought after go-live.
+
+If you want to see the pattern in its simplest possible form, stripped of any employer's internal systems, I built a small open-source reference implementation: Markdown in Git, one-click GitHub Actions publishing, and (as a separate, later addition) an MCP server that serves the same content to AI agents.
+
+- [Read the full case study](/contentcraft/projects/headless-docs/)
+- [Live demo](https://kamalraj21.github.io/headless-docs-mcp/)
+- [Source](https://github.com/kamalraj21/headless-docs-mcp)

@@ -1,0 +1,34 @@
+---
+title: "ContentOps Is Not a Content Calendar. It's an Org Design Problem."
+pubDate: "2026-05-14"
+description: "Most ContentOps advice is really project-management advice with a new label. Here is what the discipline actually involves when the content in question is developer documentation."
+author: "Kamal"
+---
+
+Search for "ContentOps" and you will mostly find checklists: audit your workflow, standardize your templates, pick better tools, automate the repetitive parts. That advice is not wrong. It is also not really ContentOps. It is project management wearing a new label, and it undersells what the discipline is actually for.
+
+After 18 years across platform documentation, including leading ContentOps through a full publishing-pipeline migration at Intel and designing an AI-assisted content operation at Salesforce, here is the version of ContentOps I would actually stand behind.
+
+## It is org design, not workflow design
+
+A content workflow describes the steps a piece of content goes through. ContentOps describes who owns which step, why, and what happens when two of those people disagree about scope, sequencing, or who reviews what.
+
+The hard part of any ContentOps initiative I have run was never the tooling. It was getting a system architect, a developer, and a product owner, none of whom report to each other, to agree on a repo layout and a review process. Templates and checklists are the easy 20%. Cross-functional agreement is the 80%, and it is a negotiation, not a diagram.
+
+## Automation earns its place; it does not lead
+
+"Automate the repetitive tasks" is common advice, and it is correct, applied late. Automating a broken handoff just makes the breakage faster. Before I automate anything, I want to know: where does content actually get stuck, and is that a tooling problem or a decision-rights problem? Half the time it turns out someone is waiting on an approval from a person who does not know they are supposed to approve it. No amount of Zapier fixes that.
+
+Once the decision rights and the handoffs are clear, automation is where ContentOps pays for itself. CI/CD pipelines that build and publish docs on merge. Structured metadata that lets one topic get reused instead of copy-pasted into three places. AI tools scoped to a specific, well-understood friction point rather than a general-purpose assistant nobody quite trusts.
+
+## The AI layer changes the job, not the discipline
+
+At Salesforce I designed ten production AI Slackbot skills for a documentation team: research retrieval, style enforcement, UI validation, and more, each scoped to a specific stage of the content lifecycle. That is ContentOps work. The tools changed. The underlying questions didn't: who owns this step, what does "done" mean here, and how do we know the output is trustworthy before it reaches a human reviewer.
+
+If your ContentOps practice cannot answer those questions for a manual workflow, adding AI to it will not fix that. It will just make the same unclear ownership move faster.
+
+## What I actually check, in order
+
+Where does content get stuck, and is the cause a tool or a person who does not know they are the decision-maker. Who owns each handoff, on paper and in practice, and where those two versions disagree. What is genuinely repetitive and safe to automate, versus what looks repetitive but actually requires judgment. What the review process assumes about the reviewer's skills, and whether that assumption is still true for the team you have.
+
+Get those four right and the calendar, the templates, and the tool stack mostly sort themselves out. Get them wrong and no tool stack will save you.
