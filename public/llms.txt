@@ -1,0 +1,21 @@
+# Kamal Raj — Staff Technical Writer, Developer Docs & AI Tooling
+
+> Portfolio of Kamal Raj: 18 years of platform and developer documentation at
+> Salesforce, Intel, Rakuten, Netcracker, Oracle, and others. Builds production
+> AI documentation systems (RAG, MCP, agentic workflows) alongside traditional
+> docs-as-code and information architecture work.
+> Contact: kamal.raj2181@gmail.com · linkedin.com/in/kamal-raj-75b389b
+
+## Case studies
+
+- [Salesforce AI Skills Programme](https://kamalraj21.github.io/contentcraft/projects/salesforce-ai-skills/): Ten production AI Slackbot skills automating the documentation lifecycle; 80% faster first drafts, 70% shorter review cycles.
+- [Headless Documentation & MCP](https://kamalraj21.github.io/contentcraft/projects/headless-docs/): Docs-as-code to GitHub-as-headless-CMS migration at Intel, plus a working open-source MCP prototype serving docs to AI agents.
+- [Intel OpenVINO Developer Docs](https://kamalraj21.github.io/contentcraft/projects/intel-openvino/): Full information architecture for two AI inference toolchains.
+- [Enterprise Documentation Redesign](https://kamalraj21.github.io/contentcraft/projects/documentation-redesign/): Fragmented docs to unified task-based hub; +35% satisfaction.
+- [Microlearning at Intel](https://kamalraj21.github.io/contentcraft/projects/microlearning/): Dense docs into 5-minute interactive modules; 50% less learning time.
+- [DocPilot × IceCream](https://kamalraj21.github.io/contentcraft/projects/docpilot-icecream/): AI agents + CI/CD generating full API docs for a 10,000-star Python library.
+
+## Other
+
+- [CV](https://kamalraj21.github.io/contentcraft/cv/): Print-ready resume with full work history.
+- [Live MCP prototype](https://kamalraj21.github.io/headless-docs-mcp/): Working headless-docs demo; source at github.com/kamalraj21/headless-docs-mcp.

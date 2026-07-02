@@ -19,6 +19,7 @@ const linkedin = 'https://linkedin.com/in/kamal-raj-75b389b';
     </div>
     <div class="footer__bottom">
       <p>© 2026 Kamal Raj. All rights reserved.</p>
+      <p class="footer__craft">Like the docs I build, this site serves two audiences: humans get the pages, AI agents get <a href={`${base}/llms.txt`}>llms.txt</a>.</p>
     </div>
   </div>
 </footer>
@@ -33,4 +34,7 @@ const linkedin = 'https://linkedin.com/in/kamal-raj-75b389b';
   .footer__links a:hover { color: var(--cds-inverse-link); }
   .footer__bottom { border-top: 1px solid #393939; padding-top: var(--sp-06); }
   .footer__bottom p { font-size: 0.75rem; color: #6f6f6f; margin: 0; }
+  .footer__craft { margin-top: var(--sp-03) !important; }
+  .footer__craft a { color: var(--cds-inverse-link); text-decoration: none; }
+  .footer__craft a:hover { text-decoration: underline; }
 </style>
