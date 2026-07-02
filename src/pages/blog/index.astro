@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
-const posts = await getCollection('blog');
+const posts = (await getCollection('blog')).sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -16,7 +16,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <p class="type-body" style="padding:32px 0;">No posts yet.</p>
         )}
         {posts.map(post => (
-          <a href={`${base}/blog/${post.slug}/`} style="display:block;padding:24px 0;border-bottom:1px solid var(--cds-border-subtle);text-decoration:none;color:inherit;">
+          <a href={`${base}/blog/${post.id}/`} style="display:block;padding:24px 0;border-bottom:1px solid var(--cds-border-subtle);text-decoration:none;color:inherit;">
             <div style="font-size:1.25rem;font-weight:400;margin-bottom:6px;color:var(--cds-link-primary);">{post.data.title}</div>
             <p class="type-body" style="margin:0 0 6px;">{post.data.description}</p>
             <small class="type-meta">{post.data.pubDate}</small>

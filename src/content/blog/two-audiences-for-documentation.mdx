@@ -1,0 +1,46 @@
+---
+title: "Your Docs Have a Second Reader Now, and It Is an AI Agent"
+pubDate: "2026-07-02"
+description: "Why I started publishing an llms.txt alongside my documentation, and what changes when AI agents become a real audience for technical writing."
+author: "Kamal"
+---
+
+For most of the last 18 years, documentation had one audience: a person, reading in a browser, scanning for the one paragraph that answers their question. Every decision I made as a writer, from heading structure to where a warning callout sits, was built around that reader.
+
+That assumption is now only half true.
+
+## The second reader
+
+AI coding assistants (the kind built into Cursor, Claude Code, and similar tools) read documentation constantly. Not by opening a browser and scrolling. They fetch a page, strip the HTML, and try to reconstruct meaning from what is left: navigation chrome, ad markup, cookie banners, and, somewhere in the noise, the actual content.
+
+It mostly works. It also wastes tokens, drops structure, and occasionally hallucinates an answer when the scrape comes back thin. I have watched an assistant confidently invent an API parameter because the real one was buried three `div`s deep in a page it half-parsed.
+
+The fix is not clever prompting. It is giving the second reader something built for it.
+
+## What I changed
+
+Two things, both small:
+
+**A machine-readable index.** Alongside the normal site, I publish a plain-text `llms.txt` at the root: one line per page, a short summary, a link. No HTML to strip, no navigation to filter out. An agent can read the whole map of a site in one request instead of guessing at a sitemap.
+
+**A server that answers instead of a page that gets scraped.** For a small reference project, I went further and built an MCP (Model Context Protocol) server. MCP is an open standard for how an AI assistant asks an external source for information. Instead of an agent fetching and parsing a web page, it calls a tool: `search_docs("rate limit")`, and gets back the actual answer from the actual documentation. No parsing, no guessing.
+
+Both read from the same Markdown files that publish the human-facing site. One source, two audiences, zero duplicated effort.
+
+## Why this matters for technical writers specifically
+
+This is not a developer-tooling curiosity. It is a content architecture decision, and content architecture has always been the job.
+
+If your documentation is genuinely well-structured, one clear topic per page, real headings, explicit constraints instead of buried caveats, it already serves the AI reader better than a wall of marketing-adjacent prose ever will. The skills that make documentation good for humans (clarity, single-sourcing, no duplication, saying the constraint instead of implying it) are the same skills that make it usable by a machine. Nothing about this replaces writing judgment. It raises the cost of not having any.
+
+The part that is new is the delivery layer: publishing something a machine can consume directly, instead of assuming it will politely read your website the way a person does.
+
+## Try it
+
+I built a small working example: documentation as Markdown in Git, published to a static site with one click, and served to AI agents over MCP. It is a real, running MCP server, not a diagram.
+
+- [Read the case study](/contentcraft/projects/headless-docs/)
+- [Live demo](https://kamalraj21.github.io/headless-docs-mcp/)
+- [Source](https://github.com/kamalraj21/headless-docs-mcp)
+
+This site's own `llms.txt` is at [kamalraj21.github.io/contentcraft/llms.txt](https://kamalraj21.github.io/contentcraft/llms.txt), if you want to see what a small one looks like in practice.
